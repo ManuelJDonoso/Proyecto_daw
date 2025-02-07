@@ -10,36 +10,63 @@ ul {
   margin-top: 0;
 }
 
-a{
-    color: aliceblue;
-    text-decoration: none;
+a {
+  color: aliceblue;
+  text-decoration: none;
 }
 
 /*comentario menu*/
-.menu{
-    margin-bottom: 4em;
+.menu {
+  margin-bottom: 4em;
 }
 
-.menu__item{
-
-    display: inline;
-    
+.menu__item {
+  display: inline;
 }
 
-.menu__link{
-    margin-right: 1em;
-    background-color: royalblue;
-    padding: 0.5em 1em;
-    
+.menu__link {
+  margin-right: 1em;
+  background-color: royalblue;
+  padding: 0.5em 1em;
 }
 
-.menu--vertical .menu__item{
-    display: block;
-    margin-bottom: 1em;
-
+.menu--vertical .menu__item {
+  display: block;
+  margin-bottom: 1em;
 }
 
-.menu--vertical .menu__link{
+.menu--vertical .menu__link {
+  background-color: transparent;
+}
 
-    background-color: transparent;
+.card {
+  position: relative;
+  width: 275px;
+  height: 500px;
+  margin: 0 auto 1em;
+  padding: 1em;
+  background-color: #fff;
+  border-radius: 0.7em;
+  box-shadow: 10px 10px 10px rgb(0 0 0 / 0.3);
+}
+
+.card__title {
+  position: absolute;
+  top: 200px;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.card__description {
+  position: absolute;
+  top: 250px;
+  width: 250px;
+  line-height: 1.5;
+}
+
+.card__avatar {
+  position: absolute;
+  top: 0;
+  right: 3em;
+  width: 250px;
 }
