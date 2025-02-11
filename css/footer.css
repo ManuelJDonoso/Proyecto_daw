@@ -1,0 +1,41 @@
+/* Estilos para el footer */
+.footer {
+    width: 100%;
+    background-color: #222; /* Fondo oscuro */
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    position: absolute; /* Por defecto se coloca después del contenido */
+
+    left: 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-nav {
+    margin-top: 10px;
+}
+
+.footer-nav a {
+    color: #ff6600;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: #cc5500;
+}
+
+/* 📱 Responsive: En móviles el texto se apila */
+@media (max-width: 600px) {
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+}

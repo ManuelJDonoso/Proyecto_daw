@@ -1,0 +1,31 @@
+.card {
+    position: relative;
+    width: 275px;
+    height: 500px;
+    margin: 0 auto 1em;
+    padding: 1em;
+    background-color: #fff;
+    border-radius: 0.7em;
+    box-shadow: 10px 10px 10px rgb(0 0 0 / 0.3);
+  }
+  
+  .card__title {
+    position: absolute;
+    top: 200px;
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  .card__description {
+    position: absolute;
+    top: 250px;
+    width: 250px;
+    line-height: 1.5;
+  }
+  
+  .card__avatar {
+    position: absolute;
+    top: 0;
+    right: 3em;
+    width: 250px;
+  }
