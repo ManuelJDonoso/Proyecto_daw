@@ -218,3 +218,87 @@ p, .descripcion {
 
 
 }
+
+/*------------estilos pagina login-------------------------*/
+
+.login-box {
+    background: rgba(0, 0, 0, 0.5);
+    max-width: 450px;
+    color: #fff;
+    position: relative;
+  
+    padding: 70px 60px;
+    margin-top: 100px;
+  }
+  
+  .login-box__logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+  }
+  
+  .login-box h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+  .login-box p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+  }
+  
+  .login-box input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #1c8acd;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  
+  .login-box input[type="submit"]:hover {
+    cursor: pointer;
+    background: #05dd46;
+    color: black;
+  }
+  
+  .login-box a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+    margin-left: 30px;
+  }
+  
+  .login-box a:first-of-type:hover {
+    color: #e90707;
+  }
+  
+  .login-box a:hover {
+    color: #05dd46;
+  }
+  .login-box input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+

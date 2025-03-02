@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
 
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
 </head>
 <body>
     <!-- Encabezado de la pagina web -->
@@ -45,7 +45,7 @@
               >
             </li>
             <li class="nav__item">
-              <a href="html/fragmento/Fragment_login.html" class="nav__link" data-page="login.html"
+              <a href="login.html" class="nav__link" data-page="login.html"
                 >Login</a
               >
             </li>
@@ -56,7 +56,24 @@
       <!-- Contenido principal del body-->
 
       <main class="main">
-        <p>Contenido principal aquí...</p>
+        <section class="login-box">
+          <img src="../../assets/images/logo_login.jpg" alt="logo pagina" class="login-box__logo">
+          <h1>Crear Cuenta</h1>
+          <form action="" method="post">
+              <p>Nombre de usuario</p>
+              <input type="text" name="usermame" placeholder="Introduce tu Nombre de Usuario">
+              <p>Nombre</p>
+              <input type="text" name="name" placeholder="introduce tu nombre">
+              <p>Email</p>
+              <input type="email" name="usermame" placeholder="Introduce tu email">
+              <p>Contraseña</p>
+              <input type="password" name="pass" placeholder="introduce la contraseña">
+              <p>Repite Contraseña</p>
+              <input type="password" name="pass" placeholder="introduce la contraseña">
+      
+              <input type="submit" value="crear cuenta">
+          </form>
+      </section>
       </main>
 
      <!-- Contenido del pie de pagina-->
@@ -72,7 +89,5 @@
       </footer>
 </body>
 
-<script src="js/menu_responsive.js"></script>
-<script src="js/accion_menu.js"></script>
-
+<script src="../../js/menu_responsive.js"></script>
 </html>
