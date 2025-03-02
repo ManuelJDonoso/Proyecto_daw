@@ -1,0 +1,220 @@
+:root{
+    --color-primario:#2196F3 ;
+    --color-accion:#4CAF50 ;
+    --color-notificacion:#FFC107;
+    --color-iteraccion:#E91E63 ;
+
+    --fuente-principal: 'Montserrat', sans-serif;
+    --fuente-secundaria: 'Open Sans', sans-serif;
+    --tamaño-titulo: 16px;
+    --tamaño-boton: 14px;
+    --tamaño-texto-cuerpo: 12px;
+    --peso-negrita: 700;
+    --peso-normal: 400;
+}
+
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-secundaria); /* Open Sans por defecto */
+    font-size: var(--tamaño-texto-cuerpo); /* 12px para asegurar legibilidad */
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--color-primario);
+}
+
+/* Banner */
+.banner {
+    background: url(../assets/images/banner.jpg) no-repeat center calc(50% - 30px)/cover;
+    color: white;
+    text-align: center;
+    padding: 40px; /* Aumentar la altura del banner */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.banner__content {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    background: rgba(0, 0, 0, 0.5);
+   padding: 20px;
+    border-radius: 10px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+/* Menú de navegación */
+.nav {
+    background-color: #222;
+    position: fixed;
+    top: 140px; /* Altura del banner */
+    width: 100%;
+    z-index: 999;
+    padding: 5px 0; /* Reducir el padding superior e inferior a la mitad */
+}
+
+.nav__toggle {
+    display: none;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav__list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav__item {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.nav__link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.nav__link:hover{
+    color: var(--color-accion);
+
+}
+
+.nav__link img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+
+
+/* Main */
+main {
+    flex-grow: 1;
+    padding-top: 220px; /* Aumentar padding-top para evitar que el contenido quede oculto debajo del menú */
+}
+.main{
+
+    margin: 0 auto;
+    margin-bottom: 30px;
+  
+  }
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+.footer-nav a {
+    color: #ff6600;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: #cc5500a0;
+}
+
+
+* Estilo para títulos, botones y etiquetas destacadas */
+h1, h2, h3, h4, h5, h6, .boton, .etiquetas-destacadas {
+  font-family: var(--fuente-principal); /* Montserrat para títulos */
+  font-weight: var(--peso-negrita); /* Negrita */
+  font-size: var(--tamaño-titulo); /* 16px por defecto para títulos */
+}
+
+/* Estilo para texto de botones */
+.boton {
+  font-size: var(--tamaño-boton); /* 14px para botones */
+}
+
+/* Estilo para etiquetas destacadas */
+.etiquetas-destacadas {
+  font-size: var(--tamaño-boton); /* 14px también para etiquetas */
+}
+
+/* Estilo para párrafos y descripciones */
+p, .descripcion {
+  font-family: var(--fuente-secundaria); /* Open Sans para cuerpo de texto */
+  font-weight: var(--peso-normal); /* Normal para cuerpo de texto */
+  font-size: var(--tamaño-texto-cuerpo); /* 12px */
+}
+
+
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .banner{
+        background: url(../assets/images/banner.jpg) no-repeat center center/cover;
+   
+    }
+
+    .nav {
+        width: 100%; /* Restaurar el ancho completo en pantallas pequeñas */
+        left: 0;
+        top: 167px; /* Mover el menú más abajo en móviles */
+    }
+    
+    .nav__list {
+        display: none;
+        flex-direction: column;
+        background-color: #222;
+        width: 100%;
+        position: absolute;
+        top: 50px;
+        left: 0;
+    }
+    
+    .nav__list--active {
+        display: flex;
+    }
+    
+    .nav__toggle {
+        display: block;
+        text-align: center;
+    }
+    .nav__item {
+        padding: 0;
+     
+    }
+    
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    main {
+        padding-top: 230px; /* Aumentar el espacio para que el contenido no quede oculto */
+    }
+
+
+}
