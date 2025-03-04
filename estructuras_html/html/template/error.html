@@ -26,38 +26,6 @@
     margin-bottom: 10px;
 }
 
-.card__input, .card__button, .card__select {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.card__button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.card__button:hover {
-    background-color: #0056b3;
-}
-
-.card__time-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Permite que los inputs se acomoden en móviles */
-}
-
-.card__time-container label {
-    width: 48%;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
 
 @media (max-width: 480px) {
     .card {
@@ -68,14 +36,7 @@
         flex-direction: column;
     }
 
-    .card__time-container label {
-        width: 100%;
-    }
 
-    .card__button {
-        font-size: 14px;
-        padding: 8px;
-    }
   }
     </style>
   </head>
@@ -131,78 +92,12 @@
     <main class="main">
       <div class="card">
         <img
-          src="default.jpg"
+          src="../../assets/images/error.jpg"
           alt="Imagen de la tarjeta"
           class="card__image"
           id="preview"
         />
-        <input type="file" id="imageUpload" accept="image/png, image/jpeg" style="display: none;" onchange="previewImage(event)">
-        <button class="card__button" onclick="document.getElementById('imageUpload').click(); return false;">Seleccionar Imagen</button>
         
-        <button class="card__button" onclick="resetForm()">
-          Volver a defecto
-        </button>
-        <form action="save.php" method="POST" enctype="multipart/form-data">
-          <input
-            type="text"
-            name="title"
-            class="card__input"
-            placeholder="Título"
-            required
-          />
-          <textarea
-            name="description"
-            class="card__input"
-            placeholder="Descripción"
-            required
-          ></textarea>
-          <input
-          type="text"
-          name="master"
-          class="card__input"
-          placeholder="Master"
-          required
-        />
-          <input
-            type="number"
-            name="players"
-            class="card__input"
-            placeholder="Número de jugadores"
-            required
-          />
-          <input type="date" name="date" class="card__input" required />
-          <div class="card__time-container">
-            <label
-              >Inicio
-              <input type="time" name="time" class="card__input" required />
-            </label>
-            <label
-              >Fin
-              <input type="time" name="end_time" class="card__input" required />
-            </label>
-          </div>
-          <select
-            name="mode"
-            class="card__input"
-            id="mode"
-            onchange="toggleLocationField()"
-          >
-            <option value="online">Online</option>
-            <option value="presencial">Presencial</option>
-          </select>
-          <input
-            type="text"
-            name="location"
-            class="card__input"
-            id="location"
-            placeholder="Ubicación"
-            style="display: none"
-          />
-          <label class="card__label">
-            <input type="checkbox" name="adults" /> Para mayores de 18 años
-          </label>
-          <button type="submit" class="card__button">Enviar</button>
-        </form>
       </div>
       <script>
         function toggleLocationField() {
