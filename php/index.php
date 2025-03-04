@@ -22,9 +22,7 @@
         </div>
 
         <!-- Menu de navegación -->
-            <?php 
-                include_once './html/fragmento/Fragment_menu.php'
-            ?>
+            <?php include_once './html/fragmento/Fragment_menu.php' ?>
     </header>
 
     <!-- Contenido principal del body-->

@@ -93,34 +93,13 @@
       <div class="card">
         <img
           src="../../assets/images/error.jpg"
-          alt="Imagen de la tarjeta"
+          alt="img de la tarjeta"
           class="card__image"
           id="preview"
         />
         
       </div>
-      <script>
-        function toggleLocationField() {
-          const mode = document.getElementById("mode").value;
-          const locationField = document.getElementById("location");
-          if (mode === "presencial") {
-            locationField.style.display = "block";
-          } else {
-            locationField.style.display = "none";
-          }
-        }
 
-        function previewImage(event) {
-          const input = event.target;
-          if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-              document.getElementById("preview").src = e.target.result;
-            };
-            reader.readAsDataURL(input.files[0]);
-          }
-        }
-      </script>
     </main>
 
     <!-- Contenido del pie de pagina-->

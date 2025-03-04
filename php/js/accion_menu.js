@@ -6,23 +6,33 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', async (event) => {
             event.preventDefault();
             const pageUrl = event.target.href; // Obtener la URL de la página
-
+    
             try {
-                const response = await fetch(pageUrl,{cache: 'no-cache'});
+                const response = await fetch(pageUrl, { cache: 'no-cache' });
                 if (!response.ok) throw new Error(`Error ${response.status}: No se pudo cargar la página`);
-
+    
                 const html = await response.text();
                 content.innerHTML = html; // Cargar el contenido en el `<main>`
-
+    
                 ejecutarScripts(content); // Ejecutar scripts si los hay
-
+    
             } catch (error) {
                 console.error("Error al cargar la página:", error);
-                content.innerHTML = `<p>Error al cargar la página.</p>`;
+                
+                // Intentar cargar la página de error
+                try {
+                    const errorResponse = await fetch('./html/fragmento/Fragment_error.html', { cache: 'no-cache' });
+                    const errorHtml = await errorResponse.text();
+                    content.innerHTML = errorHtml;
+                    ejecutarScripts(content);
+                } catch (error) {
+                    console.error("Error al cargar la página de error:", error);
+                    content.innerHTML = `<p>No se pudo cargar la página de error.</p>`;
+                }
             }
         });
-   
     });
+    
 
     // Función para ejecutar scripts dentro del contenido cargado
     function ejecutarScripts(elemento) {
