@@ -18,16 +18,25 @@ $imageReset = $_POST['imageReset'];  // Si es "1", no hay imagen
 $imagePath = NULL; // Por defecto, no hay imagen
 
 // Manejo de imagen
-if ($imageReset !== "1" && isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
-    $fileName = pathinfo($_FILES["image"]["name"], PATHINFO_FILENAME); // Nombre sin extensión
-    $fileExt = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION); // Extensión del archivo
-    $uniqueName = time() . "_" . uniqid() . "." . $fileExt; // Nombre único
-    $targetDir = "../assets/images/uploads/";
-    $targetFilePath = $targetDir . $uniqueName;
+if ($imageReset !== "1") {
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) { // Verifica si se subió correctamente
+        $fileName = pathinfo($_FILES["image"]["name"], PATHINFO_FILENAME); // Nombre sin extensión
+        $fileExt = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION); // Extensión del archivo
+        $uniqueName = time() . "_" . uniqid() . "." . $fileExt; // Nombre único
+        $targetDir = "../assets/images/uploads/";
+        $targetFilePath = $targetDir . $uniqueName;
 
-    // Mueve la imagen al directorio
-    if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
-        $imagePath = $uniqueName;
+        // Mueve la imagen al directorio
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
+            $imagePath = 'assets/images/uploads/' . $uniqueName; // Guarda la ruta relativa en la base de datos
+        } else {
+            echo "Error al mover el archivo.";
+            exit; // Detiene la ejecución si falla la subida
+        }
+    } else {
+       
+        echo "No se subió ninguna imagen o hubo un error en la subida.";
+        echo "<br />";
     }
 }
 
@@ -58,6 +67,7 @@ try {
         echo "Evento creado con éxito.";
     } else {
         echo "Error al guardar el evento.";
+        print_r($stmt->errorInfo()); // Imprime información detallada del error
     }
 
 } catch (PDOException $e) {
