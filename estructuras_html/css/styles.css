@@ -302,3 +302,72 @@ p, .descripcion {
   }
 
 
+/**/
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.card__image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card__input, .card__button, .card__select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.card__button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.card__button:hover {
+  background-color: #0056b3;
+}
+
+.card__time-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Permite que los inputs se acomoden en móviles */
+}
+
+.card__time-container label {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .card {
+      padding: 15px;
+  }
+
+  .card__time-container {
+      flex-direction: column;
+  }
+
+  .card__time-container label {
+      width: 100%;
+  }
+
+  .card__button {
+      font-size: 14px;
+      padding: 8px;
+  }
+}
