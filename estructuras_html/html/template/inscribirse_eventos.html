@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+
+    <Style>
+
+      .event {
+                  text-align: center;
+                  margin-bottom: 20px;
+              }
+      
+              .event__image {
+                  width: 100%;
+                  height: auto;
+                  border-radius: 8px;
+              }
+      
+              .event__title {
+                  font-size: 24px;
+                  margin: 10px 0;
+              }
+      
+              .event__description,
+              .event__master,
+              .event__schedule,
+              .event__location,
+              .event__age-restriction {
+                  font-size: 16px;
+                  margin: 5px 0;
+              }
+      
+              .event__register {
+                  background: #28a745;
+                  color: white;
+                  border: none;
+                  padding: 10px 20px;
+                  font-size: 16px;
+                  cursor: pointer;
+                  border-radius: 5px;
+                  margin-top: 10px;
+              }
+      
+              .players {
+                  text-align: center;
+              }
+      
+              .players__table {
+                  width: 100%;
+                  border-collapse: collapse;
+                  margin-top: 10px;
+              }
+      
+              .players__table th,
+              .players__table td {
+                  border: 1px solid #ddd;
+                  padding: 10px;
+              }
+      
+              .players__remove {
+                  background: #dc3545;
+                  color: white;
+                  border: none;
+                  padding: 5px 10px;
+                  cursor: pointer;
+                  border-radius: 5px;
+              }
+      
+              @media (max-width: 600px) {
+                  .main {
+                      width: 100%;
+                      padding: 15px;
+                  }
+      
+                  .event__title {
+                      font-size: 20px;
+                  }
+              }
+          </Style>
+</head>
+<body>
+    <!-- Encabezado de la pagina web -->
+    <header>
+        <div class="banner">
+          <div class="banner__content">
+            <h1>Bienvenido a Mi Sitio</h1>
+          </div>
+        </div>
+
+        <!-- Menu de navegación -->
+        <nav class="nav" aria-label="nav menu">
+          <div class="nav__toggle" id="menuToggle">☰</div>
+          <ul class="nav__list" id="menuList">
+            <li class="nav__item">
+              <a href="index.html" class="nav__link boton" data-page="inicio.html">Inicio</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link" data-page="about.html"
+                >Acerca de nosotros</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="eventos.html" class="nav__link" data-page="event.html"
+                >Eventos</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="calendar.html" class="nav__link" data-page="calendar.html"
+                >Calendario</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="foro_index.html" class="nav__link" data-page="foro.html"
+                >Foro</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="login.html" class="nav__link" data-page="login.html"
+                >Login</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Contenido principal del body-->
+
+      <main class="main">
+       
+        <div class="card">
+          <img
+            src="../../assets/images/eventos.JPG"
+            alt="img de la tarjeta"
+            class="card__image"
+            id="preview"
+          />
+        
+          <section class="event">
+           
+            <h1 class="event__title">Título del Evento</h1>
+            <p class="event__description">Descripción detallada del evento.</p>
+            <p class="event__master">Master: Carlos</p>
+            <p class="event__schedule">Hora de inicio: 18:00 | Hora de fin: 21:00</p>
+            <p class="event__location event__location--online">Ubicación: Online</p>
+            <p class="event__age-restriction">+18: Sí</p>
+            <button class="event__register">Inscribirse</button>
+        </section>
+  
+        <section class="players">
+            <h2 class="players__title">Lista de Jugadores</h2>
+            <table class="players__table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jugador 1</td>
+                        <td><button class="players__remove">Eliminar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jugador 2</td>
+                        <td><button class="players__remove">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        </div>
+
+      </main>
+
+     <!-- Contenido del pie de pagina-->
+      <footer class="footer">
+        <div class="footer-content">
+          <p>&copy; 2025 Mi Sitio Web. Todos los derechos reservados.</p>
+          <nav class="footer-nav" aria-label="footer menu">
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Contacto</a>
+          </nav>
+        </div>
+      </footer>
+</body>
+
+<script src="../../js/menu_responsive.js"></script>
+</html>
