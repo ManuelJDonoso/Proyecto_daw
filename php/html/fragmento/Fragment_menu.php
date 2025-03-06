@@ -5,13 +5,13 @@
             <a href="index.html" class="nav__link boton" data-page="inicio.html">Inicio</a>
         </li>
         <li class="nav__item">
-            <a href="acercade.html" class="nav__link" data-page="about.html">Acerca de nosotros</a>
+            <a href="html/fragmento/acercade.html" class="nav__link" data-page="about.html">Acerca de nosotros</a>
         </li>
         <li class="nav__item nav__item--dropdown">
             <label class="nav__label">Eventos</label>
             <ul class="nav__dropdown">
                 <li><a href="html/fragmento/Fragment_Crear_evento.html" class="nav__link nav__dropdown-link">Crear Evento</a></li>
-                <li><a href="mostrar_eventos.html" class="nav__link nav__dropdown-link">Mostrar Eventos</a></li>
+                <li><a href="html/fragmento/Fragment_eventos.php" class="nav__link nav__dropdown-link">Mostrar Eventos</a></li>
             </ul>
         </li>
         <li class="nav__item">
@@ -34,3 +34,6 @@
         ?>
     </ul>
 </nav>
+
+
+

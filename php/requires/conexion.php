@@ -19,4 +19,6 @@ try {
     // En caso de error, mostrar mensaje y detener la ejecución
     die("Error de conexión a la base de datos: " . $e->getMessage());
 }
+// Exportar la variable $pdo para que esté disponible en otros archivos
+return $pdo;
 ?>
