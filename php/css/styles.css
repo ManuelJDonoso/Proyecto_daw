@@ -218,50 +218,6 @@ p,
   font-size: var(--tamaño-texto-cuerpo); /* 12px */
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .banner {
-    background: url(../assets/images/banner.jpg) no-repeat center center/cover;
-  }
-
-  .nav {
-    width: 100%; /* Restaurar el ancho completo en pantallas pequeñas */
-    left: 0;
-    top: 167px; /* Mover el menú más abajo en móviles */
-  }
-
-  .nav__list {
-    display: none;
-    flex-direction: column;
-    background-color: #222;
-    width: 100%;
-    position: absolute;
-    top: 50px;
-    left: 0;
-  }
-
-  .nav__list--active {
-    display: flex;
-  }
-
-  .nav__toggle {
-    display: block;
-    text-align: center;
-  }
-  .nav__item {
-    padding: 0;
-  }
-
-  .footer-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  main {
-    padding-top: 230px; /* Aumentar el espacio para que el contenido no quede oculto */
-  }
-}
 
 /*------------estilos pagina login-------------------------*/
 
@@ -345,7 +301,7 @@ input[type="email"] {
   margin-bottom: 20px;
 }
 
-/**/
+/*tarjetas*/
 .card {
   background: white;
   padding: 20px;
@@ -398,24 +354,7 @@ input[type="email"] {
   text-align: left;
 }
 
-@media (max-width: 480px) {
-  .card {
-    padding: 15px;
-  }
 
-  .card__time-container {
-    flex-direction: column;
-  }
-
-  .card__time-container label {
-    width: 100%;
-  }
-
-  .card__button {
-    font-size: 14px;
-    padding: 8px;
-  }
-}
 
 /*inscribirse */
 .event {
@@ -479,16 +418,7 @@ input[type="email"] {
     border-radius: 5px;
 }
 
-@media (max-width: 600px) {
-    .main {
-        width: 100%;
-        padding: 15px;
-    }
 
-    .event__title {
-        font-size: 20px;
-    }
-}
 
 
 
@@ -552,12 +482,34 @@ input[type="email"] {
   background-color: #cfd8dc;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .container__event {
-      grid-template-columns: 1fr;
-  }
+
+
+/*acerca de*/
+.intro__text, .join-us__text {
+  font-size: 18px;
+  line-height: 1.5;
 }
 
+.intro__highlight, .join-us__highlight {
+  color: #8b0000;
+}
 
+.events__title, .join-us__title {
+  color: #8b0000;
+}
 
+.events__list {
+  list-style: none;
+  padding: 0;
+}
+
+.events__item {
+  background: #eee;
+  margin: 5px 0;
+  padding: 10px;
+  border-left: 5px solid #8b0000;
+}
+
+.events__highlight {
+  font-weight: bold;
+}

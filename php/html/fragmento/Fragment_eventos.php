@@ -10,7 +10,7 @@ $stmt = $pdo->query($query);
 if ($stmt->rowCount() > 0) {
     while ($row = $stmt->fetch()) {
         $id = $row['id'];
-        $ruta = !empty($row['image']) ? $row['image'] : 'assets/images/eventos.JPG';
+        $ruta = !empty($row['image']) ? $row['image'] : 'assets/images/eventos.jpg';
         $titulo = $row['title'];
         $jugadores = $row['players'];
         $nJugadores = $row['nJugadores'];

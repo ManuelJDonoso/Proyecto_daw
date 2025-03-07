@@ -29,18 +29,18 @@ try {
         $master = $evento["master"];
         $players = $evento["players"];
         $date = $evento["date"];
-   // Crear un objeto DateTime
-$fecha = new DateTime($date);
+        // Crear un objeto DateTime
+        $fecha = new DateTime($date);
 
-// Configurar la localización para que muestre los nombres en español
-setlocale(LC_TIME, 'es_ES.UTF-8', 'Spanish_Spain', 'es_ES');
+        // Configurar la localización para que muestre los nombres en español
+        setlocale(LC_TIME, 'es_ES.UTF-8', 'Spanish_Spain', 'es_ES');
 
-// Obtener el formato deseado
-$fecha_formateada = strftime('%d de %B de %Y', $fecha->getTimestamp());
+        // Obtener el formato deseado
+        $fecha_formateada = strftime('%d de %B de %Y', $fecha->getTimestamp());
 
-// Convertir la primera letra en mayúscula
-$fecha_formateada = ucfirst($fecha_formateada);
-        
+        // Convertir la primera letra en mayúscula
+        $fecha_formateada = ucfirst($fecha_formateada);
+
         $time = $evento["time"];
         $end_time = $evento["end_time"];
         $mode = $evento["mode"];
@@ -81,6 +81,7 @@ try {
 
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
 
 
 </head>
@@ -90,7 +91,7 @@ try {
     <header>
         <div class="banner">
             <div class="banner__content">
-                <h1>Bienvenido a Mi Sitio</h1>
+                <h1>Bienvenido a Crónicas de Mérida</h1>
             </div>
         </div>
 
@@ -114,7 +115,7 @@ try {
                 <h1 class="event__title"><?= $title ?></h1>
                 <p class="event__description"><?= $description ?></p>
                 <p class="event__master">Master: <?= $master ?></p>
-                <p class="event__schedule">Fecha: <?= $fecha_formateada?></p>
+                <p class="event__schedule">Fecha: <?= $fecha_formateada ?></p>
                 <p class="event__schedule">Hora de inicio: <?= $time ?>| Hora de fin: <?= $end_time ?></p>
                 <p class="event__location event__location--online">Ubicación: <?= $mode ?></p>
 

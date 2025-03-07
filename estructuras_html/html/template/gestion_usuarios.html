@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <style>
+ 
+
+.container-gestion {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos de los filtros */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filters__input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 120px;
+}
+
+/* Hacer la tabla desplazable */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Estilos de la tabla */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 14px;
+    min-width: 600px; /* Asegura que la tabla no se achique demasiado */
+}
+
+.user-table th, .user-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.user-table th {
+    background: #f8f8f8;
+}
+
+.user-table th:first-child {
+    display: none;
+}
+/* Botón responsivo */
+.button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background: #218838;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 600px) {
+    .filters {
+        flex-direction: column;
+    }
+
+    .filters__input {
+        width: 100%;
+    }
+
+    .user-table {
+        font-size: 12px;
+    }
+    .container-gestion{
+      max-width: 360px;
+    }
+}
+
+
+  </style>
+</head>
+<body>
+    <!-- Encabezado de la pagina web -->
+    <header>
+        <div class="banner">
+          <div class="banner__content">
+            <h1>Bienvenido a Mi Sitio</h1>
+          </div>
+        </div>
+
+        <!-- Menu de navegación -->
+        <nav class="nav" aria-label="nav menu">
+          <div class="nav__toggle" id="menuToggle">☰</div>
+          <ul class="nav__list" id="menuList">
+            <li class="nav__item">
+              <a href="index.html" class="nav__link boton" data-page="inicio.html">Inicio</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link" data-page="about.html"
+                >Acerca de nosotros</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="eventos.html" class="nav__link" data-page="event.html"
+                >Eventos</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="calendar.html" class="nav__link" data-page="calendar.html"
+                >Calendario</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="foro_index.html" class="nav__link" data-page="foro.html"
+                >Foro</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="login.html" class="nav__link" data-page="login.html"
+                >Login</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Contenido principal del body-->
+
+      <main class="main">
+        
+        <div class="container-gestion">
+          <h2 class="title">Gestión de Usuarios</h2>
+      
+          <div class="filters">
+              <input type="text" id="filter-username" class="filters__input" placeholder="Filtrar por usuario">
+              <input type="text" id="filter-name" class="filters__input" placeholder="Filtrar por nombre">
+              <input type="text" id="filter-email" class="filters__input" placeholder="Filtrar por email">
+          </div>
+      
+          <div class="table-container">
+              <table class="user-table">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Usuario</th>
+                          <th>Nombre</th>
+                          <th>Email</th>
+                          <th>Rol</th>
+                      </tr>
+                  </thead>
+                  <tbody id="user-table-body">
+                      <!-- Aquí se insertarán las filas con JavaScript -->
+                  </tbody>
+              </table>
+          </div>
+      
+          <button id="save-button" class="button">Guardar Cambios</button>
+      </div>
+      
+
+      </main>
+
+     <!-- Contenido del pie de pagina-->
+      <footer class="footer">
+        <div class="footer-content">
+          <p>&copy; 2025 Mi Sitio Web. Todos los derechos reservados.</p>
+          <nav class="footer-nav" aria-label="footer menu">
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Contacto</a>
+          </nav>
+        </div>
+      </footer>
+</body>
+
+<script src="../../js/menu_responsive.js"></script>
+<script src="../../js/gestion_usuarios.js"></script>
+</html>

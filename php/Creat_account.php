@@ -2,22 +2,23 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
 
-  <link rel="stylesheet" href="./css/reset.css" />
-  <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
 </head>
 
 <body>
-  <!-- Encabezado de la pagina web -->
-  <header>
-    <div class="banner">
-      <div class="banner__content">
-        <h1>Bienvenido a Mi Sitio</h1>
-      </div>
-    </div>
+    <!-- Encabezado de la pagina web -->
+    <header>
+        <div class="banner">
+            <div class="banner__content">
+                <h1>Bienvenido a Crónicas de Mérida</h1>
+            </div>
+        </div>
 
     <!-- Menu de navegación -->
     <?PHP include_once './html/fragmento/Fragment_menu.php'; ?>

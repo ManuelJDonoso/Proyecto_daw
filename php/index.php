@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
@@ -17,7 +18,7 @@
     <header>
         <div class="banner">
             <div class="banner__content">
-                <h1>Bienvenido a Mi Sitio</h1>
+                <h1>Bienvenido a Crónicas de Mérida</h1>
             </div>
         </div>
 
