@@ -513,3 +513,86 @@ input[type="email"] {
 .events__highlight {
   font-weight: bold;
 }
+
+
+/*gestion usuario*/
+
+
+
+.container-gestion {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos de los filtros */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters__input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 120px;
+}
+
+/* Hacer la tabla desplazable */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Estilos de la tabla */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 14px;
+  min-width: 600px; /* Asegura que la tabla no se achique demasiado */
+}
+
+.user-table th, .user-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.user-table th {
+  background: #f8f8f8;
+}
+
+.user-table th:first-child {
+  display: none;
+}
+/* Botón responsivo */
+.button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background: #218838;
+}
+
+

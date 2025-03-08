@@ -7,6 +7,7 @@
         <li class="nav__item">
             <a href="html/fragmento/acercade.html" class="nav__link" data-page="about.html">Acerca de nosotros</a>
         </li>
+
         <li class="nav__item nav__item--dropdown">
             <label class="nav__label">Eventos</label>
             <ul class="nav__dropdown">
@@ -14,12 +15,24 @@
                 <li><a href="html/fragmento/Fragment_eventos.php" class="nav__link nav__dropdown-link">Mostrar Eventos</a></li>
             </ul>
         </li>
+
         <li class="nav__item">
             <a href="calendar.html" class="nav__link" data-page="calendar.html">Calendario</a>
         </li>
         <li class="nav__item">
             <a href="foro_index.html" class="nav__link" data-page="foro.html">Foro</a>
         </li>
+
+        <li class="nav__item nav__item--dropdown">
+            <label class="nav__label">Gestion de Usuarios</label>
+
+            <ul class="nav__dropdown">
+                <li><a href="asignar_rol.php" class="nav__label nav__dropdown-link">asignar_rol</a></li>
+                
+            </ul>
+        </li>
+
+
 
         <?php
         if (empty($_SESSION['usuario_nombre'])) {

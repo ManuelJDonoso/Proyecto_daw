@@ -71,9 +71,27 @@
     }
 }
 
-/* Responsivo */
+/* evento */
 @media (max-width: 768px) {
     .container__event {
         grid-template-columns: 1fr;
     }
   }
+
+  /* gestion de usuarios */
+@media (max-width: 768px) {
+  .filters {
+      flex-direction: column;
+  }
+
+  .filters__input {
+      width: 100%;
+  }
+
+  .user-table {
+      font-size: 12px;
+  }
+  .container-gestion{
+    max-width: 360px;
+  }
+}
