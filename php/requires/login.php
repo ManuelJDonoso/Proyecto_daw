@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Buscar el usuario en la base de datos
-        $stmt = $pdo->prepare("SELECT id, nombre_usuario, password FROM usuarios WHERE nombre_usuario = ?");
+        $stmt = $pdo->prepare("SELECT id, nombre_usuario, password,rol  FROM usuarios WHERE nombre_usuario = ?");
         $stmt->execute([$nombre_usuario]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Guardar datos de sesión
             $_SESSION['usuario_id'] = $usuario['id'];
             $_SESSION['usuario_nombre'] = $usuario['nombre_usuario'];
+            $_SESSION['rol'] = $usuario['rol'];
             echo "Inicio de sesión exitoso.";
         } else {
             echo "Nombre de usuario o contraseña incorrectos.";
@@ -32,5 +33,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-echo '<meta http-equiv="refresh" content="5;url=../">';
+echo '<meta http-equiv="refresh" content="2;url=../">';
 ?>
