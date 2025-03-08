@@ -27,8 +27,8 @@
             <label class="nav__label">Gestion de Usuarios</label>
 
             <ul class="nav__dropdown">
-                <li><a href="asignar_rol.php" class="nav__label nav__dropdown-link">asignar_rol</a></li>
-                
+                <li><a href="asignar_rol.php" class="nav__label nav__dropdown-link">asignar rol</a></li>
+                <li><a href="eliminar_usuario.php" class="nav__label nav__dropdown-link">Eliminar usuario</a></li>
             </ul>
         </li>
 

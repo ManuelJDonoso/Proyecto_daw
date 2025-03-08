@@ -62,7 +62,7 @@
           <th>Usuario</th>
           <th>Nombre</th>
           <th>Email</th>
-          <th>Rol</th>
+          <th>Ación</th>
         </tr>
       </thead>
       <tbody id="user-table-body">
@@ -71,7 +71,7 @@
     </table>
   </div>
 
-  <button id="save-button" class="button">Guardar Cambios</button>
+
 </div>
 
     </main>
@@ -91,6 +91,6 @@
 
 <script src="js/menu_responsive.js"></script>
 <script src="js/accion_menu.js"></script>
-<script src="js/asignar_rol.js"></script>
+<script src="js/eliminar_usuario.js"></script>
 
 </html>
