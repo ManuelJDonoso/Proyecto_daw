@@ -89,14 +89,10 @@ try {
 <body>
     <!-- Encabezado de la pagina web -->
     <header>
-        <div class="banner">
-            <div class="banner__content">
-                <h1>Bienvenido a Crónicas de Mérida</h1>
-            </div>
-        </div>
-
+        <!-- Menu de banner -->
+        <?php include_once './html/fragmento/Fragment_banner.php' ?>
         <!-- Menu de navegación -->
-        <?php include_once './html/fragmento/Fragment_menu.php' ?>
+            <?php include_once './html/fragmento/Fragment_menu.php' ?>
     </header>
 
     <!-- Contenido principal del body-->
@@ -114,7 +110,7 @@ try {
 
                 <h1 class="event__title"><?= $title ?></h1>
                 <p class="event__description"><?= $description ?></p>
-                <p class="event__master">Master: <?= $master ?></p>
+                <p class="event__master">organizador: <?= $master ?></p>
                 <p class="event__schedule">Fecha: <?= $fecha_formateada ?></p>
                 <p class="event__schedule">Hora de inicio: <?= $time ?>| Hora de fin: <?= $end_time ?></p>
                 <p class="event__location event__location--online">Ubicación: <?= $mode ?></p>
@@ -125,17 +121,32 @@ try {
                 }
                 ?>
                 <p class="event__age-restriction">+18: <?= ($adults ? "Sí" : "No") ?></p>
-                <a href="requires/add_user_event.php?id=<?= $_GET['id'] ?>"><button class="event__register">Inscribirse</button></a>
+
+                <?php   if (isset($_SESSION["rol"])) {
+                            if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
+                                echo '<a href="requires/add_user_event.php?id=';
+                                echo  $_GET['id'];
+                                echo '"><button class="event__register">Inscribirse</button></a>';
+                            }
+                        }
+                
+                ?>
+                
             </section>
 
 
             <section class="players">
-                <h2 class="players__title">Lista de Jugadores</h2>
+                <h2 class="players__title">Lista de Asistentes</h2>
                 <table class="players__table">
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Acción</th>
+                            <?php   if (isset($_SESSION["rol"])) {
+                            if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
+                                echo" <th>Acción</th>";
+                                }
+                            }
+                            ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -143,14 +154,22 @@ try {
                             <?php foreach ($jugadores as $jugador): ?>
                                 <tr>
                                     <td><?php echo htmlspecialchars($jugador['nombre']); ?></td>
-                                    <td>
-                                        <button class="players__remove" onclick="eliminarJugador('<?php echo $jugador['nombre']; ?>')">Eliminar</button>
-                                    </td>
-                                </tr>
+
+                                    <?php   if (isset($_SESSION["rol"])) {
+                        
+                            if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
+                                echo  " <td>";
+                                echo '<button class="players__remove" onclick="eliminarJugador(\'' . htmlspecialchars($jugador['nombre'], ENT_QUOTES, 'UTF-8') . '\')">Eliminar</button>';
+                                echo " </td>";
+                                }
+                            }
+                            ?>
+                                
+                            </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="2">No hay jugadores registrados.</td>
+                                <td colspan="2">No hay asistentes registrados.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
@@ -164,16 +183,7 @@ try {
     </main>
 
     <!-- Contenido del pie de pagina-->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 Mi Sitio Web. Todos los derechos reservados.</p>
-            <nav class="footer-nav" aria-label="footer menu">
-                <a href="#">Política de Privacidad</a>
-                <a href="#">Términos y Condiciones</a>
-                <a href="#">Contacto</a>
-            </nav>
-        </div>
-    </footer>
+    <?php include_once './html/fragmento/Fragment_footer.php' ?>
 </body>
 
 <script src="js/menu_responsive.js"></script>

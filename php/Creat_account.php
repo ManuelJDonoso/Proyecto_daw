@@ -14,15 +14,10 @@
 <body>
     <!-- Encabezado de la pagina web -->
     <header>
-        <div class="banner">
-            <div class="banner__content">
-                <h1>Bienvenido a Crónicas de Mérida</h1>
-            </div>
-        </div>
-
-    <!-- Menu de navegación -->
-    <?PHP include_once './html/fragmento/Fragment_menu.php'; ?>
-    </nav>
+   <!-- Menu de banner -->
+   <?php include_once './html/fragmento/Fragment_banner.php' ?>
+        <!-- Menu de navegación -->
+            <?php include_once './html/fragmento/Fragment_menu.php' ?>
   </header>
 
   <!-- Contenido principal del body-->
@@ -48,17 +43,8 @@
     </section>
   </main>
 
-  <!-- Contenido del pie de pagina-->
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 Mi Sitio Web. Todos los derechos reservados.</p>
-      <nav class="footer-nav" aria-label="footer menu">
-        <a href="#">Política de Privacidad</a>
-        <a href="#">Términos y Condiciones</a>
-        <a href="#">Contacto</a>
-      </nav>
-    </div>
-  </footer>
+   <!-- Contenido del pie de pagina-->
+   <?php include_once './html/fragmento/Fragment_footer.php' ?>
 </body>
 
 <script src="js/menu_responsive.js"></script>
