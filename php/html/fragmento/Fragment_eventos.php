@@ -2,8 +2,8 @@
 <?php
 $pdo = require_once '../../requires/conexion.php';
 
-$query = "SELECT e.id, e.title, e.master, e.players, e.adults, e.image, e.date, 
-                 (SELECT COUNT(*) FROM Jugadores_eventos je WHERE je.fk_eventos = e.id) AS nJugadores
+$query = "SELECT e.id, e.title, e.master, e.players, e.adults, e.image, e.date,
+                 (SELECT COUNT(*) FROM jugadores_eventos je WHERE je.fk_eventos = e.id) AS nJugadores
           FROM eventos e";
 $stmt = $pdo->query($query);
 

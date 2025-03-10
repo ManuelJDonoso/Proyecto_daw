@@ -48,7 +48,7 @@ try {
         $adults = $evento["adults"];
         $image = $evento["image"];
         if ($evento["image"] == null) {
-            $image = "./assets/images/eventos.JPG";
+            $image = "./assets/images/eventos.jpg";
         } else {
             $image = $evento["image"];
         }
@@ -61,7 +61,7 @@ try {
 
 try {
     // Consulta para obtener los jugadores
-    $sql = "SELECT nombre FROM Jugadores_eventos ORDER BY nombre ASC";
+    $sql = "SELECT nombre FROM jugadores_eventos WHERE fk_eventos = $_GET[id] ORDER BY nombre ASC";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $jugadores = $stmt->fetchAll();
@@ -90,9 +90,9 @@ try {
     <!-- Encabezado de la pagina web -->
     <header>
         <!-- Menu de banner -->
-        <?php include_once './html/fragmento/Fragment_banner.php' ?>
+        <?php include_once './html/fragmento/fragment_banner.php' ?>
         <!-- Menu de navegación -->
-            <?php include_once './html/fragmento/Fragment_menu.php' ?>
+        <?php include_once './html/fragmento/fragment_menu.php' ?>
     </header>
 
     <!-- Contenido principal del body-->
@@ -122,16 +122,16 @@ try {
                 ?>
                 <p class="event__age-restriction">+18: <?= ($adults ? "Sí" : "No") ?></p>
 
-                <?php   if (isset($_SESSION["rol"])) {
-                            if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
-                                echo '<a href="requires/add_user_event.php?id=';
-                                echo  $_GET['id'];
-                                echo '"><button class="event__register">Inscribirse</button></a>';
-                            }
-                        }
-                
+                <?php if (isset($_SESSION["rol"])) {
+                    if ($_SESSION["rol"] == "jugador" || $_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
+                        echo '<a href="requires/add_user_event.php?id=';
+                        echo  $_GET['id'];
+                        echo '"><button class="event__register">Inscribirse</button></a>';
+                    }
+                }
+
                 ?>
-                
+
             </section>
 
 
@@ -141,9 +141,9 @@ try {
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <?php   if (isset($_SESSION["rol"])) {
-                            if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
-                                echo" <th>Acción</th>";
+                            <?php if (isset($_SESSION["rol"])) {
+                                if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
+                                    echo " <th>Acción</th>";
                                 }
                             }
                             ?>
@@ -155,17 +155,17 @@ try {
                                 <tr>
                                     <td><?php echo htmlspecialchars($jugador['nombre']); ?></td>
 
-                                    <?php   if (isset($_SESSION["rol"])) {
-                        
-                            if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
-                                echo  " <td>";
-                                echo '<button class="players__remove" onclick="eliminarJugador(\'' . htmlspecialchars($jugador['nombre'], ENT_QUOTES, 'UTF-8') . '\')">Eliminar</button>';
-                                echo " </td>";
-                                }
-                            }
-                            ?>
-                                
-                            </tr>
+                                    <?php if (isset($_SESSION["rol"])) {
+
+                                        if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
+                                            echo  " <td>";
+                                            echo '<button class="players__remove" onclick="eliminarJugador(\'' . htmlspecialchars($jugador['nombre'], ENT_QUOTES, 'UTF-8') . '\')">Eliminar</button>';
+                                            echo " </td>";
+                                        }
+                                    }
+                                    ?>
+
+                                </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
@@ -183,29 +183,30 @@ try {
     </main>
 
     <!-- Contenido del pie de pagina-->
-    <?php include_once './html/fragmento/Fragment_footer.php' ?>
+    <?php include_once './html/fragmento/fragment_footer.php' ?>
+    <script src="js/menu_responsive.js"></script>
+    <script src="js/accion_menu.js"></script>
+    <script>
+        function eliminarJugador(nombre) {
+            if (confirm(`¿Seguro que quieres eliminar a ${nombre}?`)) {
+                fetch('requires/eliminar_jugador.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: `nombre=${encodeURIComponent(nombre)}`
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                        location.reload();
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
 </body>
 
-<script src="js/menu_responsive.js"></script>
-<script src="js/accion_menu.js"></script>
-<script>
-    function eliminarJugador(nombre) {
-        if (confirm(`¿Seguro que quieres eliminar a ${nombre}?`)) {
-            fetch('requires/eliminar_jugador.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: `nombre=${encodeURIComponent(nombre)}`
-                })
-                .then(response => response.text())
-                .then(data => {
-                    alert(data);
-                    location.reload();
-                })
-                .catch(error => console.error('Error:', error));
-        }
-    }
-</script>
+
 
 </html>

@@ -6,7 +6,7 @@ if (isset($_POST['nombre'])) {
 
     if (!empty($nombre)) {
         try {
-            $sql = "DELETE FROM Jugadores_eventos WHERE nombre = :nombre";
+            $sql = "DELETE FROM jugadores_eventos WHERE nombre = :nombre";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
             $stmt->execute();

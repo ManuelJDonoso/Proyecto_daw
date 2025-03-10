@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-$pdo = require 'conexion.php';
+$pdo = require_once 'conexion.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 if (!isset($data["users"])) {
@@ -25,4 +25,3 @@ try {
     $pdo->rollBack();
     echo json_encode(["error" => "Error al actualizar usuarios: " . $e->getMessage()]);
 }
-?>

@@ -16,7 +16,7 @@
         }
     
         // Consulta para insertar un jugador si no existe en ese evento
-        $sql = "INSERT INTO Jugadores_eventos (nombre, fk_eventos)
+        $sql = "INSERT INTO jugadores_eventos (nombre, fk_eventos)
                 VALUES (:nombre, :fk_eventos)
                 ON DUPLICATE KEY UPDATE nombre = nombre";
     

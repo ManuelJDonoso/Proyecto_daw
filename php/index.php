@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -17,9 +17,9 @@
     <!-- Encabezado de la pagina web -->
     <header>
         <!-- Menu de banner -->
-        <?php include_once './html/fragmento/Fragment_banner.php' ?>
+        <?php include_once './html/fragmento/fragment_banner.php' ?>
         <!-- Menu de navegación -->
-            <?php include_once './html/fragmento/Fragment_menu.php' ?>
+        <?php include_once './html/fragmento/fragment_menu.php' ?>
     </header>
 
     <!-- Contenido principal del body-->
@@ -29,11 +29,12 @@
     </main>
 
     <!-- Contenido del pie de pagina-->
-    <?php include_once './html/fragmento/Fragment_footer.php' ?>
+    <?php include_once './html/fragmento/fragment_footer.php' ?>
+    <script src="js/menu_responsive.js"></script>
+    <script src="js/accion_menu.js"></script>
+    <script src="js/gestion_usuarios.js"></script>
+
 </body>
 
-<script src="js/menu_responsive.js"></script>
-<script src="js/accion_menu.js"></script>
-<script src="js/gestion_usuarios.js"></script>
 
 </html>

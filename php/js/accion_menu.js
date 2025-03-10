@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Intentar cargar la página de error
                 try {
-                    const errorResponse = await fetch('./html/fragmento/Fragment_error.html', { cache: 'no-cache' });
+                    const errorResponse = await fetch('./html/fragmento/fragment_error.html', { cache: 'no-cache' });
                     const errorHtml = await errorResponse.text();
                     content.innerHTML = errorHtml;
                     ejecutarScripts(content);

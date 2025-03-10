@@ -1,0 +1,107 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .card__update {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 800px;
+    width: 500%;
+  }
+  .card__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Estilos del formulario */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form__label {
+    font-weight: bold;
+    text-align: left;
+    color: #555;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      color: black;
+  }
+  
+  /* Estilos de los botones */
+  .button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .button--save {
+    background: #28a745;
+    color: white;
+    margin-top: 10px;
+  }
+  
+  .button--save:hover {
+    background: #218838;
+  }
+  
+  .button--delete {
+    background: #dc3545;
+    color: white;
+    margin-top: 10px;
+  }
+  
+  .button--delete:hover {
+    background: #c82333;
+  }
+  
+  /* Mensajes */
+  .message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  /* Hacerlo responsive */
+@media (max-width: 768px) {
+    .main{
+        max-width: 90%;
+    }
+    .card {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .card__title {
+        font-size: 20px;
+    }
+
+    .form__input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

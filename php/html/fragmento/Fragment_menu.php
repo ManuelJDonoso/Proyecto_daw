@@ -14,13 +14,13 @@
                 <?php
                 if (isset($_SESSION["rol"])) {
                     if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
-                        echo '<li><a href="html/fragmento/Fragment_Crear_evento.html" class="nav__link nav__dropdown-link">Crear Evento</a></li>';
+                        echo '<li><a href="html/fragmento/fragment_crear_evento.html" class="nav__link nav__dropdown-link">Crear Evento</a></li>';
                     }
                 }
 
                 ?>
 
-                <li><a href="html/fragmento/Fragment_eventos.php" class="nav__link nav__dropdown-link">Mostrar Eventos</a></li>
+                <li><a href="html/fragmento/fragment_eventos.php" class="nav__link nav__dropdown-link">Mostrar Eventos</a></li>
             </ul>
         </li>
 
@@ -57,20 +57,17 @@
 
         <?php
         if (isset($_SESSION["rol"])) {
-            if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
+            if ($_SESSION["rol"] == "jugador" || $_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
                 echo '<li class="nav__item nav__item--dropdown">
-            <label class="nav__label">'.$_SESSION["usuario_nombre"].'</label>
+            <label class="nav__label">' . $_SESSION["usuario_nombre"] . '</label>
             <ul class="nav__dropdown">';
             }
 
+            echo  "<li> <a href='mi_perfil.php' class='nav__label' data-page='login.html'>Mi perfil</a></li>";
             echo "<li><a href='./requires/logout.php' class='nav__link' data-page='login.html'>Salir</a></li>";
 
-            if ($_SESSION["rol"] == "administrador") {
-               
-            }
-            if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
-                echo ' <li><a href="eliminar_usuario.php" class="nav__label nav__dropdown-link">Eliminar usuario</a></li>';
-            }
+           
+
             if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
                 echo '        </ul>
                 </li>';
@@ -80,23 +77,11 @@
             echo '<li class="nav__item nav__item--dropdown">
             <label class="nav__label">Iniciar sesión / Registrarse</label>
             <ul class="nav__dropdown">';
-            echo  "<li> <a href='html/fragmento/Fragment_login.html' class='nav__link' data-page='login.html'>Login</a></li>";
-                
+            echo  "<li> <a href='html/fragmento/fragment_login.html' class='nav__link' data-page='login.html'>Login</a></li>";
+            echo  "<li> <a href='creat_account.php' class='nav__label' data-page='login.html'>Crear cuentas</a></li>";
         }
 
         ?>
-
-
-
-
-       
-
-
-
-
-
-
-
 
     </ul>
 </nav>

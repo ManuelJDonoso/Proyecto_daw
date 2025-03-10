@@ -15,14 +15,14 @@
 <body>
   <header>
     <?php
-    include_once "Fragment_banner.php";
-    /*include_once "Fragment_menu.php";*/
+    include_once "fragment_banner.php";
+
     ?>
   </header>
   <main class="main">
     <div class="card">
       <img
-        src="../assets/images/errorRegistro.jpg"
+        src="../assets/images/error_registro.jpg"
         alt="img de la tarjeta"
         class="card__image"
         id="preview" />
@@ -31,7 +31,7 @@
   </main>
 
   <?php
-    include_once "Fragment_footer.php";
+    include_once "fragment_footer.php";
   
     ?>
 </body>

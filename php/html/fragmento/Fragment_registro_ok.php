@@ -15,8 +15,8 @@
 <body>
   <header>
     <?php
-    include_once "Fragment_banner.php";
-   /* include_once "Fragment_menu.php";*/
+    include_once "fragment_banner.php";
+ 
     ?>
   </header>
   <main class="main">
@@ -31,7 +31,7 @@
   </main>
 
   <?php
-    include_once "Fragment_footer.php";
+    include_once "fragment_footer.php";
   
     ?>
 </body>
