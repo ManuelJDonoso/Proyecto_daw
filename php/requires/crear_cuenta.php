@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'conexion.php'; // Archivo donde se conecta a la BD
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -7,7 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = trim($_POST['name']);
     $email = trim($_POST['email']);
     $contraseña = trim($_POST['pass']);
-
 
     // Validar que los campos no estén vacíos
     if (empty($nombre_usuario) || empty($nombre) || empty($email) || empty($contraseña)) {
@@ -36,7 +36,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $pdo->prepare("INSERT INTO usuarios (nombre_usuario, nombre, email, password) VALUES (?, ?, ?, ?)");
         $stmt->execute([$nombre_usuario, $nombre, $email, $hash_contraseña]);
 
-        echo "Registro exitoso. ¡Ahora puedes iniciar sesión!";
+        // Obtener el ID del usuario recién creado
+        $usuario_id = $pdo->lastInsertId();
+
+        // Guardar datos de sesión para iniciar sesión automáticamente
+        $_SESSION['usuario_id'] = $usuario_id;
+        $_SESSION['usuario_nombre'] = $nombre_usuario;
+        $_SESSION['nombre'] = $nombre;
+        $_SESSION['email'] = $email;
+        $_SESSION['rol'] = 'jugador'; // Asigna un rol por defecto si no se especifica en la base de datos
+
+        // Redirigir a la página principal o panel de usuario
+        echo '<meta http-equiv="refresh" content="2;url=../">';
+        include_once "../html/fragmento/fragment_registro_ok.php";
     } catch (PDOException $e) {
         die("Error al registrar el usuario: " . $e->getMessage());
     }
