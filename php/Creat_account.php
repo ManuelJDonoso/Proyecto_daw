@@ -36,7 +36,7 @@
         <p>Contraseña</p>
         <input type="password" name="pass" placeholder="introduce la contraseña">
         <p>Repite Contraseña</p>
-        <input type="password" name="pass" placeholder="introduce la contraseña">
+        <input type="password" name="pass_secure" placeholder="introduce la contraseña">
 
         <input type="submit" value="crear cuenta">
       </form>
@@ -47,6 +47,7 @@
   <?php include_once './html/fragmento/fragment_footer.php' ?>
   <script src="js/menu_responsive.js"></script>
   <script src="js/accion_menu.js"></script>
+  <script src="js/creat_account_form.js"></script>
 
 </body>
 
