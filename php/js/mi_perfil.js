@@ -1,30 +1,53 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("userForm");
+    const btnGuardar = document.getElementById("guardar");
+    const btnBorrar = document.getElementById("borrar");
+    const mensaje = document.getElementById("mensaje");
 
-document.getElementById("guardar").addEventListener("click", function() {
-    let formData = new FormData(document.getElementById("userForm"));
-    formData.append("guardar", true);
-
-    fetch("requires/editar_usuario.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("mensaje").textContent = data.message;
-    });
-});
-
-document.getElementById("borrar").addEventListener("click", function() {
-    if (confirm('¿Seguro que quieres eliminar este usuario?')) {
-        let formData = new FormData(document.getElementById("userForm"));
-        formData.append("borrar", true);
+    btnGuardar.addEventListener("click", function () {
+        const formData = new FormData(form);
 
         fetch("requires/editar_usuario.php", {
             method: "POST",
-            body: formData
+            body: formData,
         })
         .then(response => response.json())
         .then(data => {
-            document.getElementById("mensaje").textContent = data.message;
+            mensaje.textContent = data.mensaje;
+            mensaje.style.color = data.error ? "red" : "green";
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            mensaje.textContent = "Ocurrió un error al procesar la solicitud.";
+            mensaje.style.color = "red";
         });
-    }
+    });
+
+    btnBorrar.addEventListener("click", function () {
+        if (!confirm("¿Estás seguro de que deseas eliminar tu cuenta?")) return;
+
+        const formData = new FormData();
+        formData.append("id", document.getElementById("id").value);
+        formData.append("accion", "eliminar");
+
+        fetch("requires/editar_usuario.php", {
+            method: "POST",
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            mensaje.textContent = data.mensaje;
+            mensaje.style.color = data.error ? "red" : "green";
+            if (!data.error) {
+                setTimeout(() => {
+                    window.location.href = "index.php"; // Redirige tras borrar
+                }, 2000);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            mensaje.textContent = "Ocurrió un error al procesar la solicitud.";
+            mensaje.style.color = "red";
+        });
+    });
 });
