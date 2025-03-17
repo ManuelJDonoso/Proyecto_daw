@@ -28,3 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+document.getElementById("terms-link").addEventListener("click", function(event) {
+    event.preventDefault();
+    document.getElementById("terms-content").classList.toggle("active");
+  });

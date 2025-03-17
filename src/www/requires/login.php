@@ -1,6 +1,10 @@
 <?php
+
 session_start();
 require_once 'conexion.php'; // Archivo donde se conecta a la BD
+
+
+$user;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recoger y limpiar datos del formulario
@@ -20,14 +24,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Verificar si el usuario existe y la contraseña es correcta
         if ($usuario && password_verify($contraseña, $usuario['password'])) {
+
             // Guardar datos de sesión
+
+            switch ($usuario['rol']) {
+                case 'jugador':
+                    $user=new Jugador($usuario['id'],$usuario['nombre_usuario'],$usuario['nombre'],$usuario['email']);
+                    break;
+                case 'moderador':
+                    $user=new Moderador($usuario['id'],$usuario['nombre_usuario'],$usuario['nombre'],$usuario['email']);
+                    break;
+                case 'administrador':
+                    $user=new Administrador($usuario['id'],$usuario['nombre_usuario'],$usuario['nombre'],$usuario['email']);
+                    break;
+
+                default:
+                    $user=null;
+                    break;
+            }
+
             $_SESSION['usuario_id'] = $usuario['id'];
             $_SESSION['usuario_nombre'] = $usuario['nombre_usuario'];
             $_SESSION['nombre'] = $usuario['nombre'];
             $_SESSION['email'] = $usuario['email'];
             $_SESSION['rol'] = $usuario['rol'];
+            
+            $_SESSION['user'] = $user;
+
 
             include_once "../html/fragmento/fragment_registro_ok.php";
+        
+        
         } else {
             include_once "../html/fragmento/fragment_error_registro.php";
         }
@@ -36,5 +63,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-echo '<meta http-equiv="refresh" content="2;url=../">';
-?>
+echo '<meta http-equiv="refresh" content="5;url=../">';

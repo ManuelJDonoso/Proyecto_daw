@@ -1,4 +1,5 @@
 <nav class="nav" aria-label="nav menu">
+
     <div class="nav__toggle" id="menuToggle">☰</div>
     <ul class="nav__list" id="menuList">
         <li class="nav__item">
@@ -10,8 +11,23 @@
 
         <li class="nav__item nav__item--dropdown">
             <label class="nav__label">Eventos</label>
+
             <ul class="nav__dropdown">
+
                 <?php
+              
+
+                if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Usuario)) {
+                    die("Error: Usuario no válido en la sesión.");
+                }
+
+                $user = $_SESSION['user'];
+
+
+                if (method_exists($user, 'crear_evento') && $user->crear_evento()) {
+                    echo '<li><a href="html/fragmento/fragment_crear_evento.html" class="nav__link nav__dropdown-link">Crear Evento</a></li>';
+                }
+
                 if (isset($_SESSION["rol"])) {
                     if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
                         echo '<li><a href="html/fragmento/fragment_crear_evento.html" class="nav__link nav__dropdown-link">Crear Evento</a></li>';
@@ -66,7 +82,7 @@
             echo  "<li> <a href='mi_perfil.php' class='nav__label' data-page='login.html'>Mi perfil</a></li>";
             echo "<li><a href='./requires/logout.php' class='nav__link' data-page='login.html'>Salir</a></li>";
 
-           
+
 
             if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
                 echo '        </ul>
@@ -84,4 +100,5 @@
         ?>
 
     </ul>
+
 </nav>

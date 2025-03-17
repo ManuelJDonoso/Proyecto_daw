@@ -1,9 +1,9 @@
 <?php
 // Configuración de la base de datos
-$host = 'manueldonoso.es';
+$host = 'localhost';
 $dbname = 'proyecto_daw';
-$user = 'proyecto_daw';
-$pass = 'Proy3cto_D@';
+$user = 'root';
+$pass = '';
 
 try {
     // Crear conexión con PDO
