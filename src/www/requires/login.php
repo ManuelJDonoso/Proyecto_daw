@@ -1,5 +1,5 @@
 <?php
-
+require_once 'modelos/usuario.php';
 session_start();
 require_once 'conexion.php'; // Archivo donde se conecta a la BD
 
@@ -43,11 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     break;
             }
 
-            $_SESSION['usuario_id'] = $usuario['id'];
-            $_SESSION['usuario_nombre'] = $usuario['nombre_usuario'];
-            $_SESSION['nombre'] = $usuario['nombre'];
-            $_SESSION['email'] = $usuario['email'];
-            $_SESSION['rol'] = $usuario['rol'];
             
             $_SESSION['user'] = $user;
 
@@ -63,4 +58,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-echo '<meta http-equiv="refresh" content="5;url=../">';
+echo '<meta http-equiv="refresh" content="2;url=../">';

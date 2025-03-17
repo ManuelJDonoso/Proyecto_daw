@@ -26,7 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $existe = $stmt->fetchColumn();
 
         if ($existe > 0) {
-            die("El nombre de usuario o el email ya están en uso.");
+            include_once '../html/fragmento/fragment_crear_cuenta_error.php';
+            echo '<meta http-equiv="refresh" content="5;url=../creat_account.php">';
+           
         }
 
         // Hashear la contraseña
@@ -40,11 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario_id = $pdo->lastInsertId();
 
         // Guardar datos de sesión para iniciar sesión automáticamente
-        $_SESSION['usuario_id'] = $usuario_id;
-        $_SESSION['usuario_nombre'] = $nombre_usuario;
-        $_SESSION['nombre'] = $nombre;
-        $_SESSION['email'] = $email;
-        $_SESSION['rol'] = 'jugador'; // Asigna un rol por defecto si no se especifica en la base de datos
+        require_once 'modelos/usuario.php';
+        $_SESSION['user'] = $user=new Jugador( $usuario_id,$nombre_usuario, $nombre,$email);
+     
+     
 
         // Redirigir a la página principal o panel de usuario
         echo '<meta http-equiv="refresh" content="2;url=../">';

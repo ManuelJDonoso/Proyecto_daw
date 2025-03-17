@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php
+require_once 'requires/modelos/usuario.php';
+ session_start();
+
+ if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Usuario)) {
+    $_SESSION['user']=new Visitante();
+}
+
+$user = $_SESSION['user'];
+?>
 
 <!DOCTYPE html>
 <html lang="es">

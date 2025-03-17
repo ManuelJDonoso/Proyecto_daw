@@ -64,6 +64,8 @@ try {
 
     // Ejecutar la consulta
     if ($stmt->execute()) {
+        include_once '../html/fragmento/fragment_crear_evento.php';
+        echo '<meta http-equiv="refresh" content="2;url=../">';
         echo "Evento creado con éxito.";
     } else {
         echo "Error al guardar el evento.";

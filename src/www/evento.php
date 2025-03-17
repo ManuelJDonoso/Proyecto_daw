@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 
 // Incluir el archivo de conexión
 require_once 'requires/conexion.php';
@@ -68,6 +68,15 @@ try {
 } catch (PDOException $e) {
     die("Error al obtener jugadores: " . $e->getMessage());
 }
+
+require_once 'requires/modelos/usuario.php';
+ session_start();
+
+ if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Usuario)) {
+    $_SESSION['user']=new Visitante();
+}
+
+$user = $_SESSION['user'];
 ?>
 
 
@@ -122,13 +131,14 @@ try {
                 ?>
                 <p class="event__age-restriction">+18: <?= ($adults ? "Sí" : "No") ?></p>
 
-                <?php if (isset($_SESSION["rol"])) {
-                    if ($_SESSION["rol"] == "jugador" || $_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
+
+                <?php
+                    if (method_exists($user, 'inscribir_evento') && $user->inscribir_evento()) {
                         echo '<a href="requires/add_user_event.php?id=';
                         echo  $_GET['id'];
                         echo '"><button class="event__register">Inscribirse</button></a>';
                     }
-                }
+
 
                 ?>
 
@@ -141,11 +151,12 @@ try {
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <?php if (isset($_SESSION["rol"])) {
-                                if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
-                                    echo " <th>Acción</th>";
-                                }
+                            <?php
+                            
+                            if (method_exists($user, 'eliminar_usuario_evento') && $user->eliminar_usuario_evento()) {
+                                echo " <th>Acción</th>";
                             }
+                            
                             ?>
                         </tr>
                     </thead>
@@ -155,14 +166,14 @@ try {
                                 <tr>
                                     <td><?php echo htmlspecialchars($jugador['nombre']); ?></td>
 
-                                    <?php if (isset($_SESSION["rol"])) {
-
-                                        if ($_SESSION["rol"] == "moderador" || $_SESSION["rol"] == "administrador") {
-                                            echo  " <td>";
-                                            echo '<button class="players__remove" onclick="eliminarJugador(\'' . htmlspecialchars($jugador['nombre'], ENT_QUOTES, 'UTF-8') . '\')">Eliminar</button>';
-                                            echo " </td>";
-                                        }
+                                    <?php
+                                          
+                                    if (method_exists($user, 'eliminar_usuario_evento') && $user->eliminar_usuario_evento()) {
+                                        echo  " <td>";
+                                        echo '<button class="players__remove" onclick="eliminarJugador(\'' . htmlspecialchars($jugador['nombre'], ENT_QUOTES, 'UTF-8') . '\')">Eliminar</button>';
+                                        echo " </td>";
                                     }
+                                    
                                     ?>
 
                                 </tr>

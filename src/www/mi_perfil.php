@@ -1,5 +1,14 @@
-<?php session_start();
-require_once 'requires/conexion.php';
+<?php
+require_once 'requires/modelos/usuario.php';
+ session_start();
+
+ if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Usuario)) {
+    $_SESSION['user']=new Visitante();
+}
+
+$user = $_SESSION['user'];
+
+
 
 
 ?>
@@ -33,17 +42,17 @@ require_once 'requires/conexion.php';
         <div class="card__update">
             <h2 class="card__title">Modificar Usuario</h2>
             <form id="userForm" class="form">
-                <input type="hidden" name="id" id="id" class="form__input" value="<?php echo $_SESSION['usuario_id']; ?>">
+                <input type="hidden" name="id" id="id" class="form__input" value="<?php echo $user->get_id(); ?>">
                 <label class="form__label">Usuario:</label>
-                <input type="text" name="nombre_usuario" id="nombre_usuario" class="form__input" value="<?= $_SESSION['usuario_nombre'] ?>" required><br>
+                <input type="text" name="nombre_usuario" id="nombre_usuario" class="form__input" value="<?= $user->get_nombre_usuario()?>" required><br>
 
 
                 <label class="form__label">Nombre:</label>
-                <input type="text" name="nombre" id="nombre" class="form__input" value="<?= $_SESSION['nombre'] ?>" required><br>
+                <input type="text" name="nombre" id="nombre" class="form__input" value="<?= $user->get_nombre()?>" required><br>
 
 
                 <label class="form__label">Email:</label>
-                <input type="email" name="email" id="email" class="form__input" value="<?= $_SESSION['email'] ?>" required><br>
+                <input type="email" name="email" id="email" class="form__input" value="<?= $user->get_email() ?>" required><br>
 
 
                 <label class="form__label">Contraseña:</label>
