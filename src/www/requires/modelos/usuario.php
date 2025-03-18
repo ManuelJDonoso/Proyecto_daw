@@ -73,6 +73,11 @@ class Usuario {
     public function inscribir_evento(): bool {
         return false;
     }
+
+    public function  eliminar_evento(): bool {
+        return false;
+    }
+   
     public function eliminar_usuario_evento(): bool {
         return false;
     }
@@ -127,6 +132,10 @@ class Moderador extends Usuario {
     public function perfil(): bool {
         return true;
     }
+
+    public function  eliminar_evento(): bool {
+        return true;
+    }
     
 
 }
@@ -156,6 +165,9 @@ class Administrador extends Usuario {
         return true;
     }
     public function perfil(): bool {
+        return true;
+    }
+    public function  eliminar_evento(): bool {
         return true;
     }
 }

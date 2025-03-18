@@ -70,10 +70,10 @@ try {
 }
 
 require_once 'requires/modelos/usuario.php';
- session_start();
+session_start();
 
- if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Usuario)) {
-    $_SESSION['user']=new Visitante();
+if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Usuario)) {
+    $_SESSION['user'] = new Visitante();
 }
 
 $user = $_SESSION['user'];
@@ -91,6 +91,28 @@ $user = $_SESSION['user'];
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+
+    <style>
+        /* Botón para eliminar evento */
+.event__delete {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 12px 20px;
+    background-color: #d9534f; /* Rojo peligro */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.event__delete:hover {
+    background-color: #c9302c; /* Rojo más oscuro */
+}
+    </style>
 
 
 </head>
@@ -133,11 +155,11 @@ $user = $_SESSION['user'];
 
 
                 <?php
-                    if (method_exists($user, 'inscribir_evento') && $user->inscribir_evento()) {
-                        echo '<a href="requires/add_user_event.php?id=';
-                        echo  $_GET['id'];
-                        echo '"><button class="event__register">Inscribirse</button></a>';
-                    }
+                if (method_exists($user, 'inscribir_evento') && $user->inscribir_evento()) {
+                    echo '<a href="requires/add_user_event.php?id=';
+                    echo  $_GET['id'];
+                    echo '"><button class="event__register">Inscribirse</button></a>';
+                }
 
 
                 ?>
@@ -152,11 +174,11 @@ $user = $_SESSION['user'];
                         <tr>
                             <th>Nombre</th>
                             <?php
-                            
+
                             if (method_exists($user, 'eliminar_usuario_evento') && $user->eliminar_usuario_evento()) {
                                 echo " <th>Acción</th>";
                             }
-                            
+
                             ?>
                         </tr>
                     </thead>
@@ -167,13 +189,13 @@ $user = $_SESSION['user'];
                                     <td><?php echo htmlspecialchars($jugador['nombre']); ?></td>
 
                                     <?php
-                                          
+
                                     if (method_exists($user, 'eliminar_usuario_evento') && $user->eliminar_usuario_evento()) {
                                         echo  " <td>";
                                         echo '<button class="players__remove" onclick="eliminarJugador(\'' . htmlspecialchars($jugador['nombre'], ENT_QUOTES, 'UTF-8') . '\')">Eliminar</button>';
                                         echo " </td>";
                                     }
-                                    
+
                                     ?>
 
                                 </tr>
@@ -185,6 +207,11 @@ $user = $_SESSION['user'];
                         <?php endif; ?>
                     </tbody>
                 </table>
+
+                <!-- Botón para eliminar el evento -->
+                <?php if (method_exists($user, 'eliminar_evento') && $user->eliminar_evento()): ?>
+                    <button class="event__delete" onclick="eliminarEvento(<?= $id ?>)">Eliminar Evento</button>
+                <?php endif; ?>
             </section>
 
 
@@ -215,6 +242,23 @@ $user = $_SESSION['user'];
                     .catch(error => console.error('Error:', error));
             }
         }
+
+
+        function eliminarEvento(eventoId) {
+        if (confirm("¿Seguro que quieres eliminar este evento?")) {
+            fetch('requires/eliminar_evento.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `id=${eventoId}`
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                window.location.href = "index.php"; // Redirigir a la página principal
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    }
     </script>
 </body>
 

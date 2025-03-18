@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
+    const termsCheckbox = document.getElementById("terms-checkbox");
+
+    // Asegurar que el checkbox esté seleccionado por defecto
+    termsCheckbox.checked = true;
 
     form.addEventListener("submit", function (event) {
         let valid = true;
@@ -21,15 +25,21 @@ document.addEventListener("DOMContentLoaded", function () {
             valid = false;
             alert("Las contraseñas no coinciden");
         }
+
+        // Verificar si el checkbox de términos está marcado
+        if (!termsCheckbox.checked) {
+            valid = false;
+            alert("Debes aceptar los términos y condiciones para continuar.");
+        }
         
         if (!valid) {
             event.preventDefault();
             alert("Por favor, completa todos los campos antes de enviar el formulario.");
         }
     });
-});
 
-document.getElementById("terms-link").addEventListener("click", function(event) {
-    event.preventDefault();
-    document.getElementById("terms-content").classList.toggle("active");
-  });
+    document.getElementById("terms-link").addEventListener("click", function(event) {
+        event.preventDefault();
+        document.getElementById("terms-content").classList.toggle("active");
+    });
+});
