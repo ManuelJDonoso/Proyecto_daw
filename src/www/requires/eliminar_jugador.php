@@ -1,5 +1,5 @@
 <?php
-require_once 'conexion.php';
+require_once '../config/conexion.php';
 
 if (isset($_POST['nombre'])) {
     $nombre = trim($_POST['nombre']);

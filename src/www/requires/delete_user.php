@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 // Incluir la conexión a la base de datos
-$pdo = require_once 'conexion.php';
+$pdo = require_once '../config/conexion.php';
 
 // Verificar si se recibió el ID
 $data = json_decode(file_get_contents("php://input"), true);

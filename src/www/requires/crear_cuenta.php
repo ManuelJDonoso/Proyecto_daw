@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'conexion.php'; // Archivo donde se conecta a la BD
+require_once '../config/conexion.php'; // Archivo donde se conecta a la BD
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recoger y limpiar datos del formulario
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $existe = $stmt->fetchColumn();
 
         if ($existe > 0) {
-            include_once '../html/fragmento/fragment_crear_cuenta_error.php';
+            include_once '../template/fragment_crear_cuenta_error.php';
             echo '<meta http-equiv="refresh" content="5;url=../creat_account.php">';
            
         }
@@ -42,14 +42,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario_id = $pdo->lastInsertId();
 
         // Guardar datos de sesión para iniciar sesión automáticamente
-        require_once 'modelos/usuario.php';
+        require_once '../models/usuario.php';
         $_SESSION['user'] = $user=new Jugador( $usuario_id,$nombre_usuario, $nombre,$email);
      
      
 
         // Redirigir a la página principal o panel de usuario
         echo '<meta http-equiv="refresh" content="2;url=../">';
-        include_once "../html/fragmento/fragment_registro_ok.php";
+        include_once "../template/fragment_registro_ok.php";
     } catch (PDOException $e) {
         die("Error al registrar el usuario: " . $e->getMessage());
     }

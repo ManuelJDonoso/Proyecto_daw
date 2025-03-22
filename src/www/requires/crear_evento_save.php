@@ -1,6 +1,6 @@
 <?php
 // Incluir el archivo de conexión PDO
-require_once 'conexion.php';  // Asegúrate de que la ruta sea correcta
+require_once '../config/conexion.php';  // Asegúrate de que la ruta sea correcta
 
 // Recibir datos del formulario
 $title = $_POST['title'];
@@ -64,7 +64,7 @@ try {
 
     // Ejecutar la consulta
     if ($stmt->execute()) {
-        include_once '../html/fragmento/fragment_crear_evento.php';
+        include_once '../template/fragment_crear_evento.php';
         echo '<meta http-equiv="refresh" content="2;url=../">';
         echo "Evento creado con éxito.";
     } else {

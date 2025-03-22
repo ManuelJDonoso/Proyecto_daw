@@ -1,7 +1,7 @@
 <?php
-require_once 'modelos/usuario.php';
+require_once '../models/usuario.php';
 session_start();
-require_once 'conexion.php'; // Archivo donde se conecta a la BD
+require_once '../config/conexion.php'; // Archivo donde se conecta a la BD
 
 
 $user;
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Buscar el usuario en la base de datos
-        $stmt = $pdo->prepare("SELECT id, nombre_usuario,nombre,email, password, rol FROM usuarios WHERE nombre_usuario = ?");
+        $stmt = $pdo->prepare("SELECT id, nombre_usuario,nombre,email, password, rol_id FROM usuarios WHERE nombre_usuario = ?");
         $stmt->execute([$nombre_usuario]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -27,14 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Guardar datos de sesión
 
-            switch ($usuario['rol']) {
-                case 'jugador':
+            switch ($usuario['rol_id']) {
+                case 1:
+                    $user=new Visitante($usuario['id'],$usuario['nombre_usuario'],$usuario['nombre'],$usuario['email']);
+                    break;
+                case 2:
                     $user=new Jugador($usuario['id'],$usuario['nombre_usuario'],$usuario['nombre'],$usuario['email']);
                     break;
-                case 'moderador':
+                case 3:
                     $user=new Moderador($usuario['id'],$usuario['nombre_usuario'],$usuario['nombre'],$usuario['email']);
                     break;
-                case 'administrador':
+                case 4:
                     $user=new Administrador($usuario['id'],$usuario['nombre_usuario'],$usuario['nombre'],$usuario['email']);
                     break;
 
@@ -47,11 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user'] = $user;
 
 
-            include_once "../html/fragmento/fragment_registro_ok.php";
+            include_once "../template/fragment_registro_ok.php";
         
         
         } else {
-            include_once "../html/fragmento/fragment_error_registro.php";
+            include_once "../template/fragment_error_registro.php";
         }
     } catch (PDOException $e) {
         die("Error al iniciar sesión: " . $e->getMessage());

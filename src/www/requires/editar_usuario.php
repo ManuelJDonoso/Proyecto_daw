@@ -1,6 +1,6 @@
 <?php
 session_start();
-$pdo = require 'conexion.php';
+$pdo = require '../config/conexion.php';
 
 header("Content-Type: application/json");
 

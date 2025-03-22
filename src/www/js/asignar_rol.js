@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${user.email}</td>
                 <td>
                     <select class="role-select" data-id="${user.id}">
-                        <option value="administrador" ${user.rol === "administrador" ? "selected" : ""}>Administrador</option>
-                        <option value="jugador" ${user.rol === "jugador" ? "selected" : ""}>Jugador</option>
-                        <option value="moderador" ${user.rol === "moderador" ? "selected" : ""}>Moderador</option>
+                        <option value="2" ${user.rol_id === "2" ? "selected" : ""}>Jugador</option>
+                        <option value="3" ${user.rol_id === "3" ? "selected" : ""}>Moderador</option>
+                        <option value="4" ${user.rol_id === "4" ? "selected" : ""}>Administrador</option>
                     </select>
                 </td>
             `;
@@ -57,29 +57,29 @@ document.addEventListener("DOMContentLoaded", function () {
         renderTable(filteredUsers);
     }
 
-    // Guardar cambios de roles
-    function saveChanges() {
-        const roleSelects = document.querySelectorAll(".role-select");
-        const updates = [];
+  // Guardar cambios de roles
+  function saveChanges() {
+    const roleSelects = document.querySelectorAll(".role-select");
+    const updates = [];
 
-        roleSelects.forEach(select => {
-            updates.push({
-                id: select.getAttribute("data-id"),
-                rol: select.value
-            });
+    roleSelects.forEach(select => {
+        updates.push({
+            id: select.getAttribute("data-id"),
+            rol: select.value
         });
+    });
 
-        fetch("requires/update_user.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ users: updates })
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-        })
-        .catch(error => console.error("Error al guardar cambios:", error));
-    }
+    fetch("requires/update_user.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ users: updates })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+    })
+    .catch(error => console.error("Error al guardar cambios:", error));
+}
 
     // Event listeners
     filterUsername.addEventListener("input", filterTable);

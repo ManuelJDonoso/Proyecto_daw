@@ -1,7 +1,7 @@
 <?php
 
 // Incluir el archivo de conexión
-require_once 'requires/conexion.php';
+require_once 'config/conexion.php';
 
 // Verificar si se recibió un ID válido por GET o POST
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -69,7 +69,7 @@ try {
     die("Error al obtener jugadores: " . $e->getMessage());
 }
 
-require_once 'requires/modelos/usuario.php';
+require_once 'models/usuario.php';
 session_start();
 
 if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Usuario)) {
@@ -121,9 +121,9 @@ $user = $_SESSION['user'];
     <!-- Encabezado de la pagina web -->
     <header>
         <!-- Menu de banner -->
-        <?php include_once './html/fragmento/fragment_banner.php' ?>
+        <?php include_once 'template/fragment_banner.php' ?>
         <!-- Menu de navegación -->
-        <?php include_once './html/fragmento/fragment_menu.php' ?>
+        <?php include_once 'template/fragment_menu.php' ?>
     </header>
 
     <!-- Contenido principal del body-->
@@ -221,7 +221,7 @@ $user = $_SESSION['user'];
     </main>
 
     <!-- Contenido del pie de pagina-->
-    <?php include_once './html/fragmento/fragment_footer.php' ?>
+    <?php include_once 'template/fragment_footer.php' ?>
     <script src="js/menu_responsive.js"></script>
     <script src="js/accion_menu.js"></script>
     <script>

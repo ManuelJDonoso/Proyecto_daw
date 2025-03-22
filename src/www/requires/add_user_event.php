@@ -1,5 +1,5 @@
 <?php
-require_once 'modelos/usuario.php';
+require_once '../models/usuario.php';
 session_start();
 
 if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Usuario)) {
@@ -9,7 +9,7 @@ if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Usuario)) {
 $usuario = $_SESSION['user'];
 
 // Incluir el archivo de conexión
-require_once 'conexion.php';
+require_once '../config/conexion.php';
 
 // Verificar si se enviaron los parámetros necesarios
 if (method_exists($usuario, 'inscribir_evento') && $usuario->inscribir_evento()) {

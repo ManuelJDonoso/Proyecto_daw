@@ -596,3 +596,23 @@ input[type="email"] {
 }
 
 /******************************/
+
+   /* Botón para eliminar evento */
+   .event__delete {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 12px 20px;
+    background-color: #d9534f; /* Rojo peligro */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.event__delete:hover {
+    background-color: #c9302c; /* Rojo más oscuro */
+}

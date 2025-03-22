@@ -3,10 +3,10 @@
     <div class="nav__toggle" id="menuToggle">☰</div>
     <ul class="nav__list" id="menuList">
         <li class="nav__item">
-            <a href="index.html" class="nav__link boton" data-page="inicio.html">Inicio</a>
+            <a href="index.php" class="nav__label boton" data-page="inicio.php">Inicio</a>
         </li>
         <li class="nav__item">
-            <a href="html/fragmento/acercade.html" class="nav__link" data-page="about.html">Acerca de nosotros</a>
+            <a href="template/acercade.html" class="nav__link" data-page="about.html">Acerca de nosotros</a>
         </li>
 
         <li class="nav__item nav__item--dropdown">
@@ -17,14 +17,14 @@
                 <?php
               
                 if (method_exists($user, 'crear_evento') && $user->crear_evento()) {
-                    echo '<li><a href="html/fragmento/fragment_crear_evento.html" class="nav__link nav__dropdown-link">Crear Evento</a></li>';
+                    echo '<li><a href="template/fragment_crear_evento.html" class="nav__link nav__dropdown-link">Crear Evento</a></li>';
                 }
 
                 
 
                 ?>
 
-                <li><a href="html/fragmento/fragment_eventos.php" class="nav__link nav__dropdown-link">Mostrar Eventos</a></li>
+                <li><a href="template/fragment_eventos.php" class="nav__link nav__dropdown-link">Mostrar Eventos</a></li>
             </ul>
         </li>
 
@@ -79,7 +79,7 @@
                 echo '<li class="nav__item nav__item--dropdown">
                 <label class="nav__label">Iniciar sesión / Registrarse</label>
                 <ul class="nav__dropdown">';
-                echo  "<li> <a href='html/fragmento/fragment_login.html' class='nav__link' data-page='login.html'>Login</a></li>";
+                echo  "<li> <a href='template/fragment_login.html' class='nav__link' data-page='login.html'>Login</a></li>";
                 echo  "<li> <a href='creat_account.php' class='nav__label' data-page='login.html'>Crear cuentas</a></li>";
             }
 
