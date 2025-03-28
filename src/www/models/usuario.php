@@ -54,6 +54,10 @@ class Usuario {
         return $this->nombre;
     }
 
+    public function get_rol():string{
+        return $this-> rol;
+    }
+    
     public function crear_evento(): bool {
         return false;
     }

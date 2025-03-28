@@ -1,0 +1,676 @@
+:root {
+    --background-color: #232946;
+    --headline-color: #fffffe;
+    --paragraph-color: #b8c1ec;
+    --button-bg-color: #eebbc3;
+    --button-text-color: #232946;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-opensans: 'Open Sans', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: var(--font-opensans);
+    background-color: var(--background-color);
+    color: var(--paragraph-color);
+    margin: 0;
+}
+a{text-decoration: none;}
+/* Contenedor principal */
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Asegura que main crezca para empujar el footer hacia abajo */
+main {
+    flex-grow: 1;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    margin:20px;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    text-align: center; /* Asegura que el texto también esté centrado */
+
+}
+
+/* Footer pegado abajo */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    position: relative;
+    background: url('../assets/images/banner.jpg') no-repeat center bottom/cover;
+    background-position: center calc(100% + 80px);
+    padding: 75px 0;
+    text-align: center;
+    color: white;
+}
+.banner {
+    position: relative;
+    z-index: 10;
+}
+.banner__text {
+    font-size: 2em;
+    font-family: var(--font-montserrat);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Menu pegado arriba */
+/* Menu comienza debajo del header */
+.menu {
+    background: #333;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    position: relative; /* Comienza en su posición normal */
+    z-index: 1000;
+    transition: top 0.3s ease-in-out;
+}
+
+/* Clase que se activará con JavaScript al hacer scroll */
+.menu.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.menu__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+}
+.menu__item {
+    position: relative;
+}
+.menu__link {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 15px 20px;
+}
+.menu__link:hover {
+    background-color: #555;
+}
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+}
+.submenu__item {
+    width: 200px;
+}
+.submenu__link {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+.submenu__link:hover {
+    background-color: #555;
+}
+.menu__item--has-submenu:hover .submenu {
+    display: block;
+}
+.menu__toggle {
+    display: none;
+    cursor: pointer;
+}
+.menu__toggle div {
+    width: 30px;
+    height: 4px;
+    background: white;
+    margin: 5px 0;
+}
+
+
+
+/*acerca de*/
+.intro__text, .join-us__text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  
+  .intro__highlight, .join-us__highlight {
+    color: var(--headline-color);
+  }
+  
+  .events__title, .join-us__title {
+    color: var(--headline-color);
+  }
+  
+  .events__list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .events__item {
+    background: var(--paragraph-color);
+    margin: 5px 0;
+    padding: 10px;
+    border-left: 5px solid #8b0000;
+    color:black;
+  }
+  
+  .events__highlight {
+    font-weight: bold;
+  }
+  
+
+    /*------------estilos pagina login-------------------------*/
+  
+    .login-box {
+        background: rgba(0, 0, 0, 0.5);
+        max-width: 450px;
+        min-width: 450px;
+        color: #fff;
+        position: relative;
+      
+        padding: 70px 60px;
+        margin-top: 100px;
+      }
+      
+      .login-box__logo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        top: -50px;
+        left: calc(50% - 50px);
+      }
+      
+      .login-box h1 {
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 22px;
+      }
+      
+      .login-box p {
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+      }
+      
+      .login-box input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #fff;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .login-box input[type="submit"] {
+        border: none;
+        outline: none;
+        height: 40px;
+        background: #1c8acd;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 20px;
+      }
+      
+      .login-box input[type="submit"]:hover {
+        cursor: pointer;
+        background: #05dd46;
+        color: black;
+      }
+      
+      .login-box a {
+        text-decoration: none;
+        font-size: 14px;
+        color: #fff;
+        margin-left: 30px;
+      }
+      
+      .login-box a:first-of-type:hover {
+        color: #e90707;
+      }
+      
+      .login-box a:hover {
+        color: #05dd46;
+      }
+      .login-box input {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      
+      /*tarjetas*/
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 400px;
+        min-width: 400px;
+        width: 100%;
+      }
+    
+      .card__image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+      
+      .card__input,
+      .card__button,
+      .card__select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      
+      .card__button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .card__button:hover {
+        background-color: #0056b3;
+      }
+      
+      .card__time-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap; /* Permite que los inputs se acomoden en móviles */
+      }
+      
+      .card__time-container label {
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
+      
+
+/* Contenedor de las tarjetas */
+.container__event {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas por fila */
+    gap: 20px;
+  }
+
+  /* Tarjetas */
+  .card-event, .card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+ 
+  }
+  
+  .card-event:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-event__image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .card-event__title,
+  .card-event__players,
+  .card-event__master {
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .card-event__title {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .card-event__players,
+  .card-event__master {
+    font-size: 1em;
+    color: #555;
+  }
+  
+  /* Variantes de color */
+  .card-event--green {
+    background-color: #a4e57a;
+  }
+  
+  .card-event--orange {
+    background-color: #ffcc80;
+  }
+  
+  .card-event--gray {
+    background-color: #cfd8dc;
+  }
+  
+    /******************************/
+  
+     /* Botón para eliminar evento */
+     .event__delete {
+        display: block;
+        width: fit-content;
+        margin: 20px auto;
+        padding: 12px 20px;
+        background-color: #d9534f; /* Rojo peligro */
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+    
+    .event__delete:hover {
+        background-color: #c9302c; /* Rojo más oscuro */
+    }
+
+   
+    .players__remove, .delete-button {
+        background-color: #d9534f;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .players__remove:hover , .delete-button:hover {
+        background-color: #c9302c; /* Rojo más oscuro */
+    }
+
+    .event__register {
+        display: block;
+        
+        width: fit-content;
+        margin: 20px auto;
+        padding: 12px 20px;
+        background-color: #28a745; /* Rojo peligro */
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+       
+    }
+    .event__register:hover {
+        background-color: #0d7125; /* Rojo más oscuro */
+    }
+
+
+     /*gestion usuario*/
+  
+  
+  
+  .container-gestion {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    color:black;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos de los filtros */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .filters__input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 120px;
+  }
+  
+  /* Hacer la tabla desplazable */
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  /* Estilos de la tabla */
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 14px;
+    min-width: 600px; /* Asegura que la tabla no se achique demasiado */
+  }
+  
+  .user-table th, .user-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .user-table th {
+    background: #f8f8f8;
+  }
+  
+  .user-table th:first-child {
+    display: none;
+  }
+  /* Botón responsivo */
+  .button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .button:hover {
+    background: #218838;
+  }
+
+/*tarjetas*/
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .card__update {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 800px;
+    width: 500%;
+  }
+  .card__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Estilos del formulario */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form__label {
+    font-weight: bold;
+    text-align: left;
+    color: #555;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      color: black;
+  }
+  
+  /* Estilos de los botones */
+
+
+  
+  .button--save {
+    background: #28a745;
+    color: white;
+    margin-top: 10px;
+  }
+  
+  .button--save:hover {
+    background: #218838;
+  }
+  
+  .button--delete {
+    background: #dc3545;
+    color: white;
+    margin-top: 10px;
+  }
+  
+  .button--delete:hover {
+    background: #c82333;
+  }
+  
+  /* Mensajes */
+  .message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  /* Hacerlo responsive */
+@media (max-width: 768px) {
+    .main{
+        max-width: 90%;
+    }
+    .card {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .card__title {
+        font-size: 20px;
+    }
+
+    .form__input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+
+/*terminos y condiciones*/
+
+.login-box__input,
+.login-box__submit {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-box__submit {
+  background: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.login-box__submit:hover {
+  background: #0056b3;
+}
+
+.login-box__terms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+ 
+}
+
+.login-box__terms-content {
+  display: none;
+  padding: 20px;
+
+  margin-top: 10px;
+}
+
+.login-box__terms-content.active {
+  display: block;
+}
+
+
+  
+  .login-box__checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  
+  .login-box__link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+  }

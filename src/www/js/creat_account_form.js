@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
     const termsCheckbox = document.getElementById("terms-checkbox");
 
-    // Asegurar que el checkbox esté seleccionado por defecto
-    termsCheckbox.checked = true;
 
     form.addEventListener("submit", function (event) {
         let valid = true;

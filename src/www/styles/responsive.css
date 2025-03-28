@@ -1,0 +1,156 @@
+@media (max-width: 768px) {
+   
+    header {
+        height: 50px;
+        background-position: center ;
+    }
+    .menu {
+        position: fixed;
+        top: 150px;
+        left: 0;
+        width: 100%;
+        background: #333;
+        z-index: 1000;
+        padding: 15px 0;
+    }
+    .menu__toggle {
+        display: block;
+    }
+    .menu__list {
+        display: none;
+        flex-direction: column;
+    }
+    .menu__list.active {
+        display: flex;
+    }
+    .submenu {
+        position: relative;
+        display: none;
+    }
+    .submenu.active {
+        display: block;
+
+    }
+    .submenu__item{
+        min-width: 100%;
+    }
+}
+
+
+/**/
+
+/* Hacerlo responsive */
+@media (max-width: 768px) {
+    .main{
+        max-width: 90%;
+    }
+    .card {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .card__title {
+        font-size: 20px;
+    }
+
+    .form__input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .button {
+        font-size: 14px;
+        padding: 8px;
+    }
+    .login-box {
+        max-width: 100%;
+        min-width: 100%;
+        padding: 50px 30px;
+    }
+    .login-box__logo {
+        width: 80px;
+        height: 80px;
+        top: -40px;
+    }
+    .login-box h1 {
+        font-size: 18px;
+    }
+    .login-box input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        height: 30px;
+        font-size: 14px;
+    }
+    .login-box input[type="submit"] {
+        height: 30px;
+        font-size: 14px;
+    }
+    .login-box a {
+        font-size: 12px;
+    }
+    .container__event {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card-event__image {
+        height: 100px;
+    }
+    .card-event__title {
+        font-size: 1em;
+    }
+    .card-event__players,
+    .card-event__master {
+        font-size: 0.8em;
+    }
+    .event__delete,
+    .players__remove,
+    .delete-button,
+    .event__register {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    .container-gestion {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+    }
+    .filters__input {
+        padding: 6px;
+        font-size: 12px;
+    }
+    .user-table {
+        font-size: 12px;
+    }
+    .user-table th,
+    .user-table td {
+        padding: 6px;
+    }
+    .card__update {
+        padding: 10px;
+        max-width: 100%;
+        width: 100%;
+    }
+ 
+    .form__label {
+        font-size: 14px;
+    }
+
+    .button--save,
+    .button--delete {
+        padding: 6px;
+        font-size: 12px;
+    }
+}
+/*targeta*/
+
+
+@media (max-width: 768px) {
+    .container__event {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas por fila en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .container__event {
+        grid-template-columns: 1fr; /* 1 columna por fila en pantallas muy pequeñas */
+    }
+}
