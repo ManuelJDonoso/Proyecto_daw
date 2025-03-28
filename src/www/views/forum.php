@@ -61,16 +61,23 @@ if ($tema_id) {
 <ul>
     <?php foreach ($categorias as $categoria): ?>
         <li>
-            <a href="?pag=forum&&categoria_id=<?= $categoria['id'] ?>"> <?= htmlspecialchars($categoria['nombre']) ?> </a>
+            <a href="?pag=forum&&categoria_id=<?= $categoria['id'] ?>">
+                <?= htmlspecialchars($categoria['nombre']) ?>
+            </a>
+            
             <?php if ($es_admin): ?>
+                <!-- Botón Eliminar Categoría con confirmación -->
                 <form method="POST" action="controllers/eliminar_categoria.php" style="display:inline;">
+                  
                     <input type="hidden" name="categoria_id" value="<?= $categoria['id'] ?>">
-                    <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?')" >Eliminar</button>
+                    <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?')">Eliminar Categoría</button>
                 </form>
+
+                <!-- Botón para Cerrar/Abrir creación de temas -->
                 <form method="POST" action="controllers/toggle_temas.php" style="display:inline;">
                     <input type="hidden" name="categoria_id" value="<?= $categoria['id'] ?>">
                     <button type="submit">
-                        <?= $categoria['permitir_crear_temas'] ? 'Deshabilitar temas' : 'Habilitar temas' ?>
+                        <?= $categoria['permitir_crear_temas'] ? 'Cerrar Temas' : 'Abrir Temas' ?>
                     </button>
                 </form>
             <?php endif; ?>
@@ -82,18 +89,35 @@ if ($tema_id) {
 <?php if ($categoria_id): ?>
     <h2>Temas en la categoría seleccionada</h2>
     <ul>
-        <?php if (count($temas) > 0): ?>
-            <?php foreach ($temas as $tema): ?>
-                <li>
+    <?php if (count($temas) > 0): ?>
+        <?php foreach ($temas as $tema): ?>
+            <li>
                 <a href="?pag=forum&categoria_id=<?= $categoria_id ?>&tema_id=<?= $tema['id'] ?>">
-                        <?= htmlspecialchars($tema['titulo']) ?>
-                    </a>
-                </li>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No hay temas en esta categoría.</p>
-        <?php endif; ?>
-    </ul>
+                    <?= htmlspecialchars($tema['titulo']) ?>
+                </a>
+
+                <?php if ($es_admin): ?>
+                    <!-- Botón Eliminar Tema con confirmación -->
+                    <form method="POST" action="controllers/eliminar_tema.php" style="display:inline;">
+                        <input type="hidden" name="categora_id" value="<?= $_GET["categoria_id"] ?>">
+                        <input type="hidden" name="tema_id" value="<?= $tema['id'] ?>">
+                        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este tema?')">Eliminar Tema</button>
+                    </form>
+
+                    <!-- Botón para Cerrar/Abrir Publicaciones -->
+                    <form method="POST" action="controllers/toggle_publicaciones.php" style="display:inline;">
+                        <input type="hidden" name="tema_id" value="<?= $tema['id'] ?>">
+                        <button type="submit">
+                            <?= $tema['permitir_publicaciones'] ? 'Cerrar Publicaciones' : 'Abrir Publicaciones' ?>
+                        </button>
+                    </form>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No hay temas en esta categoría.</p>
+    <?php endif; ?>
+</ul>
     <!-- falta rodearlo para que solo aparezca si esta habilitado el uso -->
     <?php if ($permitir_crear_temas): ?>
         <?php if ($es_admin || ($usuario && $categoria_id && in_array($usuario->get_rol(), ['moderador', 'jugador']))): ?>
