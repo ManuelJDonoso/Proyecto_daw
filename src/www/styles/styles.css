@@ -32,6 +32,7 @@ a{text-decoration: none;}
 main {
     flex-grow: 1;
     padding-top: 10px;
+    padding-bottom: 250px;
     display: flex;
     flex-direction: column;
     margin:20px;
@@ -674,3 +675,75 @@ header {
     color: #007bff;
     font-size: 14px;
   }
+
+  /* Estilos para el foro */
+.forum {
+  background: #fff;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.forum h2 {
+  margin-bottom: 20px;
+}
+
+.forum .post {
+  border-bottom: #ddd 1px solid;
+  padding: 10px 0;
+}
+
+.forum .post:last-child {
+  border-bottom: none;
+}
+
+.forum .post .user {
+  font-weight: bold;
+  color: #54a0ff;
+}
+
+.forum .post .content {
+  margin-top: 5px;
+}
+
+/* Estilos para el pie de página */
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+/* Estilos para el formulario */
+.forum__form {
+  margin-bottom: 20px;
+}
+
+.forum__form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.forum__form-input,
+.forum__form-textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.forum__form-button {
+  padding: 10px 20px;
+  background-color: #54a0ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.forum__form-button:hover {
+  background-color: #458aff;
+}

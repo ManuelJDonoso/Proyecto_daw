@@ -6,7 +6,7 @@ function tieneRol($usuario, $rol) {
 }
 
 // Obtener el tema
-$tema_id = $_GET['id'] ?? 0;
+$tema_id = $_GET['categoria'] ?? 0;
 try {
     $stmt = $pdo->prepare("SELECT t.id, t.titulo, t.contenido, t.usuario_id, t.permitir_publicaciones, t.created_at, u.nombre_usuario FROM temas t JOIN usuarios u ON t.usuario_id = u.id WHERE t.id = :tema_id");
     $stmt->execute([':tema_id' => $tema_id]);
