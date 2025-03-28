@@ -65,6 +65,12 @@ $pdo = require_once 'config/conexion.php';
                 case 'delete_user':
                     include_once "views/delete_user.php";
                     break;
+                case 'forum':
+                    include_once "views/forum.php";
+                    break;
+                case 'tema':
+                    include_once "views/tema.php";
+                    break;
 
 
                 default:
