@@ -33,6 +33,19 @@ if ($categoria_id) {
     $permitir_crear_temas = $result['permitir_crear_temas']; // Asignar el valor a la variable
 }
 
+// Verificar si se ha seleccionado un tema
+$tema_id = $_GET['tema_id'] ?? null;
+$publicaciones = [];
+
+if ($tema_id) {
+    $stmt = $pdo->prepare(" SELECT publicaciones.contenido, usuarios.nombre_usuario
+    FROM publicaciones
+    JOIN usuarios ON publicaciones.usuario_id = usuarios.id
+    WHERE publicaciones.tema_id = ?");
+    $stmt->execute([$tema_id]);
+    $publicaciones = $stmt->fetchAll();
+}
+
 ?>
 <h1>Foro</h1>
 
@@ -72,7 +85,9 @@ if ($categoria_id) {
         <?php if (count($temas) > 0): ?>
             <?php foreach ($temas as $tema): ?>
                 <li>
-                    <a href="ver_post.php?tema_id=<?= $tema['id'] ?>"> <?= htmlspecialchars($tema['titulo']) ?> </a>
+                <a href="?pag=forum&categoria_id=<?= $categoria_id ?>&tema_id=<?= $tema['id'] ?>">
+                        <?= htmlspecialchars($tema['titulo']) ?>
+                    </a>
                 </li>
             <?php endforeach; ?>
         <?php else: ?>
@@ -89,6 +104,30 @@ if ($categoria_id) {
                 <button type="submit">Crear Tema</button>
             </form>
         <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>
+
+
+<?php if ($tema_id): ?>
+    <h2>Publicaciones en el tema seleccionado</h2>
+    <ul>
+        <?php if (count($publicaciones) > 0): ?>
+            <?php foreach ($publicaciones as $publicacion): ?>
+                <li>
+                    <p><strong><?= htmlspecialchars($publicacion['nombre_usuario']) ?>:</strong> <?= htmlspecialchars($publicacion['contenido']) ?></p>
+                </li>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No hay publicaciones en este tema.</p>
+        <?php endif; ?>
+    </ul>
+
+    <?php if ($usuario): ?>
+        <form method="POST" action="controllers/add_publicacion.php">
+            <input type="hidden" name="tema_id" value="<?= $tema_id ?>">
+            <textarea name="contenido" placeholder="Escribe tu respuesta..." required></textarea>
+            <button type="submit">Publicar</button>
+        </form>
     <?php endif; ?>
 <?php endif; ?>
 
