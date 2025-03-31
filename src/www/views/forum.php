@@ -46,6 +46,23 @@ if ($tema_id) {
     $publicaciones = $stmt->fetchAll();
 }
 
+
+$permitir_publicaciones = true; // Valor por defecto
+
+if ($tema_id) {
+    $stmt = $pdo->prepare("SELECT permitir_publicaciones FROM temas WHERE id = ?");
+    $stmt->execute([$tema_id]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $permitir_publicaciones = $result['permitir_publicaciones'];
+}
+
+if ($tema_id) {
+    // Obtener el contenido del tema
+    $stmt = $pdo->prepare("SELECT contenido FROM temas WHERE id = ?");
+    $stmt->execute([$tema_id]);
+    $tema_result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $tema_contenido = $tema_result['contenido'] ?? "";
+}
 ?>
 <h1>Foro</h1>
 
@@ -88,6 +105,20 @@ if ($tema_id) {
 
 <?php if ($categoria_id): ?>
     <h2>Temas en la categoría seleccionada</h2>
+
+     <!-- falta rodearlo para que solo aparezca si esta habilitado el uso -->
+     <?php if ($permitir_crear_temas): ?>
+        <?php if ($es_admin || ($usuario && $categoria_id && in_array($usuario->get_rol(), ['moderador', 'jugador']))): ?>
+            <form method="POST" action="controllers/add_tema.php">
+                <input type="hidden" name="categoria_id" value="<?= $categoria_id ?>">
+                <input type="text" name="titulo_tema" placeholder="Título del tema" required>
+                <textarea name="contenido" required></textarea>
+                <button type="submit">Crear Tema</button>
+            </form>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>
+
     <ul>
     <?php if (count($temas) > 0): ?>
         <?php foreach ($temas as $tema): ?>
@@ -106,6 +137,7 @@ if ($tema_id) {
 
                     <!-- Botón para Cerrar/Abrir Publicaciones -->
                     <form method="POST" action="controllers/toggle_publicaciones.php" style="display:inline;">
+                        <input type="hidden" name="categora_id" value="<?= $_GET["categoria_id"] ?>">
                         <input type="hidden" name="tema_id" value="<?= $tema['id'] ?>">
                         <button type="submit">
                             <?= $tema['permitir_publicaciones'] ? 'Cerrar Publicaciones' : 'Abrir Publicaciones' ?>
@@ -118,22 +150,16 @@ if ($tema_id) {
         <p>No hay temas en esta categoría.</p>
     <?php endif; ?>
 </ul>
-    <!-- falta rodearlo para que solo aparezca si esta habilitado el uso -->
-    <?php if ($permitir_crear_temas): ?>
-        <?php if ($es_admin || ($usuario && $categoria_id && in_array($usuario->get_rol(), ['moderador', 'jugador']))): ?>
-            <form method="POST" action="controllers/add_tema.php">
-                <input type="hidden" name="categoria_id" value="<?= $categoria_id ?>">
-                <input type="text" name="titulo_tema" placeholder="Título del tema" required>
-                <textarea name="contenido" required></textarea>
-                <button type="submit">Crear Tema</button>
-            </form>
-        <?php endif; ?>
-    <?php endif; ?>
-<?php endif; ?>
-
+   
 
 <?php if ($tema_id): ?>
     <h2>Publicaciones en el tema seleccionado</h2>
+
+    <?php if ($tema_id): ?>
+    <h2>Contenido del Tema</h2>
+    <p><?= nl2br(htmlspecialchars($tema_contenido)) ?></p>
+<?php endif; ?>
+
     <ul>
         <?php if (count($publicaciones) > 0): ?>
             <?php foreach ($publicaciones as $publicacion): ?>
@@ -146,13 +172,14 @@ if ($tema_id) {
         <?php endif; ?>
     </ul>
 
-    <?php if ($usuario): ?>
+
+    <?php if ($usuario && $permitir_publicaciones): ?>
         <form method="POST" action="controllers/add_publicacion.php">
             <input type="hidden" name="tema_id" value="<?= $tema_id ?>">
             <textarea name="contenido" placeholder="Escribe tu respuesta..." required></textarea>
             <button type="submit">Publicar</button>
         </form>
+    <?php elseif (!$permitir_publicaciones): ?>
+        <p><strong>Las publicaciones en este tema están cerradas.</strong></p>
     <?php endif; ?>
 <?php endif; ?>
-
-
