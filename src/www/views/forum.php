@@ -1,6 +1,12 @@
 <?php include_once "controllers/forum.php"; ?>
 <div class="forum">
     <h1 class="forum__title">Foro</h1>
+    <?php var_dump($usuario);
+    var_dump($es_admin);
+    var_dump($es_moderador);
+    var_dump($es_jugador);
+
+    ?>
     <div class="forum__container">
         <!-- 📌 Columna 1: Categorías -->
         <section class="forum__column forum__categories">
@@ -12,24 +18,24 @@
                             <?= htmlspecialchars($categoria['nombre']) ?>
                         </a>
 
-                      
+
                     </li>
                     <?php if ($es_admin): ?>
-                            <!-- Botón Eliminar Categoría con confirmación -->
-                            <form method="POST" action="controllers/eliminar_categoria.php" style="display:inline;">
+                        <!-- Botón Eliminar Categoría con confirmación -->
+                        <form method="POST" action="controllers/eliminar_categoria.php" style="display:inline;">
 
-                                <input type="hidden" name="categoria_id" value="<?= $categoria['id'] ?>">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?')">Eliminar Categoría</button>
-                            </form>
+                            <input type="hidden" name="categoria_id" value="<?= $categoria['id'] ?>">
+                            <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?')">Eliminar Categoría</button>
+                        </form>
 
-                            <!-- Botón para Cerrar/Abrir creación de temas -->
-                            <form method="POST" action="controllers/toggle_temas.php" style="display:inline;">
-                                <input type="hidden" name="categoria_id" value="<?= $categoria['id'] ?>">
-                                <button type="submit">
-                                    <?= $categoria['permitir_crear_temas'] ? 'Cerrar Temas' : 'Abrir Temas' ?>
-                                </button>
-                            </form>
-                        <?php endif; ?>
+                        <!-- Botón para Cerrar/Abrir creación de temas -->
+                        <form method="POST" action="controllers/toggle_temas.php" style="display:inline;">
+                            <input type="hidden" name="categoria_id" value="<?= $categoria['id'] ?>">
+                            <button type="submit">
+                                <?= $categoria['permitir_crear_temas'] ? 'Cerrar Temas' : 'Abrir Temas' ?>
+                            </button>
+                        </form>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
 
@@ -42,24 +48,24 @@
         </section>
         <!-- 📌 Columna 2: Temas -->
         <?php if ($categoria_id): ?>
-        <section class="forum__column forum__topics">
-           
+            <section class="forum__column forum__topics">
 
-          
-            
                 <h2>Temas en la categoría seleccionada</h2>
 
                 <ul>
-                <?php if (count($temas) > 0): ?>
-                    <?php foreach ($temas as $tema): ?>
-                        <li>
-                            <a href="?pag=forum&categoria_id=<?= $categoria_id ?>&tema_id=<?= $tema['id'] ?>">
-                                <?= htmlspecialchars($tema['titulo']) ?>
-                            </a>
+                    <?php if (count($temas) > 0): ?>
+                        <?php foreach ($temas as $tema): ?>
+                            <li>
+                                <a href="?pag=forum&categoria_id=<?= $categoria_id ?>&tema_id=<?= $tema['id'] ?>">
+                                    <?= htmlspecialchars($tema['titulo']) ?>
+                                    <?= htmlspecialchars("(" . $tema['nombre_usuario']) . ")" ?>
 
-                           
-                        </li>
-                        <?php if ($es_admin): ?>
+                                </a>
+
+
+                            </li>
+
+                            <?php if ($es_admin || $es_moderador || $usuario->get_nombre_usuario() === $tema['nombre_usuario']): ?>
                                 <!-- Botón Eliminar Tema con confirmación -->
                                 <form method="POST" action="controllers/eliminar_tema.php" style="display:inline;">
                                     <input type="hidden" name="categora_id" value="<?= $_GET["categoria_id"] ?>">
@@ -76,11 +82,11 @@
                                     </button>
                                 </form>
                             <?php endif; ?>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>No hay temas en esta categoría.</p>
-                <?php endif; ?>
-            </ul>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>No hay temas en esta categoría.</p>
+                    <?php endif; ?>
+                </ul>
 
 
 
@@ -95,21 +101,21 @@
                         </form>
                     <?php endif; ?>
                 <?php endif; ?>
-            
-        </section>
+
+            </section>
         <?php endif; ?>
         <!-- 📌 Columna 3: Publicaciones -->
 
         <?php if ($tema_id): ?>
-        <section class="forum__column forum__posts">
+            <section class="forum__column forum__posts">
 
 
+                <!-- aqui tiene que ser el titulo del post -->
 
-           
-                <h2 class="forum__subtitle">Publicaciones en el tema seleccionado</h2>
+                <h2 class="forum__subtitle"> <?= $tema_titulo ?> </h2>
 
                 <?php if ($tema_id): ?>
-                    <h2>Contenido del Tema</h2>
+                    <h2>Autor: <?= $nombre_usuario ?></h2>
                     <p class="forum__post__descripcion"><?= nl2br(htmlspecialchars($tema_contenido)) ?></p>
                 <?php endif; ?>
 
@@ -118,7 +124,22 @@
                         <?php foreach ($publicaciones as $publicacion): ?>
                             <li>
                                 <p class="forum__post__descripcion"><strong><?= htmlspecialchars($publicacion['nombre_usuario']) ?>:</strong> <?= htmlspecialchars($publicacion['contenido']) ?></p>
+
+                                
                             </li>
+                            <!-- boton para eliminar -->
+                                
+                            <?php if ($es_moderador||$es_admin|| $publicacion["nombre_usuario"]===$usuario->get_nombre_usuario()): ?>
+                                    <form method="POST" action="controllers/delete_publicacion.php" style="display:inline;">
+                                        <input type="hidden" name="categoria_id" value="<?= $_GET["tema_id"]?>">
+                                        <input type="hidden" name="tema_id" value="<?= $_GET["tema_id"]?>">
+                                        <input type="hidden" name="publicacion_id" value="<?= $publicacion['id'] ?>">
+                                        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este comentario?')">Eliminar</button>
+                                    </form>
+                                <?php endif; ?>
+
+
+
                         <?php endforeach; ?>
                     <?php else: ?>
                         <p>No hay publicaciones en este tema.</p>
@@ -135,8 +156,8 @@
                 <?php elseif (!$permitir_publicaciones): ?>
                     <p><strong>Las publicaciones en este tema están cerradas.</strong></p>
                 <?php endif; ?>
-            
-        </section>
+
+            </section>
         <?php endif; ?>
     </div>
 

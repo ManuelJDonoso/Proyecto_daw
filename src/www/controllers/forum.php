@@ -1,6 +1,9 @@
 <?php
-$es_admin = $usuario && $usuario->get_rol() === 'administrador';
 
+
+$es_admin = $usuario && $usuario->get_rol() === 'administrador';
+$es_moderador = $usuario && $usuario->get_rol() === 'moderador';
+$es_jugador = $usuario && $usuario->get_rol() === 'jugador';
 
 // Si se envió el formulario para agregar categoría
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nueva_categoria']) && $es_admin) {
@@ -20,9 +23,14 @@ $temas = [];
 $permitir_crear_temas = false;
 
 if ($categoria_id) {
-    $stmt = $pdo->prepare("SELECT * FROM temas WHERE categoria_id = ?");
+    $stmt = $pdo->prepare("
+        SELECT t.id,t.categoria_id, t.titulo, t.contenido, u.nombre_usuario, t.created_at, t.permitir_publicaciones
+        FROM temas t
+        JOIN usuarios u ON t.usuario_id = u.id
+        WHERE t.categoria_id = ?
+    ");
     $stmt->execute([$categoria_id]);
-    $temas = $stmt->fetchAll();
+    $temas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 if ($categoria_id) {
@@ -37,7 +45,7 @@ $tema_id = $_GET['tema_id'] ?? null;
 $publicaciones = [];
 
 if ($tema_id) {
-    $stmt = $pdo->prepare(" SELECT publicaciones.contenido, usuarios.nombre_usuario
+    $stmt = $pdo->prepare(" SELECT publicaciones.id, publicaciones.contenido, usuarios.nombre_usuario
     FROM publicaciones
     JOIN usuarios ON publicaciones.usuario_id = usuarios.id
     WHERE publicaciones.tema_id = ?");
@@ -56,9 +64,17 @@ if ($tema_id) {
 }
 
 if ($tema_id) {
-    // Obtener el contenido del tema
-    $stmt = $pdo->prepare("SELECT contenido FROM temas WHERE id = ?");
+    // Obtener el contenido del tema, titulo y nombre_usuario
+    $stmt = $pdo->prepare("
+        SELECT t.contenido, t.titulo, u.nombre_usuario
+        FROM temas t
+        JOIN usuarios u ON t.usuario_id = u.id
+        WHERE t.id = ?
+    ");
     $stmt->execute([$tema_id]);
     $tema_result = $stmt->fetch(PDO::FETCH_ASSOC);
     $tema_contenido = $tema_result['contenido'] ?? "";
+    $tema_titulo = $tema_result['titulo'] ?? "";
+    $nombre_usuario = $tema_result['nombre_usuario'] ?? "";
 }
+
