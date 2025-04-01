@@ -892,6 +892,10 @@ input[type="password"] {
 .button-success:hover{
   background-color:var(--button-bg-color-success-hover)!important;
 }
+.forum__post__descripcion{
+  color: black ;
+  text-align: justify;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .forum__container {

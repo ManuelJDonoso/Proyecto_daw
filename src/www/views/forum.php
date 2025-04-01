@@ -110,14 +110,14 @@
 
                 <?php if ($tema_id): ?>
                     <h2>Contenido del Tema</h2>
-                    <p><?= nl2br(htmlspecialchars($tema_contenido)) ?></p>
+                    <p class="forum__post__descripcion"><?= nl2br(htmlspecialchars($tema_contenido)) ?></p>
                 <?php endif; ?>
 
                 <ul>
                     <?php if (count($publicaciones) > 0): ?>
                         <?php foreach ($publicaciones as $publicacion): ?>
                             <li>
-                                <p><strong><?= htmlspecialchars($publicacion['nombre_usuario']) ?>:</strong> <?= htmlspecialchars($publicacion['contenido']) ?></p>
+                                <p class="forum__post__descripcion"><strong><?= htmlspecialchars($publicacion['nombre_usuario']) ?>:</strong> <?= htmlspecialchars($publicacion['contenido']) ?></p>
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>
