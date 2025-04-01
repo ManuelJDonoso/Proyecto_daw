@@ -3,6 +3,8 @@
   --headline-color: #fffffe;
   --paragraph-color: #b8c1ec;
   --button-bg-color: #eebbc3;
+  --button-bg-color-success: #2ecc71;
+  --button-bg-color-success-hover: #27ae60;
   --button-bg-color-hover: #e98b99;
   --button-text-color: #232946;
   --font-montserrat: "Montserrat", sans-serif;
@@ -702,65 +704,197 @@ input[type="password"] {
   font-size: 14px;
 }
 
-/* Estilos para el foro */
+/*----------------------------------------------------------------------------*/
+
+/* Forum Container */
 .forum {
-  background: #fff;
+  max-width: 90%;
+  min-width: 90%;
+  margin: 0 auto;
   padding: 20px;
+  background-color: var(--background-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.forum__title {
+  text-align: center;
+  color: var(--headline-color);
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+/* Forum Columns */
+.forum__container {
+  display: flex;
+  gap: 20px;
+}
+
+.forum__column {
+  flex: 1;
+  background-color: var(--paragraph-color);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.forum__subtitle {
+  font-size: 1.5em;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+/* Categories Section */
+.forum__categories ul {
+  list-style: none;
+  padding: 0;
+}
+
+.forum__categories li {
+  margin-bottom: 10px;
+}
+
+.forum__categories a {
+  text-decoration: none;
+  color: #3498db;
+  font-weight: bold;
+}
+
+.forum__categories a:hover {
+  text-decoration: underline;
+}
+
+.forum__categories form {
+  display: inline;
+}
+
+.forum__categories button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.forum__categories button:hover {
+  background-color: var(--button-bg-color-hover);
+}
+
+/* Topics Section */
+.forum__topics h2 {
+  font-size: 1.2em;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.forum__topics ul {
+  list-style: none;
+  padding: 0;
+}
+
+.forum__topics li {
+  margin-bottom: 10px;
+}
+
+.forum__topics a {
+  text-decoration: none;
+  color: #3498db;
+  font-weight: bold;
+}
+
+.forum__topics a:hover {
+  text-decoration: underline;
+}
+
+.forum__topics form {
+  display: inline;
+}
+
+.forum__topics button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.forum__topics button:hover {
+  background-color: var(--button-bg-color-hover);
+}
+
+/* Posts Section */
+.forum__posts h2 {
+  font-size: 1.2em;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.forum__posts ul {
+  list-style: none;
+  padding: 0;
+}
+
+.forum__posts li {
+  margin-bottom: 10px;
+}
+
+.forum__posts p {
+  margin: 0;
+}
+
+.forum__posts strong {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.forum__posts form {
   margin-top: 20px;
 }
 
-.forum h2 {
-  margin-bottom: 20px;
-}
-
-.forum .post {
-  border-bottom: #ddd 1px solid;
-  padding: 10px 0;
-}
-
-.forum .post:last-child {
-  border-bottom: none;
-}
-
-.forum .post .user {
-  font-weight: bold;
-  color: #54a0ff;
-}
-
-.forum .post .content {
-  margin-top: 5px;
-}
-
-
-
-/* Estilos para el formulario */
-.forum__form {
-  margin-bottom: 20px;
-}
-
-.forum__form-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.forum__form-input,
-.forum__form-textarea {
-  width: 100%;
-  padding: 8px;
+.forum__posts textarea {
+  width: 90%;
+  height: 100px;
   margin-bottom: 10px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+}
+.textarea {
+  width: 94%;
+  height: 100px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.forum__form-button {
-  padding: 10px 20px;
-  background-color: #54a0ff;
-  color: #fff;
+.forum__posts button {
+  background-color:var(--button-bg-color-success);
+  color: white;
   border: none;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.forum__form-button:hover {
-  background-color: #458aff;
+.forum__posts button:hover {
+  background-color:var(--button-bg-color-success-hover);
+  
+}
+.button-success{
+  background-color:var(--button-bg-color-success) !important;
+  color: white !important;
+}
+.button-success:hover{
+  background-color:var(--button-bg-color-success-hover)!important;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .forum__container {
+      flex-direction: column;
+  }
 }
