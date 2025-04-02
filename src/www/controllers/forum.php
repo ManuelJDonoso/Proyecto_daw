@@ -73,3 +73,36 @@ if ($tema_id) {
     $nombre_usuario = $tema_result['nombre_usuario'] ?? "";
 }
 
+// Lógica para dar "Me gusta" o "Ya no me gusta" a una publicación
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dar_me_gusta'])) {
+    $publicacion_id = $_POST['publicacion_id'] ?? 0;
+
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM me_gustas WHERE publicacion_id = :publicacion_id AND usuario_id = :usuario_id");
+        $stmt->execute([
+            ':publicacion_id' => $publicacion_id,
+            ':usuario_id' => $usuario->get_id()
+        ]);
+        $me_gusta = $stmt->fetch();
+
+        if ($me_gusta) {
+            // Si ya ha dado Me gusta, se elimina el voto
+            $stmt = $pdo->prepare("DELETE FROM me_gustas WHERE publicacion_id = :publicacion_id AND usuario_id = :usuario_id");
+            $stmt->execute([
+                ':publicacion_id' => $publicacion_id,
+                ':usuario_id' => $usuario->get_id()
+            ]);
+            $success = "Ya no te gusta esta publicación.";
+        } else {
+            // Si no ha dado Me gusta, se inserta un nuevo voto
+            $stmt = $pdo->prepare("INSERT INTO me_gustas (publicacion_id, usuario_id) VALUES (:publicacion_id, :usuario_id)");
+            $stmt->execute([
+                ':publicacion_id' => $publicacion_id,
+                ':usuario_id' => $usuario->get_id()
+            ]);
+            $success = "Te gusta esta publicación.";
+        }
+    } catch (PDOException $e) {
+        $error = "Error al dar Me gusta: " . $e->getMessage();
+    }
+}

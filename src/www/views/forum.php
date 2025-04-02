@@ -122,6 +122,32 @@
 
 
                             </li>
+
+                            <!-- boton me gusta -->
+
+                            <form method="post" style="display:inline;">
+                        <input type="hidden" name="publicacion_id" value="<?= $publicacion['id'] ?>">
+                        <?php
+                        $stmt = $pdo->prepare("SELECT * FROM me_gustas WHERE publicacion_id = :publicacion_id AND usuario_id = :usuario_id");
+                        $stmt->execute([
+                            ':publicacion_id' => $publicacion['id'],
+                            ':usuario_id' => $usuario->get_id()
+                        ]);
+                        $me_gusta = $stmt->fetch();
+                        ?>
+                        <?php if ($me_gusta): ?>
+                            <button type="submit" name="dar_me_gusta" style="background-color: #ff4d4d; color: white;">Ya no me gusta</button>
+                        <?php else: ?>
+                            <button type="submit" name="dar_me_gusta" style="background-color: #4dff4d; color: white;">Me gusta</button>
+                        <?php endif; ?>
+                    </form>
+                    <?php
+                    $stmt = $pdo->prepare("SELECT COUNT(*) FROM me_gustas WHERE publicacion_id = :publicacion_id");
+                    $stmt->execute([':publicacion_id' => $publicacion['id']]);
+                    $me_gustas_count = $stmt->fetchColumn();
+                    ?>
+                    <p class="forum__post__descripcion"><?= $me_gustas_count ?> Me gusta</p>
+
                             <!-- boton para eliminar -->
 
                             <?php if ($es_moderador || $es_admin || $publicacion["nombre_usuario"] === $usuario->get_nombre_usuario()): ?>
