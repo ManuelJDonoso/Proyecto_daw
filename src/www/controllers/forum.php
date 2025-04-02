@@ -1,10 +1,5 @@
 <?php
 
-
-$es_admin = $usuario && $usuario->get_rol() === 'administrador';
-$es_moderador = $usuario && $usuario->get_rol() === 'moderador';
-$es_jugador = $usuario && $usuario->get_rol() === 'jugador';
-
 // Si se envió el formulario para agregar categoría
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nueva_categoria']) && $es_admin) {
     $titulo = trim($_POST['nueva_categoria']);

@@ -1,12 +1,7 @@
 <?php include_once "controllers/forum.php"; ?>
 <div class="forum">
     <h1 class="forum__title">Foro</h1>
-    <?php var_dump($usuario);
-    var_dump($es_admin);
-    var_dump($es_moderador);
-    var_dump($es_jugador);
 
-    ?>
     <div class="forum__container">
         <!-- 📌 Columna 1: Categorías -->
         <section class="forum__column forum__categories">
@@ -125,18 +120,18 @@
                             <li>
                                 <p class="forum__post__descripcion"><strong><?= htmlspecialchars($publicacion['nombre_usuario']) ?>:</strong> <?= htmlspecialchars($publicacion['contenido']) ?></p>
 
-                                
+
                             </li>
                             <!-- boton para eliminar -->
-                                
-                            <?php if ($es_moderador||$es_admin|| $publicacion["nombre_usuario"]===$usuario->get_nombre_usuario()): ?>
-                                    <form method="POST" action="controllers/delete_publicacion.php" style="display:inline;">
-                                        <input type="hidden" name="categoria_id" value="<?= $_GET["tema_id"]?>">
-                                        <input type="hidden" name="tema_id" value="<?= $_GET["tema_id"]?>">
-                                        <input type="hidden" name="publicacion_id" value="<?= $publicacion['id'] ?>">
-                                        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este comentario?')">Eliminar</button>
-                                    </form>
-                                <?php endif; ?>
+
+                            <?php if ($es_moderador || $es_admin || $publicacion["nombre_usuario"] === $usuario->get_nombre_usuario()): ?>
+                                <form method="POST" action="controllers/delete_publicacion.php" style="display:inline;">
+                                    <input type="hidden" name="categoria_id" value="<?= $_GET["tema_id"] ?>">
+                                    <input type="hidden" name="tema_id" value="<?= $_GET["tema_id"] ?>">
+                                    <input type="hidden" name="publicacion_id" value="<?= $publicacion['id'] ?>">
+                                    <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este comentario?')">Eliminar</button>
+                                </form>
+                            <?php endif; ?>
 
 
 
@@ -148,11 +143,13 @@
 
 
                 <?php if ($usuario && $permitir_publicaciones): ?>
-                    <form method="POST" action="controllers/add_publicacion.php">
-                        <input type="hidden" name="tema_id" value="<?= $tema_id ?>">
-                        <textarea name="contenido" placeholder="Escribe tu respuesta..." required></textarea>
-                        <button type="submit">Publicar</button>
-                    </form>
+                    <?php if (!$es_visitante): ?>
+                        <form method="POST" action="controllers/add_publicacion.php">
+                            <input type="hidden" name="tema_id" value="<?= $tema_id ?>">
+                            <textarea name="contenido" placeholder="Escribe tu respuesta..." required></textarea>
+                            <button type="submit">Publicar</button>
+                        </form>
+                    <?php endif; ?>
                 <?php elseif (!$permitir_publicaciones): ?>
                     <p><strong>Las publicaciones en este tema están cerradas.</strong></p>
                 <?php endif; ?>

@@ -63,7 +63,7 @@ if (method_exists($usuario, 'inscribir_evento') && $usuario->inscribir_evento())
 
                                     <?php
 
-                                    if (method_exists($usuario, 'eliminar_usuario_evento') && $usuario->eliminar_usuario_evento()) {
+                                    if (method_exists($usuario, 'eliminar_usuario_evento') && $usuario->eliminar_usuario_evento()||$usuario->get_nombre_usuario()===$jugador["nombre"]) {
                                         echo  " <td>";
                                         echo '<button class="players__remove" onclick="eliminarJugador(\'' . htmlspecialchars($jugador['nombre'], ENT_QUOTES, 'UTF-8') . '\')">Eliminar</button>';
                                         echo " </td>";

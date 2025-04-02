@@ -6,6 +6,10 @@ if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Usuario)) {
 }
 
 $usuario = $_SESSION['user'];
+$es_admin = $usuario && $usuario->get_rol() === 'administrador';
+$es_moderador = $usuario && $usuario->get_rol() === 'moderador';
+$es_jugador = $usuario && $usuario->get_rol() === 'jugador';
+$es_visitante= $usuario && $usuario->get_rol() === 'visitante';
 include_once "views/head.php";
 
 $pdo = require_once 'config/conexion.php';
