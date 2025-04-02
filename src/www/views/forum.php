@@ -123,34 +123,31 @@
 
                             </li>
 
-                            <!-- boton me gusta -->
-
+                          
+                            <!-- Botón Me gusta con icono de Font Awesome -->
                             <form method="post" style="display:inline;">
-                        <input type="hidden" name="publicacion_id" value="<?= $publicacion['id'] ?>">
-                        <?php
-                        $stmt = $pdo->prepare("SELECT * FROM me_gustas WHERE publicacion_id = :publicacion_id AND usuario_id = :usuario_id");
-                        $stmt->execute([
-                            ':publicacion_id' => $publicacion['id'],
-                            ':usuario_id' => $usuario->get_id()
-                        ]);
-                        $me_gusta = $stmt->fetch();
-                        ?>
-                        <?php if ($me_gusta): ?>
-                            <button type="submit" name="dar_me_gusta" style="background-color: #ff4d4d; color: white;">Ya no me gusta</button>
-                        <?php else: ?>
-                            <button type="submit" name="dar_me_gusta" style="background-color: #4dff4d; color: white;">Me gusta</button>
-                        <?php endif; ?>
-                    </form>
-                    <?php
-                    $stmt = $pdo->prepare("SELECT COUNT(*) FROM me_gustas WHERE publicacion_id = :publicacion_id");
-                    $stmt->execute([':publicacion_id' => $publicacion['id']]);
-                    $me_gustas_count = $stmt->fetchColumn();
-                    ?>
-                    <p class="forum__post__descripcion"><?= $me_gustas_count ?> Me gusta</p>
+                                <input type="hidden" name="publicacion_id" value="<?= $publicacion['id'] ?>">
+                                <?php
+                                $stmt = $pdo->prepare("SELECT * FROM me_gustas WHERE publicacion_id = :publicacion_id AND usuario_id = :usuario_id");
+                                $stmt->execute([
+                                    ':publicacion_id' => $publicacion['id'],
+                                    ':usuario_id' => $usuario->get_id()
+                                ]);
+                                $me_gusta = $stmt->fetch();
+                                ?>
+                                <?php if ($me_gusta): ?>
+                                    <button type="submit" name="dar_me_gusta" class="button--dislike">
+                                        <i class="fas fa-heart"></i> Ya no me gusta
+                                    </button>
+                                <?php else: ?>
+                                    <button type="submit" name="dar_me_gusta" class="button--like">
+                                        <i class="far fa-heart"></i> Me gusta
+                                    </button>
+                                <?php endif; ?>
+                            </form>
+                                <!-- boton para eliminar -->
 
-                            <!-- boton para eliminar -->
-
-                            <?php if ($es_moderador || $es_admin || $publicacion["nombre_usuario"] === $usuario->get_nombre_usuario()): ?>
+                                <?php if ($es_moderador || $es_admin || $publicacion["nombre_usuario"] === $usuario->get_nombre_usuario()): ?>
                                 <form method="POST" action="controllers/delete_publicacion.php" style="display:inline;">
                                     <input type="hidden" name="categoria_id" value="<?= $_GET["tema_id"] ?>">
                                     <input type="hidden" name="tema_id" value="<?= $_GET["tema_id"] ?>">
@@ -158,6 +155,15 @@
                                     <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este comentario?')">Eliminar</button>
                                 </form>
                             <?php endif; ?>
+
+                            <?php
+                            $stmt = $pdo->prepare("SELECT COUNT(*) FROM me_gustas WHERE publicacion_id = :publicacion_id");
+                            $stmt->execute([':publicacion_id' => $publicacion['id']]);
+                            $me_gustas_count = $stmt->fetchColumn();
+                            ?>
+                            <p class="forum__post__descripcion"><?= $me_gustas_count ?> <i class="fas fa-heart" style="color: var(--button-bg-color-danger);"></i></p>
+
+                        
 
 
 

@@ -5,6 +5,9 @@
   --button-bg-color: #eebbc3;
   --button-bg-color-success: #2ecc71;
   --button-bg-color-success-hover: #27ae60;
+
+  --button-bg-color-danger: #e04444;
+  --button-bg-color-danger-hover: #df1b1b;
   --button-bg-color-hover: #e98b99;
   --button-text-color: #232946;
   --font-montserrat: "Montserrat", sans-serif;
@@ -238,7 +241,7 @@ input[type="email"] {
   border: none;
   outline: none;
   height: 40px;
-  background: #1c8acd;
+  background: var(--button-bg-color-success);
   color: #fff;
   font-size: 18px;
   border-radius: 20px;
@@ -321,14 +324,14 @@ input[type="email"] {
 }
 
 .card__button {
-  background-color: var(--button-bg-color);
+  background-color: var(--button-bg-color-success);
   color: var(--button-text-color);
   border: none;
   cursor: pointer;
 }
 
 .card__button:hover {
-  background-color: var(--button-bg-color-hover);
+  background-color: var(--button-bg-color-success-hover);
 }
 
 .card__time-container {
@@ -415,7 +418,7 @@ input[type="email"] {
   width: fit-content;
   margin: 20px auto;
   padding: 12px 20px;
-  background-color: #d9534f; /* Rojo peligro */
+  background-color: var(--button-bg-color-danger); /* Rojo peligro */
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -426,7 +429,7 @@ input[type="email"] {
 }
 
 .event__delete:hover {
-  background-color: #c9302c; /* Rojo más oscuro */
+  background-color: var(--button-bg-color-danger-hover); /* Rojo más oscuro */
 }
 
 .players {
@@ -439,7 +442,7 @@ input[type="email"] {
 }
 .players__remove,
 .delete-button {
-  background-color: #d9534f;
+  background-color: var(--button-bg-color-danger);
   color: white;
   border: none;
   padding: 5px 10px;
@@ -449,7 +452,7 @@ input[type="email"] {
 
 .players__remove:hover,
 .delete-button:hover {
-  background-color: #c9302c; /* Rojo más oscuro */
+  background-color: var(--button-bg-color-danger-hover); /* Rojo más oscuro */
 }
 
 .event__register {
@@ -458,7 +461,7 @@ input[type="email"] {
   width: fit-content;
   margin: 20px auto;
   padding: 12px 20px;
-  background-color: #28a745; /* Rojo peligro */
+  background-color: var(--button-bg-color-success); 
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -468,7 +471,7 @@ input[type="email"] {
   transition: background 0.3s ease-in-out;
 }
 .event__register:hover {
-  background-color: #0d7125; /* Rojo más oscuro */
+  background-color: var(--button-bg-color-success-hover); 
 }
 
 /*gestion usuario*/
@@ -539,8 +542,8 @@ input[type="email"] {
   display: block;
   width: 100%;
   padding: 10px;
-  background: var(--button-bg-color);
-  color: var(--button-text-color);
+  background: var(--button-bg-color-success);
+  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -548,7 +551,7 @@ input[type="email"] {
 }
 
 .button:hover {
-  background: var(--button-bg-color-hover);
+  background: var(--button-bg-color-success-hover);
 }
 
 /*tarjetas*/
@@ -602,23 +605,23 @@ input[type="password"] {
 /* Estilos de los botones */
 
 .button--save {
-  background: #28a745;
+  background: var(--button-bg-color-success);
   color: white;
   margin-top: 10px;
 }
 
 .button--save:hover {
-  background: #218838;
+  background: var(--button-bg-color-success-hover);
 }
 
 .button--delete {
-  background: #dc3545;
+  background: var(--button-bg-color-danger);
   color: white;
   margin-top: 10px;
 }
 
 .button--delete:hover {
-  background: #c82333;
+  background: var(--button-bg-color-danger-hover);
 }
 
 /* Mensajes */
@@ -895,6 +898,22 @@ input[type="password"] {
 .forum__post__descripcion{
   color: black ;
   text-align: justify;
+}
+
+.button--dislike{
+  background-color: var(--button-bg-color-danger) !important;
+
+}
+.button--dislike:hover{
+  background-color: var(--button-bg-color-danger-hover) !important;
+
+}
+
+.button--like{
+  background-color: var(--button-bg-color-success) !important;;
+}
+.button--like:hover{
+  background-color: var(--button-bg-color-success-hover) !important;;
 }
 /* Responsive Design */
 @media (max-width: 768px) {
