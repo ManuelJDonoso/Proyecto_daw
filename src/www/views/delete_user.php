@@ -1,5 +1,5 @@
 <div class="container-gestion">
-    <h2 class="title">Asignar rol a usuarios</h2>
+    <h2 class="title">Eliminar  usuarios</h2>
 
     <div class="filters">
         <input

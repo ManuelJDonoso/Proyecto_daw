@@ -51,7 +51,7 @@
 
 
         <?php
-        if ($usuario->get_rol() == "administrador" || $usuario->get_rol() == "moderador") {
+        if ($usuario->get_rol() == "administrador") {
             echo "   <li class='menu__item menu__item--has-submenu'>
             <a href='#' class='menu__link submenu-toggle'>Gestión de usuario</a>
             <ul class='submenu'>
