@@ -1,8 +1,24 @@
 <?php
-
-$query = "SELECT e.id, e.title, e.master, e.players, e.adults, e.image, e.date,
-                 (SELECT COUNT(*) FROM jugadores_eventos je WHERE je.fk_eventos = e.id) AS nJugadores
-          FROM eventos e";
+$nombre=$usuario->get_nombre_usuario();
+$query = "
+SELECT
+    e.id,
+    e.title,
+    e.master,
+    e.players,
+    e.adults,
+    e.image,
+    e.date,
+    (SELECT COUNT(*) FROM jugadores_eventos je WHERE je.fk_eventos = e.id) AS nJugadores
+FROM
+    eventos e
+INNER JOIN
+    jugadores_eventos je ON je.fk_eventos = e.id
+WHERE
+    je.nombre = '$nombre'
+GROUP BY
+    e.id, e.title, e.master, e.players, e.adults, e.image, e.date";
+         
 $stmt = $pdo->query($query);
 
 if ($stmt->rowCount() > 0) {

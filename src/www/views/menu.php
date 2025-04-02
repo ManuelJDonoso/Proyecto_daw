@@ -18,6 +18,10 @@
                 ?>
 
                 <li class="submenu__item"><a href="?pag=show_events" class="submenu__link">Mostrar eventos</a></li>
+                <?php if(!$es_visitante):?>
+                    <li class="submenu__item"><a href="?pag=show_my_events" class="submenu__link">Mostrar mis eventos</a></li>
+                <?php endif ?>
+
             </ul>
         </li>
         <li class="menu__item"><a href="?pag=calendar" class="menu__link">Calendario</a></li>
