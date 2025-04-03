@@ -12,6 +12,7 @@ require_once '../config/conexion.php'; // Ajusta la ruta según tu estructura
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tema_id'], $_POST['contenido'])) {
     $tema_id = intval($_POST['tema_id']);
     $contenido = trim($_POST['contenido']);
+    $categoria_id=intval($_POST['categoria_id']);
 
     // Verificar si el contenido no está vacío
     if (empty($contenido)) {
@@ -32,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tema_id'], $_POST['co
     $stmt->execute([$tema_id, $usuario->get_id(), $contenido]);
 
     // Redirigir al tema después de publicar
-    header("Location: ../index.php?pag=forum&tema_id=$tema_id");
+    header("Location: ../index.php?pag=forum&&categoria_id=$categoria_id&&tema_id=$tema_id");
     exit;
 }
 
