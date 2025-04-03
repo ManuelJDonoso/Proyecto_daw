@@ -93,3 +93,22 @@ makeResizable(document.getElementById("resizer2"), section2, section3);
 
 // Restaurar configuración al cargar la página
 restoreLayout();
+
+
+function toggleCrearTema() {
+  let container = document.getElementById("crearTemaContainer");
+  if (container.style.display === "none") {
+      container.style.display = "block";
+  } else {
+      container.style.display = "none";
+  }
+}
+
+function toggleCrearPlublicacion() {
+  let container = document.getElementById("crearPublicacionContainer");
+  if (container.style.display === "none") {
+      container.style.display = "block";
+  } else {
+      container.style.display = "none";
+  }
+}

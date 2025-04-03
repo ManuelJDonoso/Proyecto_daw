@@ -96,15 +96,22 @@
 
 
                     <?php if ($permitir_crear_temas): ?>
-                        <?php if ($es_admin || ($usuario && $categoria_id && in_array($usuario->get_rol(), ['moderador', 'jugador']))): ?>
-                            <form method="POST" action="controllers/add_tema.php">
-                                <input type="hidden" name="categoria_id" value="<?= $categoria_id ?>">
-                                <input type="text" name="titulo_tema" placeholder="Título del tema" required>
-                                <textarea name="contenido" class="textarea" required></textarea>
-                                <br>
-                                <button class="button-success" type="submit">Crear Tema</button>
-                            </form>
-                        <?php endif; ?>
+                        <button class="button-toggle" onclick="toggleCrearTema()">✏️ Crear Tema</button>
+
+                        <div id="crearTemaContainer" style="display: none; margin-top:10px;">
+
+                            <?php if ($es_admin || ($usuario && $categoria_id && in_array($usuario->get_rol(), ['moderador', 'jugador']))): ?>
+                                <form method="POST" action="controllers/add_tema.php">
+                                    <input type="hidden" name="categoria_id" value="<?= $categoria_id ?>">
+                                    <input type="text" name="titulo_tema" placeholder="Título del tema" required>
+                                    <textarea name="contenido" class="textarea" required></textarea>
+                                    <br>
+                                    <button class="button-success" type="submit">Crear Tema</button>
+                                </form>
+                            <?php endif; ?>
+
+                        </div>
+
                     <?php endif; ?>
 
                 </section>
@@ -187,12 +194,19 @@
 
                     <?php if ($usuario && $permitir_publicaciones): ?>
                         <?php if (!$es_visitante): ?>
-                            <form method="POST" action="controllers/add_publicacion.php">
-                                <input type="hidden" name="categoria_id" value="<?= $_GET["tema_id"] ?>">
-                                <input type="hidden" name="tema_id" value="<?= $tema_id ?>">
-                                <textarea name="contenido" placeholder="Escribe tu respuesta..." required></textarea>
-                                <button type="submit">Publicar</button>
-                            </form>
+
+                            <button class="button-toggle" onclick="toggleCrearPlublicacion()">✏️ Crear publicacion</button>
+
+                            <div id="crearPublicacionContainer" style="display: none; margin-top:10px;">
+
+                                <form method="POST" action="controllers/add_publicacion.php">
+                                    <input type="hidden" name="categoria_id" value="<?= $_GET["categoria_id"] ?>">
+                                    <input type="hidden" name="tema_id" value="<?= $tema_id ?>">
+                                    <textarea name="contenido" placeholder="Escribe tu respuesta..." required></textarea>
+                                    <button type="submit">Publicar</button>
+                                </form>
+                            </div>
+
                         <?php endif; ?>
                     <?php elseif (!$permitir_publicaciones): ?>
                         <p><strong>Las publicaciones en este tema están cerradas.</strong></p>
