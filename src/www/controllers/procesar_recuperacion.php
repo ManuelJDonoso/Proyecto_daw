@@ -1,36 +1,46 @@
 <?php
-require_once 'config/conexion.php'; // Archivo donde está la conexión con PDO
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once 'config/conexion.php';
+
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
 
-    // Verificar si el correo existe
     $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
     $stmt->execute([$email]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario) {
-        // Generar un token único
+        // Generar token
         $token = bin2hex(random_bytes(32));
-        $expiracion = date("Y-m-d H:i:s", strtotime("+1 hour")); // Expira en 1 hora
+        $expiracion = date("Y-m-d H:i:s", strtotime("+1 hour"));
 
-        // Guardar en la base de datos
         $stmt = $pdo->prepare("UPDATE usuarios SET reset_token = ?, token_expiracion = ? WHERE email = ?");
         $stmt->execute([$token, $expiracion, $email]);
 
-        // Enlace de recuperación
-        $link = "http://tusitio.com/cambiar_contrasena.php?token=" . $token;
+        $url = "http://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]";
+        
+        $link = $url."?pag=cambiar_contrasena&&token=$token";
+        
 
-        // Enviar correo (ajusta mail() o usa PHPMailer para mejor compatibilidad)
-        $asunto = "Recuperación de Contraseña";
-        $mensaje = "Hola, usa el siguiente enlace para restablecer tu contraseña: $link";
-        $cabeceras = "From: no-reply@tusitio.com\r\n";
+        // Configurar PHPMailer
+        
+        try {
+            require_once 'config/php_mailer_conf.php';
+            $mail->Body = "Hola, usa el siguiente enlace para restablecer tu contraseña: $link";
 
-        mail($email, $asunto, $mensaje, $cabeceras);
-
-        echo "Se ha enviado un enlace a tu correo.";
+            $mail->send();
+            echo "Correo enviado con éxito.";
+        } catch (Exception $e) {
+            echo "Error al enviar correo: {$mail->ErrorInfo}";
+        }
     } else {
         echo "El correo no está registrado.";
     }
 }
 ?>
+
