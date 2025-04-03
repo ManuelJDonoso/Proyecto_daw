@@ -1,7 +1,10 @@
 const section1 = document.querySelector(".section--one");
 const section2 = document.querySelector(".section--two");
 const section3 = document.querySelector(".section--three");
+const ico_show_cat=document.getElementById("ico_cat");
 const toggleButton = document.getElementById("toggleSection1");
+
+
 
 // Restaurar posiciones guardadas
 function restoreLayout() {
@@ -35,14 +38,23 @@ function saveLayout() {
 }
 
 toggleButton.addEventListener("click", () => {
+  if(section1.classList.contains("section--hidden")){
+    ico_show_cat.classList.remove("fa-eye-slash");
+  }else{
+    ico_show_cat.classList.add("fa-eye-slash");
+  }
+
   if (section1.classList.contains("section--hidden")) {
     section1.classList.remove("section--hidden");
     section2.style.flexBasis = "33.3%";
     section3.style.flexBasis = "33.3%";
+  
+  
   } else {
     section1.classList.add("section--hidden");
     section2.style.flexBasis = "33.3%";
     section3.style.flexBasis = "66.6%";
+
   }
   saveLayout();
 });

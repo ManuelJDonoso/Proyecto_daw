@@ -2,7 +2,7 @@
 <div class="foro">
     <h1 class="forum__title">Foro</h1>
     <div class="controls">
-        <button id="toggleSection1">Mostrar/Ocultar Sección 1</button>
+        <button id="toggleSection1"> <i id="ico_cat" class="fa-solid fa-eye"></i> categorias</button>
     </div>
 
     <div class="container">
@@ -128,64 +128,61 @@
                         <p class="forum__post__descripcion"><?= nl2br(htmlspecialchars($tema_contenido)) ?></p>
                     <?php endif; ?>
 
-                    <ul>
-                        <?php if (count($publicaciones) > 0): ?>
-                            <?php foreach ($publicaciones as $publicacion): ?>
-                                <li>
-                                    <p class="forum__post__descripcion"><strong><?= htmlspecialchars($publicacion['nombre_usuario']) ?>:</strong> <?= htmlspecialchars($publicacion['contenido']) ?></p>
-
-
-                                </li>
-
-
-                                <!-- Botón Me gusta con icono de Font Awesome -->
-                                <form method="post" style="display:inline;">
-                                    <input type="hidden" name="publicacion_id" value="<?= $publicacion['id'] ?>">
-                                    <?php
-                                    $stmt = $pdo->prepare("SELECT * FROM me_gustas WHERE publicacion_id = :publicacion_id AND usuario_id = :usuario_id");
-                                    $stmt->execute([
-                                        ':publicacion_id' => $publicacion['id'],
-                                        ':usuario_id' => $usuario->get_id()
-                                    ]);
-                                    $me_gusta = $stmt->fetch();
-                                    ?>
-                                    <?php if ($me_gusta): ?>
-                                        <button type="submit" name="dar_me_gusta" class="button--dislike">
-                                            <i class="fas fa-heart"></i> Ya no me gusta
-                                        </button>
-                                    <?php else: ?>
-                                        <button type="submit" name="dar_me_gusta" class="button--like">
-                                            <i class="far fa-heart"></i> Me gusta
-                                        </button>
-                                    <?php endif; ?>
-                                </form>
-                                <!-- boton para eliminar -->
-
-                                <?php if ($es_moderador || $es_admin || $publicacion["nombre_usuario"] === $usuario->get_nombre_usuario()): ?>
-                                    <form method="POST" action="controllers/delete_publicacion.php" style="display:inline;">
-                                        <input type="hidden" name="categoria_id" value="<?= $_GET["tema_id"] ?>">
-                                        <input type="hidden" name="tema_id" value="<?= $_GET["tema_id"] ?>">
+                    <?php if (count($publicaciones) > 0): ?>
+                        <?php foreach ($publicaciones as $publicacion): ?>
+                            <div class="card-post">
+                                <!--  *****************************nombre del usuario que crea la publicacion********************************* -->
+                                <div class="card-post__header">
+                                    <p class="card-post__user"><strong><?= htmlspecialchars($publicacion['nombre_usuario']) ?>:</strong></p>
+                                </div>
+                                <!-- ************************************publicacion ********************************************-->
+                                <div class="card-post__body">
+                                    <p class="card-post__content"> <?= htmlspecialchars($publicacion['contenido']) ?></p>
+                                </div>
+                                <!-- *************************************botones *****************************************************-->
+                                <div class="card-post__footer">
+                                    <form method="post" class="card-post__like-form">
                                         <input type="hidden" name="publicacion_id" value="<?= $publicacion['id'] ?>">
-                                        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este comentario?')">Eliminar</button>
+                                        <?php
+                                        $stmt = $pdo->prepare("SELECT * FROM me_gustas WHERE publicacion_id = :publicacion_id AND usuario_id = :usuario_id");
+                                        $stmt->execute([
+                                            ':publicacion_id' => $publicacion['id'],
+                                            ':usuario_id' => $usuario->get_id()
+                                        ]);
+                                        $me_gusta = $stmt->fetch();
+                                        ?>
+                                        <?php if ($me_gusta): ?>
+                                            <button type="submit" name="dar_me_gusta" class="button button--dislike">
+                                                <i class="fas fa-heart"></i> Ya no me gusta
+                                            </button>
+                                        <?php else: ?>
+                                            <button type="submit" name="dar_me_gusta" class="button button--like">
+                                                <i class="far fa-heart"></i> Me gusta
+                                            </button>
+                                        <?php endif; ?>
                                     </form>
-                                <?php endif; ?>
 
-                                <?php
-                                $stmt = $pdo->prepare("SELECT COUNT(*) FROM me_gustas WHERE publicacion_id = :publicacion_id");
-                                $stmt->execute([':publicacion_id' => $publicacion['id']]);
-                                $me_gustas_count = $stmt->fetchColumn();
-                                ?>
-                                <p class="forum__post__descripcion"><?= $me_gustas_count ?> <i class="fas fa-heart" style="color: var(--button-bg-color-danger);"></i></p>
+                                    <?php if ($es_moderador || $es_admin || $publicacion["nombre_usuario"] === $usuario->get_nombre_usuario()): ?>
+                                        <form method="POST" action="controllers/delete_publicacion.php" class="card-post__delete-form">
+                                            <input type="hidden" name="categoria_id" value="<?= $_GET["tema_id"] ?>">
+                                            <input type="hidden" name="tema_id" value="<?= $_GET["tema_id"] ?>">
+                                            <input type="hidden" name="publicacion_id" value="<?= $publicacion['id'] ?>">
+                                            <button type="submit" class="button button--delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este comentario?')">Eliminar</button>
+                                        </form>
+                                    <?php endif; ?>
 
-
-
-
-
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <p>No hay publicaciones en este tema.</p>
-                        <?php endif; ?>
-                    </ul>
+                                    <?php
+                                    $stmt = $pdo->prepare("SELECT COUNT(*) FROM me_gustas WHERE publicacion_id = :publicacion_id");
+                                    $stmt->execute([':publicacion_id' => $publicacion['id']]);
+                                    $me_gustas_count = $stmt->fetchColumn();
+                                    ?>
+                                    <p class="card-post__likes"> <?= $me_gustas_count ?> <i class="fas fa-heart" style="color: var(--button-bg-color-danger);"></i></p>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="forum__no-posts">No hay publicaciones en este tema.</p>
+                    <?php endif; ?>
 
 
                     <?php if ($usuario && $permitir_publicaciones): ?>

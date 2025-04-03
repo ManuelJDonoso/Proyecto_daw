@@ -982,3 +982,55 @@ input[type="password"] {
 
 
 }
+
+.card-post {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 20px 0 20px 30px;
+}
+
+.card-post__header {
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+}
+
+.card-post__user {
+  margin: 0;
+}
+
+.card-post__body {
+  font-size: 1rem;
+  color: #555;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.card-post__content {
+  margin: 0;
+}
+
+.card-post__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-post__like-form,
+.card-post__delete-form {
+  display: inline;
+ 
+}
+
+
+
+
+.card-post__likes {
+  font-size: 0.9rem;
+  color: #777;
+}
