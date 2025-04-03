@@ -19,7 +19,7 @@
         placeholder="introduce la contraseña"
       />
       <input type="submit" value="Ingresar" />
-      <a href="#">Contraseña olvidada</a>
-      <a class="btn_go_Creat_acount" data-page="login.html" href="creat_account.php" >Crear Cuenta</a>
+      <a href="?pag=recuperar">Contraseña olvidada</a>
+      <a class="btn_go_Creat_acount" data-page="login.html" href="?pag=creat_account" >Crear Cuenta</a>
     </form>
   </section>

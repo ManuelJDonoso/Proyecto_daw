@@ -78,7 +78,15 @@ $pdo = require_once 'config/conexion.php';
                     case 'show_my_events':
                         include_once "views/show_my_events.php";
                         break;
-
+                    case 'recuperar':
+                        include_once "views/recuperar.php";
+                        break;
+                    case 'procesar_recuperacion':
+                        include_once "views/procesar_recuperacion.php";
+                        break;
+                    case 'cambiar_contrasena':
+                        include_once "views/cambiar_contrasena.php";
+                        break;
 
                     default:
                         include_once "views/pag_err.php";
