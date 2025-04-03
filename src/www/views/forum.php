@@ -6,6 +6,7 @@
     </div>
 
     <div class="container">
+        <!-- **************************************************************seccion 1************************************************* -->
         <div class="section section--one ">
             <section class="forum__column forum__categories">
                 <h2 class="forum__subtitle">Categorías</h2>
@@ -57,6 +58,7 @@
                     <ul>
                         <?php if (count($temas) > 0): ?>
                             <?php foreach ($temas as $tema): ?>
+                                <!-- ***********************************titulo*********************************** -->
                                 <li>
                                     <a href="?pag=forum&categoria_id=<?= $categoria_id ?>&tema_id=<?= $tema['id'] ?>">
                                         <?= htmlspecialchars($tema['titulo']) ?>
@@ -67,7 +69,7 @@
 
 
                                 </li>
-
+                                <!-- **************************************************botones************************************* -->
                                 <?php if ($es_admin || $es_moderador || $usuario->get_nombre_usuario() === $tema['nombre_usuario']): ?>
                                     <!-- Botón Eliminar Tema con confirmación -->
                                     <form method="POST" action="controllers/eliminar_tema.php" style="display:inline;">

@@ -7,6 +7,7 @@ session_start();
 // Verificar si se recibió el ID del tema a modificar
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tema_id'])) {
     $tema_id = $_POST['tema_id'];
+    $categoria_id=$_POST['categora_id'];
 
     try {
         // Obtener el estado actual de permitir publicaciones
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tema_id'])) {
             $stmt = $pdo->prepare("UPDATE temas SET permitir_publicaciones = ? WHERE id = ?");
             $stmt->execute([$nuevo_estado, $tema_id]);
 
-            header("Location: ../index.php?pag=forum&&categoria_id=".$_POST["categora_id"]);  // Redirigir al foro
+            header("Location: ../index.php?pag=forum&&categoria_id=$categoria_id&&tema_id=$tema_id");  // Redirigir al foro
             exit;
         } else {
             die("Tema no encontrado");
