@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($usuario) {
         // Generar token
         $token = bin2hex(random_bytes(32));
-        $expiracion = date("Y-m-d H:i:s", strtotime("+1 hour"));
+        $expiracion = date("Y-m-d H:i:s", strtotime("+24 hour"));
 
         $stmt = $pdo->prepare("UPDATE usuarios SET reset_token = ?, token_expiracion = ? WHERE email = ?");
         $stmt->execute([$token, $expiracion, $email]);

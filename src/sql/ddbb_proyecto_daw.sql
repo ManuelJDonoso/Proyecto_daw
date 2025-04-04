@@ -2,7 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Tiempo de generación: 01-04-2025 
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 04-04-2025 a las 10:28:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -95,8 +96,9 @@ CREATE TABLE `jugadores_eventos` (
 --
 
 INSERT INTO `jugadores_eventos` (`id`, `nombre`, `fk_eventos`) VALUES
-(7, 'jugador1', 3),
-(6, 'jugador1', 4),
+(10, 'jugador1', 1),
+(9, 'jugador1', 2),
+(11, 'jugador1', 3),
 (2, 'manuel', 1),
 (3, 'manuel', 2),
 (4, 'manuel', 3),
@@ -116,6 +118,15 @@ CREATE TABLE `me_gustas` (
   `usuario_id` int(11) NOT NULL COMMENT 'ID del usuario que dio "Me Gusta"',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Fecha y hora del "Me Gusta"'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `me_gustas`
+--
+
+INSERT INTO `me_gustas` (`id`, `publicacion_id`, `usuario_id`, `created_at`) VALUES
+(7, 1, 2, '2025-04-02 15:22:13'),
+(41, 1, 1, '2025-04-03 09:26:16'),
+(45, 2, 1, '2025-04-03 14:39:20');
 
 -- --------------------------------------------------------
 
@@ -187,9 +198,10 @@ INSERT INTO `temas` (`id`, `categoria_id`, `titulo`, `contenido`, `usuario_id`, 
 (1, 1, 'Normas generales', '1. Respeto y Cortesía\r\n\r\n    Trato Respetuoso: Trata a todos los demás usuarios con respeto y cortesía. No uses lenguaje ofensivo, insultos, o cualquier forma de acoso.\r\n    Diversidad y Aceptación: Acepta y respeta las diferencias de opinión, cultura, género, religión y orientación sexual. Promueve un ambiente inclusivo.\r\n\r\n2. Contenido Apropiado\r\n\r\n    Contenido Legal: No publiques contenido que sea ilegal, incluyendo material pornográfico, violento, o que promueva actividades ilegales.\r\n    Copyright y Derechos de Autor: No publiques contenido que infrinja derechos de autor o propiedad intelectual sin permiso del propietario original.\r\n    Spam y Publicidad: Evita el spam y la publicidad no solicitada. No publiques enlaces o contenido promocional que no esté relacionado con el tema del foro.\r\n\r\n3. Privacidad y Seguridad\r\n\r\n    Información Personal: No compartas información personal tuya o de otros sin su consentimiento explícito. Esto incluye direcciones, números de teléfono, correos electrónicos, etc.\r\n    Seguridad: No publiques contenido que pueda ser considerado como phishing o que pueda comprometer la seguridad de otros usuarios.\r\n\r\n4. Comportamiento en el Foro\r\n\r\n    Publicaciones Relevantes: Asegúrate de que tus publicaciones estén relacionadas con el tema del foro. Evita el off-topic.\r\n    No Duplicar Publicaciones: No publiques el mismo mensaje en múltiples hilos o secciones del foro.\r\n    Firma de Usuario: Si tienes una firma, asegúrate de que no sea excesivamente larga ni contenga contenido ofensivo o inapropiado.\r\n\r\n5. Interacción y Comunicación\r\n\r\n    Diálogo Constructivo: Participa en discusiones de manera constructiva. Evita los debates estériles y trata de aportar valor a las conversaciones.\r\n    Resolución de Conflictos: Si tienes un problema con otro usuario, intenta resolverlo de manera civilizada. Si no puedes, contacta a un moderador.\r\n    Reportar Problemas: Si ves contenido inapropiado o conducta que viola las normas del foro, reporta el problema a los moderadores.\r\n\r\n6. Uso de Imágenes y Multimedia\r\n\r\n    Imágenes Apropiadas: No subas imágenes que sean explícitas, violentas, o que puedan ser consideradas ofensivas.\r\n    Tamaño y Formato: Asegúrate de que las imágenes y otros archivos multimedia estén en un tamaño y formato adecuado para el foro.\r\n\r\n7. Moderación y Administración\r\n\r\n    Respetar a los Moderadores: Los moderadores están aquí para mantener el orden y aplicar las normas. Respetar sus decisiones y siguen sus instrucciones.\r\n    Sanciones: La violación de estas normas puede resultar en advertencias, suspensión temporal o expulsión permanente del foro, dependiendo de la gravedad de la infracción.\r\n\r\n8. Actualizaciones y Cambios\r\n\r\n    Normas en Evolución: Estas normas pueden ser actualizadas o modificadas según sea necesario. Es responsabilidad de los usuarios estar informados sobre los cambios.', 1, '2025-04-01 11:24:09', 0),
 (2, 2, 'Presentación', 'Te recomendamos que publiques una presentación en la sección correspondiente. Puedes incluir:\r\n\r\n    Tu nombre (si deseas).\r\n    Un poco sobre ti y tus intereses.\r\n    Por qué te uniste a este foro.', 1, '2025-04-01 11:30:23', 1),
 (3, 2, 'dudas o sugerencias', 'Detalle en la Pregunta: Sé lo más específico posible al formular tu pregunta. Incluye detalles relevantes y contexto para que otros usuarios puedan entender mejor tu problema.\r\n\r\nSugerencias Constructivas: Formula tus sugerencias de manera constructiva y respetuosa. Proporciona razones claras y posibles soluciones.\r\nDetalle en la Sugerencia: Sé lo más específico posible al describir tu sugerencia. Incluye cómo crees que mejorará el foro y por qué es importante.', 1, '2025-04-01 11:32:54', 1),
-(4, 4, 'El Legado de las Sombras', 'En el antiguo reino de Eldoria, una antigua profecía ha comenzado a cumplirse. Durante siglos, se ha contado que cuando la luna se alinee con las estrellas de la constelación de la Serpiente, un legado oscuro resurgirá de las sombras. Este legado, conocido como \"El Legado de las Sombras\", es un poder antiguo que ha sido sellado durante generaciones para proteger al mundo de sus peligros.\r\nHace poco, una serie de eventos extraños ha comenzado a suceder en Eldoria. Antiguos símbolos han aparecido en las ruinas de un templo olvidado, y se han reportado avistamientos de criaturas que no deberían existir. Los aldeanos hablan en susurros de una presencia oscura que se cierne sobre el reino.\r\nLos jugadores son un grupo de aventureros que han sido reunidos por un misterioso erudito que cree que la profecía está a punto de cumplirse. Él les ha proporcionado una antigua runa que brilla con una luz tenue, y les ha dicho que es la clave para desentrañar el legado oscuro antes de que sea demasiado tarde.\r\nPuntos de partida:\r\n\r\n    El Encuentro Inicial: Los jugadores se reúnen en una taberna conocida como \"El Dragón Dormido\", donde el erudito les revela la profecía y les muestra la runa.\r\n    La Ruina Olvidada: El primer destino es un templo en ruinas en el bosque oscuro de Eldoria, donde los símbolos antiguos han aparecido.\r\n    Criaturas de la Oscuridad: En el camino, los jugadores se enfrentarán a criaturas que han sido corrompidas por el legado oscuro, como lobos con ojos rojos y espectros que vagan por el bosque.\r\n    El Pueblo Amenazado: Un pequeño pueblo cercano al templo ha comenzado a sufrir ataques nocturnos. Los aldeanos están asustados y necesitan ayuda para protegerse.\r\n    El Corazón del Misterio: Dentro del templo, los jugadores encontrarán pistas que los llevarán a un antiguo libro de hechizos y un mapa que indica la ubicación de otros lugares clave en el reino.', 1, '2025-04-01 11:37:19', 1),
+(4, 4, 'El Legado de las Sombras', 'En el antiguo reino de Eldoria, una antigua profecía ha comenzado a cumplirse. Durante siglos, se ha contado que cuando la luna se alinee con las estrellas de la constelación de la Serpiente, un legado oscuro resurgirá de las sombras. Este legado, conocido como \"El Legado de las Sombras\", es un poder antiguo que ha sido sellado durante generaciones para proteger al mundo de sus peligros.\r\nHace poco, una serie de eventos extraños ha comenzado a suceder en Eldoria. Antiguos símbolos han aparecido en las ruinas de un templo olvidado, y se han reportado avistamientos de criaturas que no deberían existir. Los aldeanos hablan en susurros de una presencia oscura que se cierne sobre el reino.\r\nLos jugadores son un grupo de aventureros que han sido reunidos por un misterioso erudito que cree que la profecía está a punto de cumplirse. Él les ha proporcionado una antigua runa que brilla con una luz tenue, y les ha dicho que es la clave para desentrañar el legado oscuro antes de que sea demasiado tarde.\r\nPuntos de partida:\r\n\r\n    El Encuentro Inicial: Los jugadores se reúnen en una taberna conocida como \"El Dragón Dormido\", donde el erudito les revela la profecía y les muestra la runa.\r\n    La Ruina Olvidada: El primer destino es un templo en ruinas en el bosque oscuro de Eldoria, donde los símbolos antiguos han aparecido.\r\n    Criaturas de la Oscuridad: En el camino, los jugadores se enfrentarán a criaturas que han sido corrompidas por el legado oscuro, como lobos con ojos rojos y espectros que vagan por el bosque.\r\n    El Pueblo Amenazado: Un pequeño pueblo cercano al templo ha comenzado a sufrir ataques nocturnos. Los aldeanos están asustados y necesitan ayuda para protegerse.\r\n    El Corazón del Misterio: Dentro del templo, los jugadores encontrarán pistas que los llevarán a un antiguo libro de hechizos y un mapa que indica la ubicación de otros lugares clave en el reino.', 1, '2025-04-01 11:37:19', 0),
 (5, 4, 'El Canto del Fénix', 'En el reino de Solaria, una tierra bañada por el sol y conocida por su magia elemental, se ha perdido el equilibrio. Hace décadas, el Fénix, un ser mítico y guardián del equilibrio elemental, desapareció sin dejar rastro. Desde entonces, los elementos han comenzado a descontrolarse: tormentas inesperadas, sequías prolongadas y terremotos han azotado el reino.\r\nLos jugadores son un grupo de aventureros seleccionados por el Consejo de los Elementos, un grupo de sabios y magos que buscan restablecer el equilibrio. El Consejo ha descubierto que el Fénix no ha desaparecido por completo, sino que está atrapado en un ciclo de renacimiento fallido, y su energía se está dispersando en fragmentos por todo el reino.\r\nPuntos de partida:\r\n\r\n    El Encuentro Inicial: Los jugadores son convocados al Templo del Equilibrio, donde el Consejo de los Elementos les revela la situación y les encomienda la misión de encontrar y reunir los fragmentos del Fénix.\r\n    \r\n    La Primera Prueba: El primer fragmento se encuentra en una antigua ciudad desértica, donde un espíritu del fuego está causando estragos. Los jugadores deben enfrentarse al espíritu y recuperar el fragmento.´\r\n\r\n    El Bosque Encantado: Otro fragmento está escondido en el corazón de un bosque encantado, protegido por criaturas mágicas y un druida guardian. Los jugadores deben demostrar su respeto por la naturaleza para obtener el fragmento.\r\n\r\n    El Abismo de Hielo: En una región helada y remota, un fragmento está siendo custodiado por un antiguo guardián de hielo. Los jugadores deben superar los desafíos del frío y resolver un acertijo para recuperarlo.\r\n\r\n    El Templo Subterráneo: El último fragmento se encuentra en un templo subterráneo, donde un culto oscuro intenta aprovechar su poder para sus propios fines. Los jugadores deben infiltrarse y detener al culto antes de que sea demasiado tarde.', 1, '2025-04-01 11:39:31', 1),
-(6, 4, 'La Maldición del Espejo Oscuro', 'En el reino de Nocturnia, una tierra conocida por sus antiguas leyendas y misterios, se ha desencadenado una maldición que ha sumido al reino en el caos. La fuente de esta maldición es un antiguo espejo mágico conocido como \"El Espejo Oscuro\", que ha sido robado de su lugar de descanso en el Templo de la Luz.\r\nEl Espejo Oscuro tiene el poder de reflejar y amplificar los peores miedos y deseos de aquellos que lo miran, y su poder ha comenzado a corromper a los habitantes del reino, haciéndolos actuar de manera irracional y violenta. Los aldeanos hablan de visiones perturbadoras y de una presencia oscura que se cierne sobre ellos.\r\n\r\nLos jugadores son un grupo de aventureros elegidos por la Alta Sacerdotisa del Templo de la Luz, quien cree que solo ellos pueden recuperar el Espejo Oscuro y detener la maldición antes de que sea demasiado tarde.\r\n\r\nPuntos de partida:\r\n\r\n    El Encuentro Inicial: Los jugadores son convocados al Templo de la Luz, donde la Alta Sacerdotisa les revela la historia del Espejo Oscuro y les encomienda la misión de recuperarlo.\r\n\r\n    El Bosque Encantado: El primer destino es un bosque encantado donde se ha visto por última vez al ladrón que robó el espejo. Los jugadores deben enfrentarse a criaturas mágicas y resolver acertijos para encontrar pistas sobre el paradero del espejo.\r\n\r\n    La Ciudad Perdida: Los jugadores descubren que el espejo ha sido llevado a una antigua ciudad perdida, donde un culto oscuro lo está usando para aumentar su poder. Los jugadores deben infiltrarse en la ciudad y enfrentarse al culto.\r\n\r\n    El Castillo de la Sombra: El espejo ha sido trasladado a un castillo en ruinas, donde un antiguo vampiro lo está usando para fortalecer su dominio sobre la región. Los jugadores deben superar las defensas del castillo y enfrentarse al vampiro.\r\n\r\n    El Templo de la Luz: Una vez que los jugadores han recuperado el espejo, deben devolverlo al Templo de la Luz para realizar un ritual que lo purifique y detenga la maldición.', 1, '2025-04-01 11:43:07', 1);
+(6, 4, 'La Maldición del Espejo Oscuro', 'En el reino de Nocturnia, una tierra conocida por sus antiguas leyendas y misterios, se ha desencadenado una maldición que ha sumido al reino en el caos. La fuente de esta maldición es un antiguo espejo mágico conocido como \"El Espejo Oscuro\", que ha sido robado de su lugar de descanso en el Templo de la Luz.\r\nEl Espejo Oscuro tiene el poder de reflejar y amplificar los peores miedos y deseos de aquellos que lo miran, y su poder ha comenzado a corromper a los habitantes del reino, haciéndolos actuar de manera irracional y violenta. Los aldeanos hablan de visiones perturbadoras y de una presencia oscura que se cierne sobre ellos.\r\n\r\nLos jugadores son un grupo de aventureros elegidos por la Alta Sacerdotisa del Templo de la Luz, quien cree que solo ellos pueden recuperar el Espejo Oscuro y detener la maldición antes de que sea demasiado tarde.\r\n\r\nPuntos de partida:\r\n\r\n    El Encuentro Inicial: Los jugadores son convocados al Templo de la Luz, donde la Alta Sacerdotisa les revela la historia del Espejo Oscuro y les encomienda la misión de recuperarlo.\r\n\r\n    El Bosque Encantado: El primer destino es un bosque encantado donde se ha visto por última vez al ladrón que robó el espejo. Los jugadores deben enfrentarse a criaturas mágicas y resolver acertijos para encontrar pistas sobre el paradero del espejo.\r\n\r\n    La Ciudad Perdida: Los jugadores descubren que el espejo ha sido llevado a una antigua ciudad perdida, donde un culto oscuro lo está usando para aumentar su poder. Los jugadores deben infiltrarse en la ciudad y enfrentarse al culto.\r\n\r\n    El Castillo de la Sombra: El espejo ha sido trasladado a un castillo en ruinas, donde un antiguo vampiro lo está usando para fortalecer su dominio sobre la región. Los jugadores deben superar las defensas del castillo y enfrentarse al vampiro.\r\n\r\n    El Templo de la Luz: Una vez que los jugadores han recuperado el espejo, deben devolverlo al Templo de la Luz para realizar un ritual que lo purifique y detenga la maldición.', 1, '2025-04-01 11:43:07', 1),
+(7, 4, 'La Espada Perdida de Avalon', 'En el reino de Avalon, una tierra mítica conocida por su magia y leyendas, se ha perdido una reliquia antigua y poderosa: la Espada de Avalon. Esta espada, forjada por los dioses y dotada de poderes mágicos, ha sido robada de su lugar de descanso en el Castillo de la Colina.\r\nLa Espada de Avalon no es solo una reliquia valiosa; es la única arma capaz de derrotar a la oscuridad que se cierne sobre el reino. Hace décadas, un antiguo mal conocido como el Señor de las Sombras fue sellado por la espada, pero ahora ha comenzado a despertar. Sin la espada, el reino está en peligro.\r\nLos jugadores son un grupo de aventureros elegidos por la Reina de Avalon, quien cree que solo ellos pueden recuperar la espada y detener el despertar del Señor de las Sombras.\r\n\r\nPuntos de partida:\r\n\r\n    El Encuentro Inicial: Los jugadores son convocados al Castillo de la Colina, donde la Reina de Avalon les revela la historia de la Espada de Avalon y les encomienda la misión de recuperarla.\r\n\r\n    El Bosque Encantado: El primer destino es un bosque encantado donde se ha visto por última vez a los ladrones que robaron la espada. Los jugadores deben enfrentarse a criaturas mágicas y resolver acertijos para encontrar pistas sobre el paradero de la espada.\r\n\r\n    La Ciudad Perdida: Los jugadores descubren que la espada ha sido llevada a una antigua ciudad perdida, donde un culto oscuro la está usando para aumentar su poder. Los jugadores deben infiltrarse en la ciudad y enfrentarse al culto.\r\n\r\n    El Castillo de las Sombras: La espada ha sido trasladada a un castillo en ruinas, donde un antiguo vampiro la está usando para fortalecer su dominio sobre la región. Los jugadores deben superar las defensas del castillo y enfrentarse al vampiro.\r\n\r\n    El Templo de la Luz: Una vez que los jugadores han recuperado la espada, deben devolverla al Castillo de la Colina para realizar un ritual que la purifique y detenga el despertar del Señor de las Sombras.', 2, '2025-04-01 15:20:18', 1);
 
 -- --------------------------------------------------------
 
@@ -204,21 +216,23 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(100) NOT NULL COMMENT 'Nombre completo',
   `email` varchar(100) NOT NULL COMMENT 'Correo electrónico',
   `password` varchar(255) NOT NULL COMMENT 'Contraseña encriptada',
-  `rol_id` int(11) DEFAULT 1 COMMENT 'Rol del usuario (relación con la tabla roles)'
+  `rol_id` int(11) DEFAULT 1 COMMENT 'Rol del usuario (relación con la tabla roles)',
+  `reset_token` varchar(255) DEFAULT NULL COMMENT 'token para validar el cambio de contrasena',
+  `token_expiracion` datetime DEFAULT NULL COMMENT 'fecha a la que el token deja de ser valido'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre_usuario`, `nombre`, `email`, `password`, `rol_id`) VALUES
-(1, 'manuel', 'manuel j', 'donperma@gmail.com', '$2y$10$5LuEoH3rWbwzcxUQxG9zuOGPVd8/lylvAfBz0JMy4pSZIhYWljR7q', 4),
-(2, 'jugador1', 'jugador1', 'jugador@example.com', '$2y$10$ntmxW3fQjRu.iHXCsL6AUu9lxPgOd3wgOn6Pv6u55nM9qymB3.wou', 2),
-(3, 'jugador2', 'jugador2', 'jugador2@example.com', '$2y$10$Tkagh/ayTUklr7/9z8.AdeV9OD9RZIJp6haYB41/BSNUmsuSmxhwi', 2),
-(4, 'jugador3', 'jugador3', 'jugador3@example.com', '$2y$10$DBxdcfBtrbrLWkZZjkb.DeLRZVaKG6ko/IY.ca2wytHSf3K.G.yMu', 2),
-(5, 'moderador', 'moderador', 'moderador@example.com', '$2y$10$IyenvWzOQSoiHL6vIdOxg.SJBqik/GF2n..jNZXod.s47VvlRL1ZS', 3),
-(6, 'moderador2', 'moderador2', 'moderador2@example.com', '$2y$10$vSHN5Gdmg17ftmemoqX72eKLrLm2W7DuKcAaQUx88NoHQtrfW6GZ6', 3),
-(7, 'administrador', 'administrador', 'administrador@example.com', '$2y$10$6iIDy8x.vxLYa.wXFGZRBeYQsnefKWVGAK/dzGos5.sSZPnoCRt5W', 4);
+INSERT INTO `usuarios` (`id`, `nombre_usuario`, `nombre`, `email`, `password`, `rol_id`, `reset_token`, `token_expiracion`) VALUES
+(1, 'manuel', 'manuel j', 'donperma@gmail.com', '$2y$10$zpuNuYz1dMt6ubGfejSIhuKLknmnFqb6Bl6.dqeI69fgTi/zIEIwa', 4, NULL, NULL),
+(2, 'jugador1', 'jugador1', 'jugador@example.com', '$2y$10$ntmxW3fQjRu.iHXCsL6AUu9lxPgOd3wgOn6Pv6u55nM9qymB3.wou', 2, 'f9b1624a933c299d04871faee53e5a14cfb63949be48176aabf9c87c5ac4eb49', '2025-04-04 11:08:14'),
+(3, 'jugador2', 'jugador2', 'jugador2@example.com', '$2y$10$Tkagh/ayTUklr7/9z8.AdeV9OD9RZIJp6haYB41/BSNUmsuSmxhwi', 2, NULL, NULL),
+(4, 'jugador3', 'jugador3', 'jugador3@example.com', '$2y$10$DBxdcfBtrbrLWkZZjkb.DeLRZVaKG6ko/IY.ca2wytHSf3K.G.yMu', 2, NULL, NULL),
+(5, 'moderador', 'moderador', 'moderador@example.com', '$2y$10$IyenvWzOQSoiHL6vIdOxg.SJBqik/GF2n..jNZXod.s47VvlRL1ZS', 3, NULL, NULL),
+(6, 'moderador2', 'moderador2', 'moderador2@example.com', '$2y$10$vSHN5Gdmg17ftmemoqX72eKLrLm2W7DuKcAaQUx88NoHQtrfW6GZ6', 3, NULL, NULL),
+(7, 'administrador', 'administrador', 'administrador@example.com', '$2y$10$6iIDy8x.vxLYa.wXFGZRBeYQsnefKWVGAK/dzGos5.sSZPnoCRt5W', 4, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -303,19 +317,19 @@ ALTER TABLE `eventos`
 -- AUTO_INCREMENT de la tabla `jugadores_eventos`
 --
 ALTER TABLE `jugadores_eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `me_gustas`
 --
 ALTER TABLE `me_gustas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -327,7 +341,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `temas`
 --
 ALTER TABLE `temas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
