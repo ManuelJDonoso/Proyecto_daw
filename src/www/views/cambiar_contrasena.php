@@ -14,6 +14,6 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
         <h2>Restablecer Contraseña</h2>
         <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
         <input type="password" name="password" placeholder="Nueva Contraseña" required>
-        <button type="submit">Actualizar Contraseña</button>
+        <button  class="btn_recuperar" type="submit">Actualizar Contraseña</button>
 </form>
 <?php endif ?>

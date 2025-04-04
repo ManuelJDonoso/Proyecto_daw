@@ -1034,3 +1034,21 @@ input[type="password"] {
   font-size: 0.9rem;
   color: #777;
 }
+/**************/
+.btn_recuperar {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: var(--button-bg-color-success);
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.btn_recuperar:hover {
+  cursor: pointer;
+  background: #05dd46;
+  color: black;
+}
