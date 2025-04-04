@@ -10,7 +10,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
     <p>El enlace ha expirado o es inválido.</p>
 <?php else: ?>
 
-<form action="actualizar_contrasena.php" method="POST">
+<form action="?pag=actualizar_contrasena" method="POST">
         <h2>Restablecer Contraseña</h2>
         <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
         <input type="password" name="password" placeholder="Nueva Contraseña" required>

@@ -87,6 +87,9 @@ $pdo = require_once 'config/conexion.php';
                     case 'cambiar_contrasena':
                         include_once "views/cambiar_contrasena.php";
                         break;
+                    case 'actualizar_contrasena':
+                        include_once "views/actualizar_contrasena.php";
+                        break;
 
                     default:
                         include_once "views/pag_err.php";
