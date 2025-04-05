@@ -90,6 +90,13 @@ $pdo = require_once 'config/conexion.php';
                     case 'actualizar_contrasena':
                         include_once "views/actualizar_contrasena.php";
                         break;
+                    case 'material':
+                        include_once "views/material.php";
+                        break;
+                    case 'upload_material':
+                        include_once "views/upload_material.php";
+                        break;
+
 
                     default:
                         include_once "views/pag_err.php";
