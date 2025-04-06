@@ -1097,3 +1097,135 @@ input[type="password"] {
   font-style: italic;
   color: #888;
 }
+
+/*************************************************************************/
+/* Encabezado */
+.material-form__title {
+  font-size: 2.5rem;
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Formulario de ancho completo */
+.material-form {
+  width: 80vw;
+  padding: 2rem 10vw; /* espaciado lateral */
+  box-sizing: border-box;
+  background-color: #f0f4f8;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+}
+
+/* Etiquetas */
+.material-form__label {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Inputs, selects y textareas */
+.material-form__input,
+.material-form__select,
+.material-form__textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: #fff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    box-sizing: border-box; /* IMPORTANTE para que padding y border no afecten el ancho */
+    display: block;
+}
+
+.material-form__textarea {
+  resize: vertical; /* Permite cambiar el alto pero no el ancho */
+  min-height: 2.625rem; /* Misma altura visual inicial que input con 0.75rem de padding */
+  line-height: 1.25;
+}
+
+/* Botón de envío */
+.material-form__button {
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.3s ease;
+}
+
+.material-form__button:hover {
+  background-color: #2980b9;
+}
+/* Contenedor general */
+.material-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+max-width: 90%;
+}
+
+
+
+
+/****************************************** En pantallas grandes, cambia a columnas ***********************************/
+@media (min-width: 1024px) {
+  .material-panel {
+      flex-direction: row;
+      align-items: flex-start;
+  }
+
+  .material-form {
+      flex: 1;
+      padding-right: 2rem;
+  }
+
+  .material-table {
+      flex: 1;
+  }
+}
+
+
+/* Tabla */
+.material-table__table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.material-table__th,
+.material-table__td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.material-table__th {
+  background-color: #3498db;
+  color: white;
+}
+
+.material-table__td--id,
+.material-table__th--id,
+.material-table__td--hide,
+.material-table__th--hide {
+  display: none; /* Oculta la columna ID */
+}
+
+/* Asegura que el formulario y la tabla no se achiquen demasiado */
+.material-form,
+.material-table {
+  min-width: 300px;
+}
+
