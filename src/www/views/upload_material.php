@@ -56,4 +56,4 @@ include_once __DIR__."/../controllers/upload_material.php";
 </div>
 
 
-<?php var_dump($_POST)?>
+
