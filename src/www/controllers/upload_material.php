@@ -71,28 +71,35 @@ $material = $stmt->fetchAll(PDO::FETCH_ASSOC);
     });
 
 
-    //filtro para la tabla
-    document.addEventListener("DOMContentLoaded", function() {
-        const inputNombre = document.querySelector('input[name="nombre"]');
-        const tableRows = document.querySelectorAll(".material-table__table tbody tr");
+// Filtro para la tabla
+document.addEventListener("DOMContentLoaded", function() {
+    const inputNombre = document.querySelector('input[name="nombre"]');
+    const table = document.querySelector(".material-table__table");
+    const tableRows = table.querySelectorAll("tbody tr");
 
-        // Oculta todas las filas al cargar
-        tableRows.forEach(row => row.style.display = "none");
+    // Oculta toda la tabla al cargar
+    table.style.display = "none";
 
-        inputNombre.addEventListener("input", function() {
-            const filtro = inputNombre.value.toLowerCase();
+    inputNombre.addEventListener("input", function() {
+        const filtro = inputNombre.value.toLowerCase();
+        let hayCoincidencias = false;
 
-            tableRows.forEach(row => {
-                const nombreCelda = row.querySelectorAll("td")[1]; // Segunda celda: Nombre
-                if (nombreCelda) {
-                    const textoNombre = nombreCelda.innerText.toLowerCase();
-                    if (textoNombre.includes(filtro) && filtro !== "") {
-                        row.style.display = "";
-                    } else {
-                        row.style.display = "none";
-                    }
+        tableRows.forEach(row => {
+            const nombreCelda = row.querySelectorAll("td")[1]; // Segunda celda: Nombre
+            if (nombreCelda) {
+                const textoNombre = nombreCelda.innerText.toLowerCase();
+                if (textoNombre.includes(filtro) && filtro !== "") {
+                    row.style.display = "";
+                    hayCoincidencias = true;
+                } else {
+                    row.style.display = "none";
                 }
-            });
+            }
         });
+
+        // Muestra u oculta la tabla según si hay coincidencias y si el input no está vacío
+        table.style.display = (filtro !== "" && hayCoincidencias) ? "" : "none";
     });
+});
+
 </script>
