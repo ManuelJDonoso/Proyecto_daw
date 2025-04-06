@@ -96,6 +96,10 @@ $pdo = require_once 'config/conexion.php';
                     case 'upload_material':
                         include_once "views/upload_material.php";
                         break;
+                   case 'unsubscribe_material':
+                        include_once "views/unsubscribe_material.php";
+                        break;
+
 
 
                     default:

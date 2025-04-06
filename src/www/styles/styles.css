@@ -1217,9 +1217,7 @@ max-width: 90%;
 }
 
 .material-table__td--id,
-.material-table__th--id,
-.material-table__td--hide,
-.material-table__th--hide {
+.material-table__td--hide{
   display: none; /* Oculta la columna ID */
 }
 
@@ -1229,3 +1227,203 @@ max-width: 90%;
   min-width: 300px;
 }
 
+
+/***/
+
+/* Estilos para el título y subtítulo */
+.unsubscribe__title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 20px 0;
+}
+
+.unsubscribe__subtitle {
+  font-size: 1.5rem;
+  margin: 15px 0;
+}
+
+/* Estilos para los formularios de filtrado */
+.unsubscribe__label {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.unsubscribe__input, .unsubscribe__select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Estilos para la tabla */
+.unsubscribe__table-container {
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.unsubscribe__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+
+.unsubscribe__table-row {
+  border-bottom: 1px solid #ddd;
+}
+
+.unsubscribe__table-header, .unsubscribe__table-cell {
+  padding: 10px;
+  text-align: left;
+}
+
+.unsubscribe__table-header {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.unsubscribe__submit {
+  padding: 5px 10px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.unsubscribe__submit:hover {
+  background-color: #c9302c;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+  .unsubscribe__title, .unsubscribe__subtitle {
+      font-size: 1.5rem;
+  }
+
+  .unsubscribe__label {
+      font-size: 1rem;
+  }
+
+  .unsubscribe__input, .unsubscribe__select {
+      font-size: 1rem;
+  }
+
+  .unsubscribe__table-container {
+      margin: 10px 0;
+  }
+
+  .unsubscribe__table {
+      font-size: 0.9rem;
+  }
+
+  .unsubscribe__table-header, .unsubscribe__table-cell {
+      padding: 8px;
+  }
+
+  .unsubscribe__submit {
+      padding: 4px 8px;
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .unsubscribe__title, .unsubscribe__subtitle {
+      font-size: 1.2rem;
+  }
+
+  .unsubscribe__label {
+      font-size: 0.9rem;
+  }
+
+  .unsubscribe__input, .unsubscribe__select {
+      font-size: 0.9rem;
+  }
+
+  .unsubscribe__table {
+      font-size: 0.8rem;
+  }
+
+  .unsubscribe__table-header, .unsubscribe__table-cell {
+      padding: 6px;
+  }
+
+  .unsubscribe__submit {
+      padding: 3px 6px;
+      font-size: 0.8rem;
+  }
+}
+
+
+/* Estilos para los formularios de filtrado */
+.unsubscribe__label {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.unsubscribe__input, .unsubscribe__select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Contenedor para los inputs y select */
+.unsubscribe__form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.unsubscribe__form-group > * {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+  .unsubscribe__form-group > * {
+      flex: 1 1 48%; /* Ajusta el ancho para que los elementos aparezcan uno junto a otro */
+  }
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+  .unsubscribe__title, .unsubscribe__subtitle {
+      font-size: 1.5rem;
+  }
+
+  .unsubscribe__label {
+      font-size: 1rem;
+  }
+
+  .unsubscribe__input, .unsubscribe__select {
+      font-size: 1rem;
+  }
+
+  .unsubscribe__form-group {
+      flex-direction: column;
+  }
+
+  .unsubscribe__form-group > * {
+      width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .unsubscribe__title, .unsubscribe__subtitle {
+      font-size: 1.2rem;
+  }
+
+  .unsubscribe__label {
+      font-size: 0.9rem;
+  }
+
+  .unsubscribe__input, .unsubscribe__select {
+      font-size: 0.9rem;
+  }
+}
