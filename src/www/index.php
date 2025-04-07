@@ -99,7 +99,12 @@ $pdo = require_once 'config/conexion.php';
                    case 'unsubscribe_material':
                         include_once "views/unsubscribe_material.php";
                         break;
-
+                    case 'loan_material':
+                        include_once "views/loan_material.php";
+                        break;
+                    case 'return_material':
+                        include_once "views/return_material.php";
+                        break;
 
 
                     default:
