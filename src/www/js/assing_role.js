@@ -26,15 +26,16 @@ document.addEventListener("DOMContentLoaded", function () {
         tableBody.innerHTML = "";
         data.forEach(user => {
             const row = document.createElement("tr");
-            row.innerHTML = `
+            
+                row.innerHTML = `
                 <td>${user.nombre_usuario}</td>  <!-- Se añadió la columna Usuario -->
                 <td>${user.nombre}</td>
                 <td>${user.email}</td>
                 <td>
                     <select class="role-select" data-id="${user.id}">
-                        <option value="2" ${user.rol_id === "2" ? "selected" : ""}>Jugador</option>
-                        <option value="3" ${user.rol_id === "3" ? "selected" : ""}>Moderador</option>
-                        <option value="4" ${user.rol_id === "4" ? "selected" : ""}>Administrador</option>
+                        <option value="2" ${user.rol_id == "2" ? "selected" : ""}>Jugador</option>
+                        <option value="3" ${user.rol_id == "3" ? "selected" : ""}>Moderador</option>
+                        <option value="4" ${user.rol_id == "4" ? "selected" : ""}>Administrador</option>
                     </select>
                 </td>
             `;
