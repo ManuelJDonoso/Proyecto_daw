@@ -118,7 +118,7 @@ $pdo = require_once 'config/conexion.php';
             ?>
 
         </main>
-
+        <?php if (!$es_visitante) {include_once "views/button_help.php"; }?>
         <?php include_once "views/footer.php"; ?>
     </div>
     <script src="js/script.js"></script>
