@@ -96,7 +96,7 @@ $pdo = require_once 'config/conexion.php';
                     case 'upload_material':
                         include_once "views/upload_material.php";
                         break;
-                   case 'unsubscribe_material':
+                    case 'unsubscribe_material':
                         include_once "views/unsubscribe_material.php";
                         break;
                     case 'loan_material':
@@ -104,6 +104,10 @@ $pdo = require_once 'config/conexion.php';
                         break;
                     case 'return_material':
                         include_once "views/return_material.php";
+                        break;
+
+                    case 'notificacion':
+                        include_once "views/notificacion.php";
                         break;
 
 
@@ -118,7 +122,9 @@ $pdo = require_once 'config/conexion.php';
             ?>
 
         </main>
-        <?php if (!$es_visitante) {include_once "views/button_help.php"; }?>
+        <?php if (!$es_visitante) {
+            include_once "views/button_help.php";
+        } ?>
         <?php include_once "views/footer.php"; ?>
     </div>
     <script src="js/script.js"></script>

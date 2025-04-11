@@ -77,8 +77,9 @@
             echo "      <li class='menu__item menu__item--has-submenu'>
                 <a href='#' class='menu__link submenu-toggle'>" . $usuario->get_nombre() . "</a>
                 <ul class='submenu'>
-                    <li class='submenu__item'><a href='?pag=my_profile' class='submenu__link'>Mi Perfil</a></li>
-                    <li class='submenu__item'><a href='controllers/logout.php' class='submenu__link'>salir</a></li>
+                    <li class='submenu__item'><a href='?pag=my_profile' class='submenu__link'><i class='fa-regular fa-user'></i> Mi Perfil</a></li>
+                    <li class='submenu__item'><a href='?pag=notificacion' class='submenu__link'> <i class='fa-solid fa-square-envelope'></i> Notificaciones</a></li>
+                    <li class='submenu__item'><a href='controllers/logout.php' class='submenu__link'><i class='fa-solid fa-door-open'></i> salir</a></li>
                 </ul>
             </li>";
         }
