@@ -1769,3 +1769,12 @@ body {
 .help-page__button--eliminar:hover {
   background-color: var(--button-bg-color-danger-hover);
 }
+.help-page__button--finalizar{
+  background-color: var(--button-bg-color-danger);
+}
+.help-page__button--finalizar:hover{
+  background-color: var(--button-bg-color-danger-hover);
+}
+.hidden{
+  display: none;
+}

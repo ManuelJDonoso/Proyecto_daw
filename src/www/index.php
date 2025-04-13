@@ -122,7 +122,7 @@ $pdo = require_once 'config/conexion.php';
             ?>
 
         </main>
-        <?php if (!$es_visitante) {
+        <?php if ($es_jugador) {
             include_once "views/button_help.php";
         } ?>
         <?php include_once "views/footer.php"; ?>
