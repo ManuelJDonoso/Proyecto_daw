@@ -3,18 +3,21 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $mensaje_id = $_POST["mensaje_id"];
-    $data = $pdo->query("SELECT usuario_id,mensaje,id FROM help where id= $mensaje_id")->fetch(PDO::FETCH_ASSOC);
-
-
-    $respuesta = $_POST["respuesta"];
-    $destinatario_id = $data["usuario_id"];
-    $remitente = $usuario->get_id();
-    $mensaje_original = $data["mensaje"];
-    $mensaje_original_id = $data["id"];
+   var_dump($_POST);
+   echo "<br>";
 
     switch ($_POST["accion"]) {
         case 'Enviar':
+            $mensaje_id = $_POST["mensaje_id"];
+            $data = $pdo->query("SELECT usuario_id,mensaje,id FROM help where id= $mensaje_id")->fetch(PDO::FETCH_ASSOC);
+        
+        
+            $respuesta = $_POST["respuesta"];
+            $destinatario_id = $data["usuario_id"];
+            $remitente = $usuario->get_id();
+            $mensaje_original = $data["mensaje"];
+            $mensaje_original_id = $data["id"];
+
             //insertar en notificaciones
             $stmt = $pdo->prepare("INSERT INTO notificacion (dirigido_a, de, mensaje,mensaje_original) VALUES (?, ?, ?,?)");
             $stmt->execute([$destinatario_id, $remitente, $respuesta, $mensaje_original]);
@@ -24,6 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
             break;
+        case 'Ampliar':
+            $id_notificacion = $_POST["id_notificacion"];
+
+            $data = $pdo->query("SELECT id, mensaje FROM notificacion WHERE id = $id_notificacion")->fetch(PDO::FETCH_ASSOC);
+            
+            $mensaje_ampliado = $data['mensaje'] . PHP_EOL . $_POST['respuesta'];
+            
+            $stmt = $pdo->prepare("UPDATE notificacion SET mensaje = ? WHERE id = ?");
+            $stmt->execute([$mensaje_ampliado, $id_notificacion]);
+
+                break;
         case 'Finalizar':
             # code...
             break;
@@ -55,6 +69,7 @@ if ($es_moderador || $es_admin) {
 
 
 <script>
+   // carga notificacion nueva
     document.addEventListener("DOMContentLoaded", function() {
         function cargarMensaje(id) {
             fetch('controllers/cargar_mensaje.php?id=' + id)
@@ -65,17 +80,19 @@ if ($es_moderador || $es_admin) {
                     const botonEnviar = document.getElementById('help-page__button--enviar');
                     const botonEliminar = document.getElementById('help-page__button--eliminar');
                     const botonFinalizar = document.getElementById('help-page__button--finalizar');
+                    const botonAmpliar = document.getElementById('help-page__button--ampliar');
 
 
 
                     contenedor.innerHTML =
                         `<p><strong>${data.nombre_usuario} :</strong> ${data.mensaje}</p>`;
 
-                    if (inputId != null || botonEnviar != null || botonEliminar != null || botonFinalizar != null) {
+                    if (inputId != null || botonEnviar != null || botonEliminar != null || botonFinalizar != null || botonAmpliar != null) {
                         inputId.value = id;
                         botonEnviar.classList.remove("hidden");
                         botonEliminar.classList.add("hidden");
                         botonFinalizar.classList.add("hidden");
+                        botonAmpliar.classList.add("hidden");
                     }
 
 
@@ -87,7 +104,7 @@ if ($es_moderador || $es_admin) {
         window.cargarMensaje = cargarMensaje;
     });
 
-
+//carga procesando
     document.addEventListener("DOMContentLoaded", function() {
 
         function cargarMensaje_procesado(id) {
@@ -96,9 +113,11 @@ if ($es_moderador || $es_admin) {
                 .then(data => {
                     const contenedor = document.getElementById('contenido-mensaje');
                     const inputId = document.getElementById('mensaje_id');
+                    const id_notificacion = document.getElementById('id_notificacion');
                     const botonEnviar = document.getElementById('help-page__button--enviar');
                     const botonEliminar = document.getElementById('help-page__button--eliminar');
                     const botonFinalizar = document.getElementById('help-page__button--finalizar');
+                    const botonAmpliar = document.getElementById('help-page__button--ampliar');
 
                     contenedor.innerHTML =
                         `<p><strong>${data.dirigido_a_nombre} : </strong>${data.mensaje_original}</p>
@@ -106,9 +125,11 @@ if ($es_moderador || $es_admin) {
 
                     if (inputId != null || botonEnviar != null || botonEliminar != null || botonFinalizar != null) {
                         inputId.value = id;
+                        id_notificacion.value=id;
                         botonEnviar.classList.add("hidden");
                         botonEliminar.classList.add("hidden");
-                        botonFinalizar.classList.remove("hidden")
+                        botonFinalizar.classList.remove("hidden");
+                        botonAmpliar.classList.remove("hidden");
                     }
                 });
 

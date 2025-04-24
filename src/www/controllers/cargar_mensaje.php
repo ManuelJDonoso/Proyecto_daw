@@ -23,10 +23,18 @@ if($id !=0 && $procesado!=0){
     $stmt->execute([$id]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    echo json_encode([
-        'mensaje' => (string) $row["mensaje"],
-        'mensaje_original'=>(string) $row["mensaje_original"],
-        'de_nombre'=>(string) $row["de_nombre"],
-        'dirigido_a_nombre'=>(string) $row["dirigido_a_nombre"],
-    ]);
+
+     // Estandarizamos los saltos y los convertimos a <br><br>
+     $mensaje = str_replace(["\r\n", "\r", "\n"], "<br><br>", $row["mensaje"]);
+     $mensaje_original = str_replace(["\r\n", "\r", "\n"], "<br><br>", $row["mensaje_original"]);
+ 
+     echo json_encode([
+        //'mensaje' => nl2br((string) $row["mensaje"]),
+        //'mensaje_original' => nl2br((string) $row["mensaje_original"]),
+         'mensaje' => $mensaje,
+         'mensaje_original' => $mensaje_original,
+         'de_nombre' => (string) $row["de_nombre"],
+         'dirigido_a_nombre' => (string) $row["dirigido_a_nombre"],
+     ]);
+
     }

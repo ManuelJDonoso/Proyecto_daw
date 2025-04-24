@@ -2,19 +2,17 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: manueldonoso.es
--- Versión del servidor: 10.11.6-MariaDB-0+deb12u1
--- Versión de PHP: 8.2.26
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-04-2025 a las 08:31:08
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+
 
 --
 -- Base de datos: `proyecto_daw`
@@ -56,7 +54,8 @@ INSERT INTO `alquiler_material` (`id`, `unidad_id`, `usuario_id`, `fecha_alquile
 (12, 47, 2, '2025-04-09 10:05:08', NULL),
 (13, 5, 3, '2025-04-09 10:05:43', NULL),
 (14, 60, 3, '2025-04-09 10:05:45', NULL),
-(15, 51, 3, '2025-04-09 10:05:48', NULL);
+(15, 51, 3, '2025-04-09 10:05:48', NULL),
+(16, 48, 1, '2025-04-11 00:19:17', NULL);
 
 --
 -- Disparadores `alquiler_material`
@@ -137,6 +136,28 @@ INSERT INTO `eventos` (`id`, `title`, `description`, `master`, `players`, `date`
 (3, 'evento para mayores de 18', '¡Ya llega Mangafest Mérida! El Festival de Cultura Asiática, Videojuegos y Entretenimiento, organizado por el Ayuntamiento de Mérida de la mano de la promotora de eventos BWG, vuelve a IFEME los días 22 y 23 de febrero con lo mejor de la cultura asiática, grandes invitados y una gran selección de actividades ideadas específicamente para las fa...', 'luis', 100, '2026-04-12', '10:00:00', '12:00:00', 'online', NULL, 1, NULL),
 (4, 'evento completo', '¡Ya llega Mangafest Mérida! El Festival de Cultura Asiática, Videojuegos y Entretenimiento, organizado por el Ayuntamiento de Mérida de la mano de la promotora de eventos BWG, vuelve a IFEME los días 22 y 23 de febrero con lo mejor de la cultura asiática, grandes invitados y una gran selección de actividades ideadas específicamente para las fa...', 'luis', 2, '2026-04-08', '21:00:00', '22:00:00', 'online', NULL, 0, NULL),
 (5, 'evento todos los publicos', '¡Ya llega Mangafest Mérida! El Festival de Cultura Asiática, Videojuegos y Entretenimiento, organizado por el Ayuntamiento de Mérida de la mano de la promotora de eventos BWG, vuelve a IFEME los días 22 y 23 de febrero con lo mejor de la cultura asiática, grandes invitados y una gran selección de actividades ideadas específicamente para las fa...', 'antonio', 4, '2025-06-21', '10:00:00', '12:00:00', 'online', NULL, 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `help`
+--
+
+DROP TABLE IF EXISTS `help`;
+CREATE TABLE `help` (
+  `id` int(11) NOT NULL,
+  `mensaje` text NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT current_timestamp(),
+  `usuario_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `help`
+--
+
+INSERT INTO `help` (`id`, `mensaje`, `fecha`, `usuario_id`) VALUES
+(12, 'mensaje de prueba 2', '2025-04-13 22:43:46', 2),
+(14, 'mensje 2', '2025-04-13 23:40:58', 3);
 
 -- --------------------------------------------------------
 
@@ -252,6 +273,31 @@ CREATE TABLE `me_gustas` (
 
 INSERT INTO `me_gustas` (`id`, `publicacion_id`, `usuario_id`, `created_at`) VALUES
 (3, 3, 7, '2025-04-09 10:13:49');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `notificacion`
+--
+
+DROP TABLE IF EXISTS `notificacion`;
+CREATE TABLE `notificacion` (
+  `id` int(11) NOT NULL,
+  `mensaje` text DEFAULT NULL,
+  `dirigido_a` int(11) DEFAULT NULL,
+  `de` int(11) DEFAULT NULL,
+  `fecha` datetime NOT NULL DEFAULT current_timestamp(),
+  `mensaje_original` text NOT NULL,
+  `procesando` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `notificacion`
+--
+
+INSERT INTO `notificacion` (`id`, `mensaje`, `dirigido_a`, `de`, `fecha`, `mensaje_original`, `procesando`) VALUES
+(7, 'recibido', 2, 1, '2025-04-13 22:44:04', 'mensaje de prueba', 1),
+(8, 'vale', 3, 1, '2025-04-13 23:41:41', 'mensaje de otro jugador', 1);
 
 -- --------------------------------------------------------
 
@@ -394,7 +440,7 @@ INSERT INTO `unidad_material` (`id`, `material_id`, `estado`, `comentario`, `fec
 (45, 2, 'disponible', '', '2025-04-10 10:00:00', NULL),
 (46, 3, 'disponible', '', '2025-04-11 10:00:00', NULL),
 (47, 4, 'alquilado', '', '2025-04-12 10:00:00', NULL),
-(48, 5, 'disponible', 'cartas magic color blanco', '2025-04-13 10:00:00', NULL),
+(48, 5, 'alquilado', 'cartas magic color blanco', '2025-04-13 10:00:00', NULL),
 (49, 6, 'alquilado', '', '2025-04-14 10:00:00', NULL),
 (50, 7, 'disponible', '', '2025-04-15 10:00:00', NULL),
 (51, 8, 'alquilado', '', '2025-04-16 10:00:00', NULL),
@@ -544,6 +590,59 @@ CREATE TABLE `vista_material_disponible_cantidad` (
 -- --------------------------------------------------------
 
 --
+-- Estructura Stand-in para la vista `vista_mensaje_help`
+-- (Véase abajo para la vista actual)
+--
+DROP VIEW IF EXISTS `vista_mensaje_help`;
+CREATE TABLE `vista_mensaje_help` (
+`id` int(11)
+,`mensaje` text
+,`fecha` datetime
+,`usuario_id` int(11)
+,`nombre_usuario` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vista_notificacion_procesando`
+-- (Véase abajo para la vista actual)
+--
+DROP VIEW IF EXISTS `vista_notificacion_procesando`;
+CREATE TABLE `vista_notificacion_procesando` (
+`id` int(11)
+,`dirigido_a_id` int(11)
+,`dirigido_a_nombre` varchar(100)
+,`de_id` int(11)
+,`de_nombre` varchar(100)
+,`mensaje_original` text
+,`mensaje` text
+,`fecha` datetime
+,`procesando` tinyint(1)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vista_notificacion_procesando_finalizado`
+-- (Véase abajo para la vista actual)
+--
+DROP VIEW IF EXISTS `vista_notificacion_procesando_finalizado`;
+CREATE TABLE `vista_notificacion_procesando_finalizado` (
+`id` int(11)
+,`dirigido_a_id` int(11)
+,`dirigido_a_nombre` varchar(100)
+,`de_id` int(11)
+,`de_nombre` varchar(100)
+,`mensaje_original` text
+,`mensaje` text
+,`fecha` datetime
+,`procesando` tinyint(1)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura Stand-in para la vista `vista_unidad_material_disponible`
 -- (Véase abajo para la vista actual)
 --
@@ -620,6 +719,36 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Estructura para la vista `vista_mensaje_help`
+--
+DROP TABLE IF EXISTS `vista_mensaje_help`;
+
+DROP VIEW IF EXISTS `vista_mensaje_help`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_mensaje_help`  AS SELECT `h`.`id` AS `id`, `h`.`mensaje` AS `mensaje`, `h`.`fecha` AS `fecha`, `h`.`usuario_id` AS `usuario_id`, `u`.`nombre_usuario` AS `nombre_usuario` FROM (`help` `h` join `usuarios` `u` on(`u`.`id` = `h`.`usuario_id`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vista_notificacion_procesando`
+--
+DROP TABLE IF EXISTS `vista_notificacion_procesando`;
+
+DROP VIEW IF EXISTS `vista_notificacion_procesando`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_notificacion_procesando`  AS SELECT `n`.`id` AS `id`, `n`.`dirigido_a` AS `dirigido_a_id`, `u`.`nombre` AS `dirigido_a_nombre`, `n`.`de` AS `de_id`, `u2`.`nombre` AS `de_nombre`, `n`.`mensaje_original` AS `mensaje_original`, `n`.`mensaje` AS `mensaje`, `n`.`fecha` AS `fecha`, `n`.`procesando` AS `procesando` FROM ((`notificacion` `n` join `usuarios` `u` on(`n`.`dirigido_a` = `u`.`id`)) join `usuarios` `u2` on(`n`.`de` = `u2`.`id`)) WHERE `n`.`procesando` = 1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vista_notificacion_procesando_finalizado`
+--
+DROP TABLE IF EXISTS `vista_notificacion_procesando_finalizado`;
+
+DROP VIEW IF EXISTS `vista_notificacion_procesando_finalizado`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_notificacion_procesando_finalizado`  AS SELECT `n`.`id` AS `id`, `n`.`dirigido_a` AS `dirigido_a_id`, `u`.`nombre` AS `dirigido_a_nombre`, `n`.`de` AS `de_id`, `u2`.`nombre` AS `de_nombre`, `n`.`mensaje_original` AS `mensaje_original`, `n`.`mensaje` AS `mensaje`, `n`.`fecha` AS `fecha`, `n`.`procesando` AS `procesando` FROM ((`notificacion` `n` join `usuarios` `u` on(`n`.`dirigido_a` = `u`.`id`)) join `usuarios` `u2` on(`n`.`de` = `u2`.`id`)) WHERE `n`.`procesando` = 0 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura para la vista `vista_unidad_material_disponible`
 --
 DROP TABLE IF EXISTS `vista_unidad_material_disponible`;
@@ -652,6 +781,13 @@ ALTER TABLE `eventos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `help`
+--
+ALTER TABLE `help`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_help_usuario` (`usuario_id`);
+
+--
 -- Indices de la tabla `historial_material`
 --
 ALTER TABLE `historial_material`
@@ -681,6 +817,14 @@ ALTER TABLE `me_gustas`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `publicacion_id` (`publicacion_id`,`usuario_id`),
   ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Indices de la tabla `notificacion`
+--
+ALTER TABLE `notificacion`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `dirigido_a` (`dirigido_a`),
+  ADD KEY `de` (`de`);
 
 --
 -- Indices de la tabla `publicaciones`
@@ -735,19 +879,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alquiler_material`
 --
 ALTER TABLE `alquiler_material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `help`
+--
+ALTER TABLE `help`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_material`
@@ -772,6 +922,12 @@ ALTER TABLE `material`
 --
 ALTER TABLE `me_gustas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `notificacion`
+--
+ALTER TABLE `notificacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
@@ -821,6 +977,12 @@ ALTER TABLE `alquiler_material`
   ADD CONSTRAINT `alquiler_material_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `help`
+--
+ALTER TABLE `help`
+  ADD CONSTRAINT `fk_help_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `historial_material`
 --
 ALTER TABLE `historial_material`
@@ -846,6 +1008,13 @@ ALTER TABLE `material`
 ALTER TABLE `me_gustas`
   ADD CONSTRAINT `me_gustas_ibfk_1` FOREIGN KEY (`publicacion_id`) REFERENCES `publicaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `me_gustas_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `notificacion`
+--
+ALTER TABLE `notificacion`
+  ADD CONSTRAINT `notificacion_ibfk_1` FOREIGN KEY (`dirigido_a`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `notificacion_ibfk_2` FOREIGN KEY (`de`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `publicaciones`
@@ -874,6 +1043,3 @@ ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

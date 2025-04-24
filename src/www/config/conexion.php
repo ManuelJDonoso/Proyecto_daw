@@ -3,7 +3,7 @@
 $host = 'localhost';
 $dbname = 'proyecto_daw';
 $user = 'root';
-$pass = 'root';
+$pass = 'manuel';
 
 try {
     // Crear conexión con PDO

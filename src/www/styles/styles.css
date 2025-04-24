@@ -1757,10 +1757,10 @@ body {
   border: none;
   cursor: pointer;
 }
-.help-page__button--enviar{
+.help-page__button--enviar, .help-page__button--ampliar{
   background-color: var(--button-bg-color-success);
 }
-.help-page__button--enviar:hover {
+.help-page__button--enviar:hover , .help-page__button--ampliar:hover {
   background-color: var(--button-bg-color-success-hover);
 }
 .help-page__button--eliminar{
