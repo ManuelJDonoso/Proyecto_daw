@@ -1778,3 +1778,10 @@ body {
 .hidden{
   display: none;
 }
+.help-page__actions {
+  text-align: left;
+}
+
+.help-page__button {
+  margin-right: 0.5rem; /* Espacio entre botones */
+}
