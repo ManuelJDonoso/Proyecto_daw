@@ -61,7 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($es_moderador || $es_admin) {
     $mensajes = $pdo->query("SELECT id, nombre_usuario, fecha,mensaje FROM vista_mensaje_help ORDER BY fecha DESC")->fetchAll(PDO::FETCH_ASSOC);
     $mensajes_procesando = $pdo->query("SELECT id, dirigido_a_id, dirigido_a_nombre, de_id, de_nombre,mensaje_original,fecha,procesando FROM vista_notificacion_procesando ORDER BY fecha DESC")->fetchAll(PDO::FETCH_ASSOC);
-} elseif ($es_jugador) {
+    $mensajes_procesando_finalizado = $pdo->query("SELECT id, dirigido_a_id, dirigido_a_nombre, de_id, de_nombre,mensaje_original,fecha,procesando FROM vista_notificacion_procesando_finalizado ORDER BY fecha DESC")->fetchAll(PDO::FETCH_ASSOC);
+    } elseif ($es_jugador) {
 
     $usuario_id = $usuario->get_id();
     $mensajes = $pdo->query("SELECT id, nombre_usuario, fecha,mensaje FROM vista_mensaje_help where usuario_id = $usuario_id ORDER BY fecha DESC")->fetchAll(PDO::FETCH_ASSOC);

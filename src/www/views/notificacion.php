@@ -24,6 +24,15 @@ require_once __DIR__ . "/../controllers/notificacion.php";
             </div>
         <?php endforeach; ?>
 
+        <h2>Finalizado
+        </h2>
+        <?php foreach ($mensajes_procesando_finalizado  as $msg): ?>
+            <div class="help-page__item" onclick="cargarMensaje_procesado(<?= $msg['id'] ?>)">
+                <strong><?= htmlspecialchars($msg['dirigido_a_nombre']) ?></strong><br>
+                <small><?= $msg['fecha'] ?></small>
+            </div>
+        <?php endforeach; ?>
+
     </div>
 
     <div class="help-page__column help-page__column--right">
