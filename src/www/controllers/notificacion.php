@@ -3,8 +3,6 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-   var_dump($_POST);
-   echo "<br>";
 
     switch ($_POST["accion"]) {
         case 'Enviar':
@@ -36,10 +34,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             $stmt = $pdo->prepare("UPDATE notificacion SET mensaje = ? WHERE id = ?");
             $stmt->execute([$mensaje_ampliado, $id_notificacion]);
+           
 
                 break;
         case 'Finalizar':
-            # code...
+            $id_notificacion = $_POST["id_notificacion"];
+
+            $data = $pdo->query("SELECT id, mensaje FROM notificacion WHERE id = $id_notificacion")->fetch(PDO::FETCH_ASSOC);
+            
+            $mensaje_ampliado = $data['mensaje'] . PHP_EOL . $_POST['respuesta'];
+            
+            $stmt = $pdo->prepare("UPDATE notificacion SET mensaje = ?, procesando = 0 WHERE id = ?");
+            $stmt->execute([$mensaje_ampliado, $id_notificacion]);
             break;
         
         case 'Eliminar':
@@ -81,6 +87,7 @@ if ($es_moderador || $es_admin) {
                     const botonEliminar = document.getElementById('help-page__button--eliminar');
                     const botonFinalizar = document.getElementById('help-page__button--finalizar');
                     const botonAmpliar = document.getElementById('help-page__button--ampliar');
+                    const respuesta_textarea= document.getElementById('help-page__textarea');
 
 
 
@@ -93,6 +100,7 @@ if ($es_moderador || $es_admin) {
                         botonEliminar.classList.add("hidden");
                         botonFinalizar.classList.add("hidden");
                         botonAmpliar.classList.add("hidden");
+                        respuesta_textarea.classList.remove("hidden");
                     }
 
 
@@ -118,6 +126,7 @@ if ($es_moderador || $es_admin) {
                     const botonEliminar = document.getElementById('help-page__button--eliminar');
                     const botonFinalizar = document.getElementById('help-page__button--finalizar');
                     const botonAmpliar = document.getElementById('help-page__button--ampliar');
+                    const respuesta_textarea= document.getElementById('help-page__textarea');
 
                     contenedor.innerHTML =
                         `<p><strong>${data.dirigido_a_nombre} : </strong>${data.mensaje_original}</p>
@@ -130,6 +139,7 @@ if ($es_moderador || $es_admin) {
                         botonEliminar.classList.add("hidden");
                         botonFinalizar.classList.remove("hidden");
                         botonAmpliar.classList.remove("hidden");
+                        respuesta_textarea.classList.remove("hidden");
                     }
                 });
 
