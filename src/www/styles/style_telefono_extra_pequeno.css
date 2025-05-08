@@ -6,4 +6,39 @@
     
       }
     /*  -----------------------------------------------fin banner---------------------------------------------*/
+
+    
+    /*  --------------------------------------------Menu---------------------------------------------*/
+
+    .menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #333;
+        z-index: 1000;
+        padding: 15px 0;
+      }
+      .menu__toggle {
+        display: block;
+      }
+      .menu__list {
+        display: none;
+        flex-direction: column;
+      }
+      .menu__list.active {
+        display: flex;
+      }
+      .submenu {
+        position: relative;
+        display: none;
+      }
+      .submenu.active {
+        display: block;
+      }
+      .submenu__item {
+        min-width: 100%;
+      }
+    
+      /*  -------------------------------------------fin-Menu---------------------------------------------*/
 }
