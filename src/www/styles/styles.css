@@ -1,0 +1,17 @@
+:root {
+    --background-color: #232946;
+    --headline-color: #fffffe;
+    --paragraph-color: #b8c1ec;
+    --button-bg-color: #eebbc3;
+    --button-bg-color-success: #2ecc71;
+    --button-bg-color-success-hover: #27ae60;
+  
+    --button-bg-color-danger: #e04444;
+    --button-bg-color-danger-hover: #df1b1b;
+    --button-bg-color-hover: #e98b99;
+    --button-text-color: #232946;
+    --font-montserrat: "Montserrat", sans-serif;
+    --font-opensans: "Open Sans", sans-serif;
+    --tabla-bg-color-head: #2c3e50;
+  }
+  
