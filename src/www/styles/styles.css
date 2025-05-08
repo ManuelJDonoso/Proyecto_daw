@@ -60,3 +60,23 @@ main {
   max-width: 100%;
 }
 
+/* ------------------------------------------------------------------------Header-------------------------------------------------------------------- */
+header {
+    position: relative;
+    background-image: url("../assets/images/banner.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%; /* Deforma para ocupar todo el contenedor */
+
+    padding: 15px 0;
+    text-align: center;
+    color: white;
+  }
+  .banner {
+    position: relative;
+    z-index: 10;
+  }
+  .banner__text {
+    font-size: 5em;
+    font-family: var(--font-montserrat);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }

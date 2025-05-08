@@ -20,7 +20,7 @@ $pdo = require_once 'config/conexion.php';
         <header>
 
             <div class="banner">
-                <h1 class="banner__text">Cronicas de Merida</h1>
+                <h1 class="banner__text">Cronicas de Mérida</h1>
             </div>
 
         </header>
