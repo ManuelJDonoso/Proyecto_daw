@@ -2,7 +2,7 @@
 // Configuración de la base de datos
 $host = 'localhost';
 $dbname = 'proyecto_daw';
-$user = 'root';
+$user = 'manuel';
 $pass = 'manuel';
 
 try {

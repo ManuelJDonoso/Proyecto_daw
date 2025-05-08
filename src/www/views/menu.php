@@ -24,7 +24,7 @@
 
             </ul>
         </li>
-        <li class="menu__item"><a href="?pag=calendar" class="menu__link">Calendario</a></li>
+    
         <li class="menu__item menu__item--has-submenu">
             <a href="#" class="menu__link submenu-toggle">Gestión de material</a>
             <ul class="submenu">
