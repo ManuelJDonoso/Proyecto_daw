@@ -3,8 +3,8 @@
     --headline-color: #fffffe;
     --paragraph-color: #b8c1ec;
     --button-bg-color: #eebbc3;
-    --button-bg-color-success: #2ecc71;
-    --button-bg-color-success-hover: #27ae60;
+    --button-bg-color-success: #28a745;
+    --button-bg-color-success-hover: #218838;
   
     --button-bg-color-danger: #e04444;
     --button-bg-color-danger-hover: #df1b1b;
@@ -42,7 +42,7 @@ a {
 main {
   flex-grow: 1;
   padding-top: 10px;
-  padding-bottom: 250px;
+ 
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -203,5 +203,483 @@ header {
 }
 
 /*   -----------------------------------------------fin-acerca de-------------------------------------*/
+
+
+/*-----------------------------------------------estilos pagina login---------------------------------*/
+
+.login-box {
+    background: rgba(0, 0, 0, 0.5);
+    max-width: 450px;
+    min-width: 450px;
+    color: #fff;
+    position: relative;
+  
+    padding: 70px 60px;
+    margin-top: 100px;
+  }
+  
+  .login-box__logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+  }
+  
+  .login-box h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+  .login-box p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+  }
+  
+  .login-box input[type="text"],
+  .login-box input[type="password"],
+  .login-box input[type="email"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: var(--button-bg-color-success);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  
+  .login-box input[type="submit"]:hover {
+    cursor: pointer;
+    background: #05dd46;
+    color: black;
+  }
+  
+  .login-box a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+    margin-left: 30px;
+  }
+  
+  .login-box a:first-of-type:hover {
+    color: #e90707;
+  }
+  
+  .login-box a:hover {
+    color: #05dd46;
+  }
+  .login-box input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+/*-----------------------------------------------estilos pagina login---------------------------------*/
+
+/*terminos y condiciones*/
+
+.login-box__input,
+.login-box__submit {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-box__submit {
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.login-box__submit:hover {
+  background: #0056b3;
+}
+
+.login-box__terms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-box__terms-content {
+  display: none;
+  padding: 20px;
+
+  margin-top: 10px;
+}
+
+.login-box__terms-content.active {
+  display: block;
+}
+
+.login-box__checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.login-box__link {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 14px;
+}
+
+/*----------------------------------------------------------------------------*/
+
+
+*----------------------------------------------------------------------------------------------------------tarjetas--------------------------------------------------------------*/
+
+.form-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+  gap: 120px; /* Espacio entre los elementos */
+  background: var(--paragraph-color);
+  color: var(--button-text-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 90%;
+}
+
+.form-card--add_event {
+  border: 2px solid var(--background-color);
+  
+}
+
+.button_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-card__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__image {
+  max-height: 400px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card__input,
+.card__button,
+.card__select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.card__button {
+  background-color: var(--button-bg-color-success);
+  color: var(--button-text-color);
+  border: none;
+  cursor: pointer;
+}
+
+.card__button:hover {
+  background-color: var(--button-bg-color-success-hover);
+}
+
+.card__time-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Permite que los inputs se acomoden en móviles */
+}
+
+.card__time-container label {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Contenedor de las tarjetas */
+.container__event {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas por fila */
+  gap: 20px;
+ max-width:80% ;
+}
+
+/* Tarjetas */
+.card-event,
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-event:hover {
+  transform: scale(1.05);
+}
+
+.card-event__image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-event__title,
+.card-event__players,
+.card-event__master {
+  margin: 10px;
+  text-align: center;
+}
+
+.card-event__title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.card-event__players,
+.card-event__master {
+  font-size: 1em;
+  color: #555;
+}
+
+/* Variantes de color */
+.card-event--green {
+  background-color: #a4e57a;
+}
+
+.card-event--orange {
+  background-color: #ffcc80;
+}
+
+.card-event--gray {
+  background-color: #cfd8dc;
+}
+
+
+
+/*-----------------------------------------------fin-targetas---------------------------------*/
+
+ /*-----------------------------------------------targetas eventos---------------------------------*/
+
+/* -------------------------------------Contenedor principal */
+.form-card {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    max-width: 1000px;
+    padding: 20px;
+    border: 1px solid var(--paragraph-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--paragraph-color);
+    min-width: 80%;
+  }
+  
+  /*  ------------------------------------Sección izquierda */
+  .form-card__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-card__left .card__image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .form-card__left .button_container {
+    display: flex;
+    flex-direction: row; /* Cambia de column a row */
+    gap: 10px; /* Conserva el espacio entre los botones */
+    justify-content: center; /* Opcional, para centrar los botones horizontalmente */
+  }
+  
+  .form-card__left .card__button {
+    background-color: var(--button-bg-color-success);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+   
+  }
+  
+  .form-card__left .card__button:hover {
+    background-color: var(--button-bg-color-success-hover);
+  }
+  
+  /*  ---------------------------------------------------Sección derecha */
+  .form-card__right {
+    flex: 2;
+    padding-left: 20px;
+    color: var(--button-text-color);
+  }
+  
+  .form-card__right form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-card__right .card__input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .form-card__right .card__input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .form-card__right .card__time-container {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .form-card__right select,
+  .form-card__right input[type="date"],
+  .form-card__right input[type="time"] {
+    width: calc(50% - 10px);
+  }
+  
+  .form-card__right .card__label {
+    font-size: 14px;
+  }
+  
+  .form-card__right button[type="submit"] {
+    background-color: var(--button-bg-color-success);
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-card__right button[type="submit"]:hover {
+    background-color: var(--button-bg-color-success);
+  }
+  /* -------------------------------------------------------------------*/
+
+  * Botón para eliminar evento */
+.event__delete {
+  display: block;
+  width: fit-content;
+  margin: 20px auto;
+  padding: 12px 20px;
+  background-color: var(--button-bg-color-danger); /* Rojo peligro */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.event__delete:hover {
+  background-color: var(--button-bg-color-danger-hover); /* Rojo más oscuro */
+}
+
+.players {
+  text-align: center; /* Centra el contenido del section */
+}
+
+.players__table {
+  margin: 0 auto; /* Centra la tabla horizontalmente */
+  width: 80%; /* Opcional: establece un ancho fijo o porcentaje */
+}
+.players__remove,
+.delete-button {
+  background-color: var(--button-bg-color-danger);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.players__remove:hover,
+.delete-button:hover {
+  background-color: var(--button-bg-color-danger-hover); /* Rojo más oscuro */
+}
+
+.event__register {
+  display: block;
+
+  width: fit-content;
+  margin: 20px auto;
+  padding: 12px 20px;
+  background-color: var(--button-bg-color-success); 
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+.event__register:hover {
+  background-color: var(--button-bg-color-success-hover); 
+}
+
+
+
+
+
+
+ /*--------------------------------------------fin targetas eventos---------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
