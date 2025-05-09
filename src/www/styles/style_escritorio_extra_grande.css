@@ -1,2 +1,6 @@
 /* Extra grande (escritorio grande) */
-@media (min-width: 1200px) { }
+@media (min-width: 1200px) { 
+    .hero{
+        width: 1053.78px;
+     }
+}

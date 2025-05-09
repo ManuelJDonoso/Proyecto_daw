@@ -110,6 +110,9 @@ $pdo = require_once 'config/conexion.php';
                         include_once "views/notificacion.php";
                         break;
 
+                    case 'index':
+                        include_once "views/index.php";
+                    break;
 
                     default:
                         include_once "views/pag_err.php";
@@ -117,9 +120,16 @@ $pdo = require_once 'config/conexion.php';
                 }
             }
 
+            if (empty($_GET)) {
+                include_once "views/index.php";
+                # code...
+            }
 
-
+      
+            
             ?>
+
+          
 
         </main>
         <?php if ($es_jugador) {

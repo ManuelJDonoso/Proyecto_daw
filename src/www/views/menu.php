@@ -5,7 +5,7 @@
         <div></div>
     </div>
     <ul class="menu__list" id="menu-list">
-        <li class="menu__item"><a href="index.php" class="menu__link">Inicio</a></li>
+        <li class="menu__item"><a href="?pag=index" class="menu__link">Inicio</a></li>
         <li class="menu__item"><a href="?pag=about" class="menu__link">Acerca de nosotros</a></li>
         <li class="menu__item menu__item--has-submenu">
             <a href="#" class="menu__link submenu-toggle">Eventos</a>
