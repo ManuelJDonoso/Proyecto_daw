@@ -83,4 +83,44 @@ form-card__left .button_container {
 }
 
  /*-------------------------------------------Fin-targetas eventos---------------------------------*/
+ /* ----------------------------------------alquiler de material--------------------*/
+  .material-tabla__celda {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .material-tabla__titulo {
+    font-size: 1.4rem;
+  }
+
+  .material-tabla__fila--seleccionada {
+    background-color: #d4eaff !important;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .filters {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .reserva-tabla__celda {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .reserva__titulo {
+    font-size: 1.5rem;
+  }
+
+  .reserva__subtitulo {
+    font-size: 1.2rem;
+  }
+
+  .reserva-formulario__boton {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  /* ----------------------------------------fin-alquiler de material--------------------*/
 }
