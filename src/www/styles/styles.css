@@ -1912,3 +1912,114 @@ header {
 }
 
 /* -----------------------------------------------fin-footer-------------------------------------------------*/
+
+/* -----------------------------------------------contact-------------------------------------------------*/
+/* -----------------------------------------------Contact Section ----------------------------------------- */
+.contact {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact__title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* ======= Form ======= */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form__message {
+  color: red;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #444;
+}
+
+.form__input,
+.form__textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form__input:focus,
+.form__textarea:focus {
+  border-color: #0077cc;
+  outline: none;
+}
+
+.form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form__submit {
+  align-self: flex-start;
+  background-color: #0077cc;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form__submit:hover {
+  background-color: #005fa3;
+}
+
+/* ======= Contact Info ======= */
+.contact__info {
+  margin-top: 2rem;
+  border-top: 1px solid #ddd;
+  padding-top: 1.5rem;
+}
+
+.contact__subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact__detail {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.contact__icon {
+  font-size: 1.25rem;
+}
+/* ------------------------------------------------fin-contact-------------------------------------------------*/

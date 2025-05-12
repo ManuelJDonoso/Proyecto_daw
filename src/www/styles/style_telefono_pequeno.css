@@ -144,4 +144,21 @@ form-card__left .button_container {
     }
 
     /*-----------------------------------------------fin-privacy y terms--------------------------------*/
+
+    /* -----------------------------------------------contact---------------------------------*/
+
+     .contact {
+    padding: 1rem;
+  }
+
+  .contact__title,
+  .contact__subtitle {
+    text-align: center;
+  }
+
+  .form__submit {
+    align-self: stretch;
+    text-align: center;
+  }
+  /* -----------------------------------------------fin-contact---------------------------------*/
 }
