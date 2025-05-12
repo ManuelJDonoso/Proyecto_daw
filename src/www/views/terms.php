@@ -1,4 +1,5 @@
-<h1 class="terms__title">Términos y Condiciones</h1>
+<div  class="container-terms">
+    <h1 class="terms__title">Términos y Condiciones</h1>
 
 <article class="terms__section">
     <h2 class="terms__subtitle">1. Introducción</h2>
@@ -56,3 +57,5 @@
 </article>
 
 <p class="terms__update">Última actualización: <strong>06-Mayo-2025</strong>.</p>
+
+</div>

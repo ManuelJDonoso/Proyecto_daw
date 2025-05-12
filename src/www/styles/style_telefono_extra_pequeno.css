@@ -155,4 +155,20 @@
       flex-direction: column;
   }
   /*-----------------------------------------------fin-foro---------------------------------*/
+    /*-----------------------------------------------privacy y terms--------------------------------*/  
+
+   .container-privacy , .container-terms  {
+        padding: 20px;
+        margin: 0 15px;
+    }
+    
+   .container-privacy  .terms__title, .container-terms  .terms__title {
+        font-size: 1.4rem;
+    }
+    
+    .container-privacy .terms__subtitle,  .container-terms .terms__subtitle  {
+        font-size: 1rem;
+    }
+
+    /*-----------------------------------------------fin-privacy y terms--------------------------------*/
 }

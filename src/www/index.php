@@ -114,6 +114,17 @@ $pdo = require_once 'config/conexion.php';
                         include_once "views/index.php";
                     break;
 
+                     case 'privacy':
+                        include_once "views/privacy.php";
+                    break;
+                     case 'terms':
+                        include_once "views/terms.php";
+                    break;
+                     case 'contact':
+                        include_once "views/contact.php";
+                    break;
+
+
                     default:
                         include_once "views/pag_err.php";
                         break;
