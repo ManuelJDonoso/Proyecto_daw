@@ -171,4 +171,22 @@
     }
 
     /*-----------------------------------------------fin-privacy y terms--------------------------------*/
+
+      /* -----------------------------------------------asignar rol---------------------------------*/
+
+   .container-gestion {
+        padding: 0.75rem;
+        margin: 0.75rem;
+    }
+    
+    .container-gestion .filters {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-table th, 
+    .user-table td {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.5rem;
+    }
+    /* -----------------------------------------------fin-asignar rol---------------------------------*/
 }

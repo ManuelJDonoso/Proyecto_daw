@@ -161,4 +161,22 @@ form-card__left .button_container {
     text-align: center;
   }
   /* -----------------------------------------------fin-contact---------------------------------*/
+
+  /* -----------------------------------------------asignar rol---------------------------------*/
+
+   .container-gestion {
+        padding: 1rem;
+        margin: 1rem;
+    }
+    
+    .container-gestion .filters {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-table th, 
+    .user-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.85rem;
+    }
+    /* -----------------------------------------------fin-asignar rol---------------------------------*/
 }
