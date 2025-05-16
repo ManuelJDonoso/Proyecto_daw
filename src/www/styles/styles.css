@@ -2286,25 +2286,7 @@ header {
    
 }
 
-/* Estilos responsivos */
-@media (max-width: 768px) {
-    .card__update {
-        padding: 20px;
-        width: 95%;
-    }
-    
-    .card__title {
-        font-size: 2rem;
-    }
-    
-    .form > div:last-child {
-        flex-direction: column;
-    }
-    
-    .button {
-        width: 100%;
-    }
-}
+
 /*------------------------------------------------fin-mi perfil--------------------------------------------------------*/
 
 
