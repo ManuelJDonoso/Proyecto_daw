@@ -179,4 +179,23 @@ form-card__left .button_container {
         font-size: 0.85rem;
     }
     /* -----------------------------------------------fin-asignar rol---------------------------------*/
+
+    /* -----------------------------------------------perfil---------------------------------*/
+        .card__update {
+        padding: 20px;
+        width: 95%;
+    }
+    
+    .card__title {
+        font-size: 2rem;
+    }
+    
+    .form > div:last-child {
+        flex-direction: column;
+    }
+    
+    .button {
+        width: 100%;
+    }
+    /* -----------------------------------------------fin-perfil---------------------------------*/
 }
