@@ -23,7 +23,7 @@
         <table class="user-table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                  
                     <th>Usuario</th>
                     <th>Nombre</th>
                     <th>Email</th>

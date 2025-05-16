@@ -2157,21 +2157,11 @@ header {
       color: var(--button-text-color);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .container-gestion {
-        padding: 1rem;
-        margin: 1rem;
-    }
-    
-    .filters {
-        grid-template-columns: 1fr;
-    }
-    
-    .user-table th, 
-    .user-table td {
-        padding: 0.75rem 0.5rem;
-        font-size: 0.85rem;
-    }
+.container-gestion .filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+    width: 100%;
 }
 /* ------------------------------------------------fin-asignar rol-------------------------------------------------*/
