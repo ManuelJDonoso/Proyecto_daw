@@ -1,0 +1,83 @@
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor #FDF6E3
+  BorderColor black
+  ArrowColor black
+}
+
+
+actor Administrador
+
+
+
+rectangle "Crónicas de Mérida " {
+     
+     package "Eventos" { 
+        usecase UC1 as "Ver eventos disponibles"
+        usecase UC2 as "Ver detalles del evento"
+        usecase UC3 as "Inscribirse al evento"
+        }
+     
+     package "Material"{
+        usecase UC4 as "Ver material Disponible"
+        usecase UC5 as "Prestamo de material"
+        usecase UC6 as "Devolución de material"
+        usecase UC7 as "Alta de material"
+        usecase UC8 as "Baja de material"
+     }
+
+     package "Foro" {
+        usecase UC9 as "Ver foro"
+        usecase UC10 as "Crear Categoría"
+        usecase UC11 as "Crear Tema"
+        usecase UC12 as "Crear Mensaje"
+        usecase UC13 as "Responder Mensaje"
+        usecase UC14 as "Eliminar Mensaje"
+        usecase UC15 as "Eliminar Tema"
+        usecase UC16 as "cerrar / abrir Tema"
+        usecase UC17 as "cerrar / abrir Categoria"
+        usecase UC26 as "Me Gusta"
+        }
+
+        package "Sistema" {
+        usecase UC18 as "Registrar usuario"
+        usecase UC19 as "Modificar usuario"
+        usecase UC20 as "Eliminar usuario"
+        usecase UC21 as "Modificar rol"
+        usecase UC22 as "Dar de baja usuario"
+        usecase UC23 as "Inicar incidencia"
+        usecase UC24 as "Ver incidencias"
+        usecase UC25 as "Modificar incidencia"
+}
+
+    Administrador --> UC1
+    Administrador --> UC2
+    Administrador --> UC3
+    Administrador --> UC4
+    Administrador --> UC5
+    Administrador --> UC6
+    Administrador --> UC7
+      Administrador --> UC8
+      Administrador --> UC9
+      Administrador --> UC10
+      Administrador --> UC11
+      Administrador --> UC12
+      Administrador --> UC13
+      Administrador --> UC14
+      Administrador --> UC15
+      Administrador --> UC16
+      Administrador --> UC17
+      Administrador --> UC18
+      Administrador --> UC19
+      Administrador --> UC20
+      Administrador --> UC21
+      Administrador --> UC22
+      Administrador --> UC23
+      Administrador --> UC24
+      Administrador --> UC25
+
+@enduml

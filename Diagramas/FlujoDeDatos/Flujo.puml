@@ -1,0 +1,84 @@
+
+@startuml
+start
+:Autenticarse;
+if(¿Es nuevo usuario?)then (Si)
+  :Accede al sistema;
+else (No)
+  :registrarse;
+  :Accede al sistema;
+endif
+switch (Rol del usuario)
+case (Jugador)
+
+fork
+   :Eventos;
+    fork
+    :ver eventos;
+    fork again
+      :ver detalles del evento;
+      :inscribirse al evento;
+    end fork
+ fork again
+   :foro;
+    fork
+        :ver foro;
+        fork again
+        if(¿El tema esta cerrado?)then(No)
+             :crear tema;
+             :crear mensaje;
+             :responder mensaje;
+            
+        else(si)
+       
+
+        endif
+         :me gusta;
+        end fork
+
+ fork again
+   :Material;
+   :ver material;
+    :prestamo de material;
+end fork
+
+  
+  
+case (Moderador)
+fork
+   :Eventos;
+   :Crear/ Eliminar eventos;
+    :Eliminar inscripcion de Jugador;
+ fork again
+   :foro;
+   :Eliminar tema;
+    :Eliminar mensaje;
+ fork again
+   :Material;
+   :devolver material;
+end fork
+
+
+
+
+
+
+case (Administrador)
+fork
+    :Gestionar usuarios;
+    :Modificar rol;
+    :Dar de baja usuario;
+ fork again
+   :Material;
+   fork
+   :Alta de material;
+   fork again
+    :Baja de material;
+    end fork    
+end fork
+endswitch
+
+
+
+stop
+@enduml

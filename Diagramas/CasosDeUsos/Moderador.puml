@@ -1,0 +1,86 @@
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor #FDF6E3
+  BorderColor black
+  ArrowColor black
+}
+
+actor Moderador
+
+
+
+
+
+
+rectangle "Crónicas de Mérida " {
+     
+     package "Eventos" { 
+        usecase UC1 as "Ver eventos disponibles"
+        usecase UC2 as "Ver detalles del evento"
+        usecase UC3 as "Inscribirse al evento"
+        }
+     
+     package "Material"{
+        usecase UC4 as "Ver material Disponible"
+        usecase UC5 as "Prestamo de material"
+        usecase UC6 as "Devolución de material"
+        usecase UC7 as "Alta de material"
+        usecase UC8 as "Baja de material"
+     }
+
+     package "Foro" {
+        usecase UC9 as "Ver foro"
+        usecase UC10 as "Crear Categoría"
+        usecase UC11 as "Crear Tema"
+        usecase UC12 as "Crear Mensaje"
+        usecase UC13 as "Responder Mensaje"
+        usecase UC14 as "Eliminar Mensaje"
+        usecase UC15 as "Eliminar Tema"
+        usecase UC16 as "cerrar / abrir Tema"
+        usecase UC17 as "cerrar / abrir Categoria"
+        usecase UC26 as "Me Gusta"
+        }
+
+        package "Sistema" {
+        usecase UC18 as "Registrar usuario"
+        usecase UC19 as "Modificar usuario"
+        usecase UC20 as "Eliminar usuario"
+        usecase UC21 as "Modificar rol"
+        usecase UC22 as "Dar de baja usuario"
+        usecase UC23 as "Inicar incidencia"
+        usecase UC24 as "Ver incidencias"
+        usecase UC25 as "Modificar incidencia"
+}
+
+    Moderador --> UC1
+    Moderador --> UC2
+    Moderador --> UC4
+    Moderador --> UC9
+    Moderador --> UC18
+
+    Moderador --> UC3
+    Moderador --> UC5
+    Moderador --> UC11
+    Moderador --> UC12
+    Moderador --> UC13
+
+    Moderador --> UC26
+    Moderador --> UC22
+    Moderador --> UC23    
+
+    Moderador --> UC6
+    Moderador --> UC14
+    Moderador --> UC15
+    Moderador --> UC16
+    Moderador --> UC17
+    Moderador --> UC24
+    Moderador --> UC25
+
+
+   
+
+@enduml
