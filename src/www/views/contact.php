@@ -24,6 +24,11 @@
           <textarea id="message" name="message" class="form__textarea" required></textarea>
         </div>
         
+         <div class="">
+          
+          <input type="checkbox" id="terms" name="message" class="" ><a href="?pag=privacy" for="acuerdo" class="form__label"  onclick="window.open(this.href, 'popup', 'width=600,height=400'); return false;">Acepto Terminos y condiciones</a></input>
+        </div>
+
         <button type="submit" class="form__submit">Enviar mensaje</button>
       </form>
       
@@ -32,7 +37,7 @@
         <div class="contact__details">
           <div class="contact__detail">
             <span class="contact__icon">📧</span>
-            <span>admin@cronicasdemerida.com</span>
+            <span>dev@manueldonoso.es</span>
           </div>
           <div class="contact__detail">
             <span class="contact__icon">📱</span>
@@ -40,18 +45,36 @@
           </div>
           <div class="contact__detail">
             <span class="contact__icon">🏠</span>
-            <span>Plaza Mayor, 1, Mérida, España</span>
+            <span>Plaza Mayor, 1, Mérida,CP 06031, España.</span>
+           
           </div>
+      <div class="contact__detail">
+            <span class="contact__icon">🏢</span>
+            <span>Manuel Donoso S.L.</span>
+            <br>
+            <span> Su CIF es: B-12345678.</span>
+        
+      </div>
+          
         </div>
       </div>
     </section>
 
 
-     <script>
+    <script>
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
   const formMessage = document.getElementById('formMessage');
+  const termsCheckbox = document.getElementById('terms');
+  
+  // Verificar si el checkbox de términos está marcado
+  if (!termsCheckbox.checked) {
+    formMessage.textContent = 'Debes aceptar los términos y condiciones para enviar el formulario';
+    formMessage.className = 'form__message form__message--error';
+    return; // Detener la ejecución si no está marcado
+  }
+
   const formData = new FormData(this);
 
   fetch('controllers/contact_form.php', {
@@ -64,6 +87,8 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
       formMessage.textContent = data.success;
       formMessage.className = 'form__message form__message--success';
       this.reset();
+      // Opcional: desmarcar el checkbox después del envío
+      termsCheckbox.checked = false;
     } else {
       formMessage.textContent = data.error;
       formMessage.className = 'form__message form__message--error';

@@ -74,12 +74,25 @@
         <h2>10. Contacto</h2>
         <p>Para ejercer sus derechos o consultas sobre privacidad:</p>
         <ul>
-            <li><strong>Email:</strong> info@manueldonoso.es</li>
-            <li><strong>Dirección postal:</strong> [Incluir dirección física si aplica]</li>
+            <li><strong>Email:</strong> dev@manueldonoso.es</li>
+            <li><strong>Dirección postal:</strong> Plaza Mayor, 1, Mérida,CP 06031, España.</li>
             <li><strong>Formulario web:</strong> <a href="https://www.manueldonoso.es/?pag=contact">Formulario de contacto</a></li>
+       
+        <div class="contact__detail">
+            <strong>Empresa:</strong>
+            <span>Manuel Donoso S.L.</span>
+            <br>
+            <strong>CIF:</strong>
+            <span>  B-12345678.</span>
+        
+         </div>
+       
         </ul>
         
         <div class="last-updated">
             <p>Última revisión: 12 de mayo de 2024</p>
         </div>
     </div>
+
+
+   
