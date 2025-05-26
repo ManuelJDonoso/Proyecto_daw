@@ -208,4 +208,25 @@
         width: 100%;
     }
     /* -----------------------------------------------fin-perfil---------------------------------*/
+
+     /* -----------------------------------------------foro---------------------------------*/
+
+
+  .container {
+    display: flex;
+    flex-direction: column; /* apilar vertical */
+    gap: 15px; /* separación entre secciones */
+  }
+
+  .section {
+    width: 100%;  /* que ocupe todo el ancho del contenedor */
+    display: block; /* forzar bloque */
+    margin-bottom: 15px;
+  }
+
+  /* Ocultar resizers porque no sirven en móvil */
+  .resizer {
+    display: none;
+  }
+  /* -----------------------------------------------fin-foro---------------------------------*/
 }
